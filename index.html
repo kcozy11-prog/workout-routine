@@ -21,6 +21,8 @@
   #sndBtn.off{color:var(--rest);border-color:var(--rest)}
   header h1{font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:-0.3px}
   header p{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  header .upd{font-family:var(--sans);font-size:11px;color:var(--ink-soft);margin-top:5px}
+  header .upd b{font-weight:600;color:var(--accent)}
   nav{display:flex;border-bottom:1px solid var(--line-dark);position:sticky;top:0;background:var(--paper);z-index:10}
   nav button{flex:1;padding:11px 2px;background:none;border:none;font-family:var(--sans);font-size:12px;color:var(--ink-soft);border-bottom:2px solid transparent;cursor:pointer}
   nav button.on{color:var(--ink);font-weight:700;border-bottom-color:var(--accent)}
@@ -181,6 +183,7 @@
 <header>
   <h1>주간 운동 루틴</h1>
   <p>체력·둔근·골반저근·자세 교정 중심, 협착·목디스크 기질 고려</p>
+  <p class="upd">최종 업데이트 <b id="updAt">—</b></p>
   <button id="sndBtn" title="타이머 알림음 켜고 끄기">소리 켬</button>
 </header>
 <nav>
@@ -281,6 +284,8 @@ const EX = {
 const WEIGHTED_KEYS=["gluteBridge","hipAbduction","chestRow","oneArmRow","kbDeadlift","stepUp","innerThigh","latPulldown","seatedRow","gobletSquat","bulgarian"];
 /* 브릿지 8주 로드맵. 현재 단계는 S.goal.bridge */
 const GOAL_START="2026-09-07";
+/* 배포할 때마다 이 날짜를 갱신한다. 메인 화면 제목 아래에 표시된다. */
+const APP_UPDATED="2026-09-07";
 const BRIDGE_STAGES=[
   {d:"12회 3세트",t:"양발, 엉덩이로 올리기",w:"1~2주"},
   {d:"10초 홀드 5회 3세트",t:"무릎에 밴드, 정점 홀드",w:"3~4주"},
@@ -1233,6 +1238,7 @@ document.querySelectorAll("nav button").forEach(b=>{
 (async function(){
   await loadState();
   updateSndBtn();
+  (function(){const d=new Date(APP_UPDATED+"T00:00:00");const el=$("#updAt");if(el&&!isNaN(d))el.textContent=APP_UPDATED.replace(/-/g,".")+" "+"일월화수목금토"[d.getDay()];})();
   $("#sndBtn").onclick=()=>{S.mute=!S.mute;saveState();updateSndBtn();if(!S.mute)beep(880,0.12);};
   document.querySelectorAll(".addbar button").forEach(b=>b.onclick=()=>{
     const dk=dateKey(selDay),k=b.dataset.add;
