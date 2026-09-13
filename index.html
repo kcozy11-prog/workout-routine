@@ -17,78 +17,109 @@
     --paper:#FAFAF7; --ink:#1B1B1A; --ink-soft:#55554F;
     --line:#D9D9D2; --line-dark:#9C9C93;
     --accent:#2F5D3A; --accent-soft:#EAF0EB; --rest:#8A6D3B;
-    --sans:"Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",sans-serif;
+    --sans:"Apple SD Gothic Neo","Malgun Gothic","맑은 고딕","Noto Sans KR",Roboto,"Helvetica Neue",Arial,sans-serif;
     --serif:"Noto Serif KR","Apple Myungjo","AppleMyungjo",Batang,"바탕",serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.65;font-size:15px;padding-bottom:60px}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;font-size:16px;padding-bottom:60px;-webkit-text-size-adjust:100%}
+  body.big{zoom:1.15}
   header{padding:20px 16px 10px;border-bottom:1px solid var(--ink);position:relative}
-  #sndBtn{position:absolute;right:14px;top:24px;padding:7px 11px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);border-radius:2px;cursor:pointer}
+  .hbtns{position:absolute;right:14px;top:20px;display:flex;gap:6px}
+  .hbtns button{padding:7px 10px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);border-radius:3px;cursor:pointer;min-height:34px}
+  #fsBtn{font-weight:700}
   #sndBtn.off{color:var(--rest);border-color:var(--rest)}
   header h1{font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:-0.3px}
-  header p{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
-  header .upd{font-family:var(--sans);font-size:11px;color:var(--ink-soft);margin-top:5px}
+  header p{font-size:13.5px;color:var(--ink-soft);margin-top:3px}
+  header .upd{font-family:var(--sans);font-size:12px;color:var(--ink-soft);margin-top:5px}
   header .upd b{font-weight:600;color:var(--accent)}
   #installBar{display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--accent-soft);border-bottom:1px solid var(--line);font-family:var(--sans);font-size:12.5px;color:var(--ink)}
   #installBar[hidden]{display:none}
   #installBar button{margin-left:auto;flex-shrink:0;padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:2px;font-family:var(--sans);font-size:12.5px;cursor:pointer}
   nav{display:flex;border-bottom:1px solid var(--line-dark);position:sticky;top:0;background:var(--paper);z-index:10}
-  nav button{flex:1;padding:11px 2px;background:none;border:none;font-family:var(--sans);font-size:12px;color:var(--ink-soft);border-bottom:2px solid transparent;cursor:pointer}
+  nav button{flex:1;padding:12px 2px;background:none;border:none;font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);border-bottom:3px solid transparent;cursor:pointer}
   nav button.on{color:var(--ink);font-weight:700;border-bottom-color:var(--accent)}
   main{padding:14px 14px}
   .hidden{display:none}
 
   .days{display:flex;gap:4px;margin-bottom:12px}
-  .days button{flex:1;padding:8px 0;border:1px solid var(--line);background:#fff;font-family:var(--sans);font-size:13px;color:var(--ink-soft);cursor:pointer;border-radius:2px}
+  .days button{flex:1;padding:9px 0;border:1px solid var(--line);background:#fff;font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);cursor:pointer;border-radius:3px}
   .days button.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
   .days button .dot{display:block;font-size:9px;line-height:1;margin-top:2px;color:var(--accent)}
   .days button.sel .dot{color:#9FD3AC}
-  .today-label{font-family:var(--sans);font-size:12px;color:var(--accent);margin-bottom:10px}
+  .today-label{font-family:var(--sans);font-size:13.5px;color:var(--accent);margin-bottom:8px}
   .addbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-  .addbar .lbl{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);margin-right:2px}
-  .addbar button{padding:6px 10px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:12px;color:var(--ink-soft);border-radius:2px;cursor:pointer}
+  .addbar .lbl{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin-right:2px}
+  .addbar button{padding:7px 11px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:13px;color:var(--ink-soft);border-radius:3px;cursor:pointer}
   .addbar button.on{background:var(--accent);border-color:var(--accent);color:#fff}
-  .goal{border:1px solid var(--ink);background:#fff;margin-bottom:12px;border-radius:2px}
+  .goal{border:1px solid var(--ink);background:#fff;margin-bottom:12px;border-radius:4px}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 10px 8px}
+  .tile{border:1px solid var(--line);border-radius:4px;padding:8px 4px 7px;background:#fff;text-align:center;font-family:var(--sans)}
+  button.tile{cursor:pointer;border-color:var(--accent);background:var(--accent-soft)}
+  .tile .k{display:block;font-size:12px;color:var(--ink-soft)}
+  .tile b{display:block;font-size:27px;line-height:1.1;color:var(--accent);margin:3px 0 2px}
+  .tile b small{font-size:14px;color:var(--ink-soft);font-weight:600;margin-left:1px}
+  .tile .u{display:block;font-size:11px;color:var(--ink-soft);line-height:1.3}
+  .goal-more{border-top:1px solid var(--line)}
+  .goal-more summary{padding:8px 12px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);cursor:pointer;list-style:none}
+  .goal-more summary::before{content:"▸ ";color:var(--line-dark)}
+  .goal-more[open] summary::before{content:"▾ "}
   .goal-head{display:flex;align-items:baseline;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line)}
   .goal-head .t{font-family:var(--sans);font-weight:700;font-size:14px}
   .goal-head .s{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);margin-left:auto;text-align:right}
-  .goal-row{display:flex;gap:10px;align-items:baseline;padding:7px 12px;border-bottom:1px dashed var(--line);font-size:13px;line-height:1.5}
+  .goal-row{display:flex;gap:10px;align-items:baseline;padding:7px 12px;border-bottom:1px dashed var(--line);font-size:14px;line-height:1.5}
   .goal-row:last-child{border-bottom:none}
-  .goal-row .k{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);flex:0 0 74px}
+  .goal-row .k{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);flex:0 0 78px}
   .goal-row .v{flex:1}
   .goal-row .v b{font-family:var(--sans);font-size:15px;color:var(--accent)}
   .stages{display:flex;align-items:center;gap:5px;flex-wrap:wrap;flex:1}
   .stages button{width:30px;height:28px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);border-radius:2px;cursor:pointer}
   .stages button.on{background:var(--accent);border-color:var(--accent);color:#fff}
-  .stages .sd{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);width:100%}
+  .stages .sd{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);width:100%}
 
-  .block{border:1px solid var(--line);background:#fff;margin-bottom:12px;border-radius:2px}
-  .block-head{display:flex;align-items:center;gap:9px;padding:11px 12px;border-bottom:1px solid var(--line)}
-  .block-head input{width:18px;height:18px;accent-color:var(--accent);flex-shrink:0}
-  .block-head .t{font-family:var(--sans);font-weight:700;font-size:14px}
-  .block-head .s{font-size:11.5px;color:var(--ink-soft);margin-left:auto;font-family:var(--sans);flex-shrink:0;text-align:right}
-  .block-body{padding:4px 12px 10px}
-  .note{font-size:12.5px;color:var(--ink-soft);padding:8px 2px 4px}
+  .block{--rc:var(--line-dark);border:1px solid var(--line);border-left:5px solid var(--rc);background:#fff;margin-bottom:12px;border-radius:4px;scroll-margin-top:56px}
+  .block-head{display:grid;grid-template-columns:24px 1fr auto;column-gap:9px;row-gap:1px;align-items:center;padding:10px 12px 8px}
+  .block-head input{grid-column:1;grid-row:1/span 2;width:22px;height:22px;accent-color:var(--accent)}
+  .block-head .t{grid-column:2;grid-row:1;font-family:var(--sans);font-weight:700;font-size:16px;line-height:1.3}
+  .block-head .t::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--rc);margin-right:7px;vertical-align:1px}
+  .block-head .s{grid-column:2;grid-row:2;font-size:12.5px;color:var(--ink-soft);font-family:var(--sans);text-align:left;margin:0}
+  .block-head .bp{grid-column:3;grid-row:1/span 2;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--rc);white-space:nowrap}
+  .bar{height:3px;background:var(--line)}
+  .bar i{display:block;height:100%;background:var(--rc);transition:width .2s}
+  .block-body{padding:4px 12px 10px;border-top:1px solid var(--line)}
+  .block.done{opacity:.72}
+  .block.done .block-head{background:var(--accent-soft)}
+  .block.done .block-head .bp::after{content:" ✓"}
+  .block.done .block-body,.block.done .bar{display:none}
+  .block.done.open .block-body{display:block}
+  .unfold{display:none;width:100%;padding:8px;border:none;border-top:1px solid var(--line);background:#fff;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);cursor:pointer}
+  .block.done .unfold{display:block}
+  .note{font-size:13.5px;color:var(--ink-soft);padding:8px 2px 4px}
+  .daysum{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+  .daysum button{--rc:var(--line-dark);border:1px solid var(--line-dark);border-left:4px solid var(--rc);background:#fff;padding:7px 10px;font-family:var(--sans);font-size:13.5px;color:var(--ink);border-radius:3px;cursor:pointer}
+  .daysum button b{color:var(--rc);margin-left:3px}
+  .daysum button.ok{background:var(--accent-soft);border-color:var(--accent)}
+  .daysum button.ok b{color:var(--accent)}
+  .badge{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:700;color:#fff;background:var(--accent);padding:1px 7px;border-radius:10px;vertical-align:2px;margin-left:5px;line-height:1.5}
 
-  .ex{border-bottom:1px dashed var(--line);padding:9px 0}
+  .ex{border-bottom:1px dashed var(--line);padding:7px 0}
   .ex:last-child{border-bottom:none}
-  .ex-head{display:flex;align-items:baseline;gap:7px;cursor:pointer}
-  .ex-head .n{font-weight:600;font-size:14.5px}
-  .ex-head .d{font-size:11.5px;color:var(--ink-soft);font-family:var(--sans);margin-left:auto;text-align:right;flex-shrink:0}
-  .ex-head .arrow{font-size:11px;color:var(--line-dark)}
-  .ex-head .prog{font-family:var(--sans);font-size:11px;color:var(--accent);flex-shrink:0}
-  .ex-detail{display:none;margin-top:8px;padding:10px 11px;background:var(--accent-soft);border-left:2px solid var(--accent);font-size:13.5px}
+  .ex-head{display:grid;grid-template-columns:14px 1fr auto;column-gap:8px;row-gap:1px;align-items:center;cursor:pointer;min-height:44px}
+  .ex-head .arrow{grid-column:1;grid-row:1/span 2;font-size:12px;color:var(--line-dark)}
+  .ex-head .n{grid-column:2;grid-row:1;font-family:var(--sans);font-weight:700;font-size:16px;line-height:1.3}
+  .ex-head .d{grid-column:2;grid-row:2;font-size:13px;color:var(--ink-soft);font-family:var(--sans);text-align:left;margin:0;line-height:1.3}
+  .ex-head .prog{grid-column:3;grid-row:1/span 2;font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:12px}
+  .ex-detail{display:none;margin-top:8px;padding:10px 11px;background:var(--accent-soft);border-left:3px solid var(--accent);font-size:14.5px;border-radius:0 3px 3px 0}
   .ex.open .ex-detail{display:block}
   .ex-detail .what{margin-bottom:6px}
   .ex-detail ol{padding-left:18px;margin:4px 0}
   .ex-detail ol li{margin-bottom:3px}
-  .ex-detail .cau{margin-top:7px;font-size:12.5px;color:#7A3B2E}
+  .ex-detail .cau{margin-top:7px;font-size:13.5px;color:#7A3B2E}
   .ex-detail .cau::before{content:"주의, "}
 
   .tracker{margin-top:10px;padding-top:9px;border-top:1px solid #CBDACE;font-family:var(--sans)}
-  .tracker .lbl{font-size:11.5px;color:var(--ink-soft);margin-bottom:5px}
+  .tracker .lbl{font-size:12.5px;color:var(--ink-soft);margin-bottom:5px}
   .setrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px}
-  .setrow button{min-width:44px;height:36px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:13px;color:var(--ink-soft);border-radius:2px;cursor:pointer}
+  .setrow button{min-width:48px;height:40px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:14px;color:var(--ink-soft);border-radius:3px;cursor:pointer}
   .setrow button.done{background:var(--accent);border-color:var(--accent);color:#fff}
   .wrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:7px}
   .wrow input{width:56px;height:34px;border:1px solid var(--line-dark);border-radius:2px;text-align:center;font-family:var(--sans);font-size:13px;background:#fff}
@@ -99,7 +130,7 @@
   .tphase{font-size:12px;color:var(--ink-soft)}
   .tphase.work{color:var(--accent);font-weight:700}
   .tphase.rest{color:var(--rest);font-weight:700}
-  .subhdr{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);font-weight:700;margin:9px 0 1px}
+  .subhdr{font-family:var(--sans);font-size:13px;color:var(--ink);font-weight:700;margin:10px 0 2px;padding-left:8px;border-left:3px solid var(--line-dark)}
   .cnt-wrap{display:flex;align-items:center;gap:10px;margin:6px 0 4px;flex-wrap:wrap}
   .cnt{min-width:150px;height:44px;border:1px solid var(--accent);background:#fff;color:var(--accent);font-family:var(--sans);font-size:14px;border-radius:2px;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
   .cnt b{font-size:18px}
@@ -131,7 +162,7 @@
   .daymemo-wrap .lbl{font-family:var(--sans);font-size:12px;color:var(--ink-soft);margin-bottom:4px}
 
   .dict-group{margin-bottom:18px}
-  .dict-group h3{font-family:var(--sans);font-size:13px;color:var(--ink-soft);font-weight:700;border-bottom:1px solid var(--line-dark);padding-bottom:5px;margin-bottom:4px}
+  .dict-group h3{font-family:var(--sans);font-size:14px;color:var(--ink-soft);font-weight:700;border-bottom:1px solid var(--line-dark);padding-bottom:5px;margin-bottom:4px}
 
   table{width:100%;border-collapse:collapse;background:#fff;font-size:12.5px}
   th,td{border:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
@@ -144,9 +175,9 @@
   .timer-bar .seg{font-size:13px;color:var(--ink-soft)}
 
   .habit-group{margin-bottom:16px}
-  .habit-group h3{font-family:var(--sans);font-size:13.5px;font-weight:700;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--line-dark)}
+  .habit-group h3{font-family:var(--sans);font-size:15px;font-weight:700;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--line-dark)}
   .habit-group ul{list-style:none}
-  .habit-group li{padding:6px 0 6px 14px;border-bottom:1px dashed var(--line);font-size:13.5px;position:relative}
+  .habit-group li{padding:7px 0 7px 14px;border-bottom:1px dashed var(--line);font-size:15px;position:relative;line-height:1.55}
   .habit-group li::before{content:"—";position:absolute;left:0;color:var(--line-dark)}
   .habit-group li:last-child{border-bottom:none}
   .habit-group li.figli{padding-left:0;border-bottom:none}
@@ -154,7 +185,7 @@
   .fig{margin:6px 0 8px;padding:9px 7px 7px;border:1px solid var(--line);background:#fff;border-radius:2px}
   .fig svg{display:block;width:100%;height:auto}
   .ex-detail .fig{margin:9px 0}
-  .fig figcaption{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+  .fig figcaption{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
   .fig .ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .fig .thin{stroke-width:1.3}
   .fig .mk{stroke-width:2.4;fill:none}
@@ -220,7 +251,7 @@
   <h1>주간 운동 루틴</h1>
   <p>체력·둔근·골반저근·자세 교정 중심, 협착·목디스크 기질 고려</p>
   <p class="upd">최종 업데이트 <b id="updAt">—</b></p>
-  <button id="sndBtn" title="타이머 알림음 켜고 끄기">소리 켬</button>
+  <div class="hbtns"><button id="fsBtn" title="글자 크기">가+</button><button id="sndBtn" title="타이머 알림음 켜고 끄기">소리 켬</button></div>
 </header>
 <div id="installBar" hidden><span>휴대폰 홈 화면에 앱으로 설치할 수 있습니다.</span><button id="installBtn">설치</button></div>
 <nav>
@@ -370,15 +401,16 @@ const BRIDGE_STAGES=[
   {d:"덤벨 10회 3세트",t:"골반 위에 무게",w:"9주~"}
 ];
 const STRENGTH_KEYS=["rdl","chestRow","facePull","sidePlank","kbDeadlift","boxHeelRaise","singleLegStand","bandSideStep"];
+const RCOLOR={WALK:"#4A6FA5",A:"#C28A2B",B:"#3A8F8A",C:"#2F5D3A",D:"#8A6D3B",SAT:"#6B6B62",SUN:"#9C9C93",BOW:"#6B6B62",INT:"#6B6B62",R:"#7A3B2E"};
 const RSHORT={WALK:"걷기",A:"A",B:"B",C:"C",D:"D",SAT:"토",SUN:"휴식",BOW:"108배",INT:"인터벌",R:"R"};
 
 const ROUTINES = {
-  WALK:{title:"출퇴근 걷기",sub:"편도 30~35분",items:["commuteWalk"]},
-  A:{title:"루틴 A, 기상 직후",sub:"매트, 5분",items:["foamThoracic","toeSpread","towelCurl","gluteBridge"],extra:"이것만 하면 성공: 브릿지. 캣카우는 폼롤러 흉추 신전이 대신합니다."},
-  B:{title:"루틴 B, 사무실 틈틈이",sub:"오전·오후",items:["_자세 세트 — 오전 1회, 오후 1회","chinTuck","bandRow","wallSlide","kegel","_발과 종아리 — 하루 한 번","stretchBoard","ballFoot","shortFoot"],extra:"자세 세트는 오전·오후를 각각 체크합니다. 버스나 지하철에서는 턱 당기기, 케겔, 쇼트풋을 그대로."},
-  C:{title:"루틴 C, 헬스장",sub:"월·목, 30분",items:["rdl","chestRow","facePull","gluteBridge","sidePlank"],extra:"당기는 동작(로우 4세트, 페이스풀 3세트)을 미는 동작보다 많게 잡았습니다. 힙 스러스트 자리는 단계별 브릿지 — 4단계에 이르면 그 칸에서 덤벨을 얹습니다. 이것만 하면 성공: 브릿지."},
-  D:{title:"루틴 D, 집 케틀벨",sub:"화·금, 20분",items:["kbDeadlift","gluteBridge","boxHeelRaise","singleLegStand","bandSideStep","wallCalf"],extra:"밴드 사이드 스텝이 마무리, 벽 밀기는 정리 운동입니다. 이것만 하면 성공: 브릿지."},
-  SAT:{title:"토요일",sub:"놀이터, 긴 보행 뒤",items:["hang","hangNegative","ballFoot","wallCalf"],extra:"매달리기는 스톱워치로 시간을 기록해 주마다 늘어나는지 봅니다. 네거티브는 선택. 긴 보행 뒤에는 발바닥과 종아리를 꼭 풀어 줍니다."},
+  WALK:{title:"출퇴근 걷기",sub:"편도 30~35분",items:["commuteWalk"],key:"commuteWalk"},
+  A:{title:"루틴 A, 기상 직후",sub:"매트, 5분",items:["foamThoracic","toeSpread","towelCurl","gluteBridge"],key:"gluteBridge",extra:"이것만 하면 성공: 브릿지. 캣카우는 폼롤러 흉추 신전이 대신합니다."},
+  B:{title:"루틴 B, 사무실 틈틈이",sub:"오전·오후",items:["_자세 세트 — 오전 1회, 오후 1회","chinTuck","bandRow","wallSlide","kegel","_발과 종아리 — 하루 한 번","stretchBoard","ballFoot","shortFoot"],key:"kegel",extra:"자세 세트는 오전·오후를 각각 체크합니다. 버스나 지하철에서는 턱 당기기, 케겔, 쇼트풋을 그대로."},
+  C:{title:"루틴 C, 헬스장",sub:"월·목, 30분",items:["rdl","chestRow","facePull","gluteBridge","sidePlank"],key:"gluteBridge",extra:"당기는 동작(로우 4세트, 페이스풀 3세트)을 미는 동작보다 많게 잡았습니다. 힙 스러스트 자리는 단계별 브릿지 — 4단계에 이르면 그 칸에서 덤벨을 얹습니다. 이것만 하면 성공: 브릿지."},
+  D:{title:"루틴 D, 집 케틀벨",sub:"화·금, 20분",items:["kbDeadlift","gluteBridge","boxHeelRaise","singleLegStand","bandSideStep","wallCalf"],key:"gluteBridge",extra:"밴드 사이드 스텝이 마무리, 벽 밀기는 정리 운동입니다. 이것만 하면 성공: 브릿지."},
+  SAT:{title:"토요일",sub:"놀이터, 긴 보행 뒤",items:["hang","hangNegative","ballFoot","wallCalf"],key:"hang",extra:"매달리기는 스톱워치로 시간을 기록해 주마다 늘어나는지 봅니다. 네거티브는 선택. 긴 보행 뒤에는 발바닥과 종아리를 꼭 풀어 줍니다."},
   SUN:{title:"일요일, 회복",sub:"완전 휴식",items:["lacrosseLight"]},
   BOW:{title:"108배 (선택)",sub:"15~20분",items:["bow108"],extra:"하면 좋고 안 해도 되는 항목입니다. 필수는 근력 3회와 단백질뿐. 몸이 데워진 저녁이나 여유 있는 오전이 안전하고, 마치고 종아리와 허벅지 앞을 30초씩 늘려 주면 다음 날이 가볍습니다."},
   INT:{title:"경사 걷기 인터벌 (선택)",sub:"근력 뒤 19분",items:["intervalWalk"],extra:"출퇴근 걷기가 유산소를 맡으므로 기본 계획에서는 뺐습니다. 걷지 못한 주에 헬스장 마지막에 붙일 수 있습니다. 반드시 근력을 마친 뒤에."},
@@ -884,11 +916,11 @@ function cntLabel(dk,key){
   return pre+'<b>'+reps[i]+'</b> / '+tg;
 }
 function swLog(a){return a.length?'오늘: '+a.map(x=>x+'초').join(' · ')+' · 최고 '+Math.max.apply(null,a)+'초':'매달린 시간을 스톱워치로 기록';}
-function exRowHTML(key,dk){
+function exRowHTML(key,dk,isKey){
   const e=EX[key];
   const prog=dk?progText(dk,key):"";
   return '<div class="ex" data-ex="'+key+'"'+(dk?' data-dk="'+dk+'"':'')+'>'
-    +'<div class="ex-head"><span class="arrow">▸</span><span class="n">'+e.n+'</span>'
+    +'<div class="ex-head"><span class="arrow">▸</span><span class="n">'+e.n+(isKey?'<span class="badge">핵심</span>':'')+'</span>'
     +(prog?'<span class="prog">'+prog+'</span>':'')
     +'<span class="d">'+exDose(key)+'</span></div>'
     +'<div class="ex-detail">'+detailBaseHTML(e)+(dk?trackerHTML(key,dk):'')+'</div></div>';
@@ -953,11 +985,20 @@ function flashPhase(exDiv,msg){
   const ph=exDiv.querySelector(".tphase");
   if(ph){ph.textContent=msg;ph.className="tphase";}
 }
+function updateBlockProg(blk){
+  if(!blk)return;
+  let d=0,t=0;blk.querySelectorAll(".ex[data-dk]").forEach(x=>{const st=getSets(x.dataset.dk,x.dataset.ex);t+=st.length;d+=st.filter(Boolean).length;});
+  const bp=blk.querySelector(".bp");if(bp)bp.textContent=d+"/"+t;
+  const bar=blk.querySelector(".bar i");if(bar)bar.style.width=(t?Math.round(d/t*100):0)+"%";
+  const chip=document.querySelector('.daysum [data-go="'+blk.id+'"]');
+  if(chip){const done=blk.classList.contains("done");chip.querySelector("b").textContent=done?"✓":d+"/"+t;chip.classList.toggle("ok",done||(t>0&&d===t));}
+}
 function refreshSetRow(exDiv){
   const key=exDiv.dataset.ex,dk=exDiv.dataset.dk;
   const sets=getSets(dk,key);
   exDiv.querySelectorAll(".setrow button").forEach(b=>{const i=b.dataset.set!=null?+b.dataset.set:+b.dataset.extimer;if(!isNaN(i))b.classList.toggle("done",!!sets[i]);});
   const cb=exDiv.querySelector("[data-cnt]");if(cb){cb.innerHTML=cntLabel(dk,key);cb.disabled=sets.every(Boolean);}
+  updateBlockProg(exDiv.closest(".block"));
   const prog=exDiv.querySelector(".prog");
   const t=progText(dk,key);
   if(prog)prog.textContent=t;
@@ -994,15 +1035,20 @@ function exDose(key){return key==="gluteBridge"?BRIDGE_STAGES[(S.goal.bridge||1)
 function renderGoals(){
   const g=$("#goalArea");if(!g)return;
   const bi=(S.goal.bridge||1)-1,st=BRIDGE_STAGES[bi],ws=weekStats(),wk=weekOfGoal();
-  g.innerHTML='<div class="goal"><div class="goal-head"><span class="t">목표</span><span class="s">브릿지 로드맵 '+Math.min(wk,8)+'/8주차 · 9/7 시작</span></div>'
-   +'<div class="goal-row"><span class="k">힙업 1단계</span><span class="v">브릿지를 허리가 아니라 엉덩이로. 8주 뒤 한 다리 브릿지, 그 뒤에야 무게.</span></div>'
+  g.innerHTML='<div class="goal"><div class="tiles">'
+   +'<button class="tile" data-goal-open><span class="k">브릿지</span><b>'+(bi+1)+'<small>단계</small></b><span class="u">'+st.w+' · '+st.t+'</span></button>'
+   +'<div class="tile"><span class="k">이번 주 근력</span><b>'+ws.str+'<small>/3</small></b><span class="u">'+(ws.str>=3?'이번 주 성공 ✓':'4일 중 3일이면 성공')+'</span></div>'
+   +'<div class="tile"><span class="k">이번 주 걷기</span><b>'+ws.walk+'<small>/10</small></b><span class="u">최소 퇴근길 5편도</span></div>'
+   +'</div><details class="goal-more"'+(goalOpen?' open':'')+'><summary>목표 자세히 · 브릿지 로드맵 '+Math.min(wk,8)+'/8주차</summary>'
    +'<div class="goal-row"><span class="k">브릿지 단계</span><div class="stages">'+BRIDGE_STAGES.map((x,i)=>'<button data-stage="'+(i+1)+'" class="'+(bi===i?"on":"")+'">'+(i+1)+'</button>').join('')+'<span class="sd">'+(bi+1)+'단계 '+st.w+' · '+st.t+' · '+st.d+'</span></div></div>'
-   +'<div class="goal-row"><span class="k">이번 주 근력</span><span class="v"><b>'+ws.str+'</b> / 3회'+(ws.str>=3?' ✓ 이번 주 성공':'')+'</span></div>'
-   +'<div class="goal-row"><span class="k">이번 주 걷기</span><span class="v"><b>'+ws.walk+'</b> / 10편도 · 최소는 퇴근길 5편도</span></div>'
-   +'<div class="goal-row"><span class="k">매일</span><span class="v">단백질 67~90g · 11시·15시 알람에 일어나서 30초</span></div>'
-   +'<div class="goal-row"><span class="k">12월 초</span><span class="v">인바디 재측정, 8/24와 비교</span></div></div>';
+   +'<div class="goal-row"><span class="k">힙업 1단계</span><span class="v">브릿지를 허리가 아니라 엉덩이로. 8주 뒤 한 다리 브릿지, 그 뒤에야 무게.</span></div>'
+   +'<div class="goal-row"><span class="k">매일</span><span class="v">단백질 67~90g · 11시·15시 알람에 일어나서 30초 · 걷기 피로도 기록</span></div>'
+   +'<div class="goal-row"><span class="k">12월 초</span><span class="v">인바디 재측정, 8/24와 비교</span></div></details></div>';
+  const det=g.querySelector(".goal-more");det.ontoggle=()=>{goalOpen=det.open;};
+  g.querySelector("[data-goal-open]").onclick=()=>{det.open=true;goalOpen=true;};
   g.querySelectorAll("[data-stage]").forEach(b=>b.onclick=()=>{S.goal.bridge=+b.dataset.stage;saveState();renderGoals();renderPlan();});
 }
+let goalOpen=false;
 function renderAddBar(dk){
   const plan=WEEK[selDay].plan,ex=S.extra[dk]||[];
   document.querySelectorAll(".addbar button").forEach(b=>{
@@ -1016,15 +1062,27 @@ function renderPlan(){
   const dk=dateKey(selDay);
   renderGoals();renderAddBar(dk);
   const plan=WEEK[selDay].plan;
+  const rows=[];
   plan.concat((S.extra[dk]||[]).filter(k=>ROUTINES[k]&&!plan.includes(k))).forEach(rk=>{
-    const r=ROUTINES[rk],ck=dk+"|"+rk;
+    const r=ROUTINES[rk],ck=dk+"|"+rk,col=RCOLOR[rk]||"#9C9C93";
+    const keys=r.items.filter(k=>k.charAt(0)!=="_");
+    let done=0,tot=0;keys.forEach(k=>{const st=getSets(dk,k);tot+=st.length;done+=st.filter(Boolean).length;});
+    const checked=!!S.checks[ck];
     const div=document.createElement("div");
-    div.className="block";
-    div.innerHTML='<div class="block-head"><input type="checkbox" '+(S.checks[ck]?"checked":"")+'><span class="t">'+r.title+'</span><span class="s">'+r.sub+'</span></div>'
-      +'<div class="block-body">'+r.items.map(k=>k.charAt(0)==="_"?'<div class="subhdr">'+k.slice(1)+'</div>':exRowHTML(k,dk)).join('')+(r.extra?'<p class="note">'+r.extra+'</p>':'')+'</div>';
-    div.querySelector(".block-head input").onchange=ev=>{if(ev.target.checked)S.checks[ck]=true;else delete S.checks[ck];saveState();renderGoals();};
+    div.className="block"+(checked?" done":"");div.id="blk-"+rk;div.style.setProperty("--rc",col);
+    div.innerHTML='<div class="block-head"><input type="checkbox" '+(checked?"checked":"")+'><span class="t">'+r.title+'</span><span class="s">'+r.sub+'</span><span class="bp">'+done+'/'+tot+'</span></div>'
+      +'<div class="bar"><i style="width:'+(tot?Math.round(done/tot*100):0)+'%"></i></div>'
+      +'<div class="block-body">'+r.items.map(k=>k.charAt(0)==="_"?'<div class="subhdr">'+k.slice(1)+'</div>':exRowHTML(k,dk,r.key===k)).join('')+(r.extra?'<p class="note">'+r.extra+'</p>':'')+'</div>'
+      +'<button class="unfold">펼치기</button>';
+    div.querySelector(".block-head input").onchange=ev=>{if(ev.target.checked)S.checks[ck]=true;else delete S.checks[ck];saveState();div.classList.toggle("done",ev.target.checked);div.classList.remove("open");updateBlockProg(div);renderGoals();};
+    div.querySelector(".unfold").onclick=()=>{div.classList.toggle("open");div.querySelector(".unfold").textContent=div.classList.contains("open")?"접기":"펼치기";};
     area.appendChild(div);
+    rows.push({rk:rk,title:RSHORT[rk]||rk,done:done,tot:tot,checked:checked,col:col});
   });
+  const sum=document.createElement("div");sum.className="daysum";
+  sum.innerHTML=rows.map(x=>'<button data-go="blk-'+x.rk+'" style="--rc:'+x.col+'" class="'+((x.checked||(x.tot&&x.done===x.tot))?"ok":"")+'">'+x.title+'<b>'+(x.checked?'✓':x.done+'/'+x.tot)+'</b></button>').join('');
+  area.prepend(sum);
+  sum.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const t=document.getElementById(b.dataset.go);if(t)t.scrollIntoView({behavior:"smooth",block:"start"});});
   const dx=document.createElement("div");
   dx.id="dayExtras";
   area.appendChild(dx);
@@ -1484,6 +1542,10 @@ document.querySelectorAll("nav button").forEach(b=>{
 (async function(){
   await loadState();
   updateSndBtn();
+  (function(){let fs=null;try{fs=localStorage.getItem("workout-fs");}catch(e){}
+    const paint=()=>{const big=document.body.classList.contains("big");$("#fsBtn").textContent=big?"가−":"가+";$("#fsBtn").title=big?"글자 보통으로":"글자 크게";};
+    if(fs==="big")document.body.classList.add("big");paint();
+    $("#fsBtn").onclick=()=>{document.body.classList.toggle("big");try{localStorage.setItem("workout-fs",document.body.classList.contains("big")?"big":"normal");}catch(e){}paint();};})();
   (function(){const d=new Date(APP_UPDATED+"T00:00:00");const el=$("#updAt");if(el&&!isNaN(d))el.textContent=APP_UPDATED.replace(/-/g,".")+" "+"일월화수목금토"[d.getDay()];})();
   $("#sndBtn").onclick=()=>{S.mute=!S.mute;saveState();updateSndBtn();if(!S.mute)beep(880,0.12);};
   /* 홈 화면 설치(PWA): 서비스 워커 등록과 설치 버튼 */
