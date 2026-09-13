@@ -1,0 +1,17 @@
+{
+  "name": "주간 운동 루틴",
+  "short_name": "운동 루틴",
+  "description": "개인 운동 루틴과 기록. 협착·목디스크 기질을 고려한 자세 교정과 둔근·골반저근·발 중심.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAFAF7",
+  "theme_color": "#FAFAF7",
+  "lang": "ko",
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

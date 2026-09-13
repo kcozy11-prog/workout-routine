@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#FAFAF7">
 <meta name="apple-mobile-web-app-title" content="운동 루틴">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <title>주간 운동 루틴</title>
 <style>
   :root{
@@ -23,6 +29,9 @@
   header p{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
   header .upd{font-family:var(--sans);font-size:11px;color:var(--ink-soft);margin-top:5px}
   header .upd b{font-weight:600;color:var(--accent)}
+  #installBar{display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--accent-soft);border-bottom:1px solid var(--line);font-family:var(--sans);font-size:12.5px;color:var(--ink)}
+  #installBar[hidden]{display:none}
+  #installBar button{margin-left:auto;flex-shrink:0;padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:2px;font-family:var(--sans);font-size:12.5px;cursor:pointer}
   nav{display:flex;border-bottom:1px solid var(--line-dark);position:sticky;top:0;background:var(--paper);z-index:10}
   nav button{flex:1;padding:11px 2px;background:none;border:none;font-family:var(--sans);font-size:12px;color:var(--ink-soft);border-bottom:2px solid transparent;cursor:pointer}
   nav button.on{color:var(--ink);font-weight:700;border-bottom-color:var(--accent)}
@@ -213,6 +222,7 @@
   <p class="upd">최종 업데이트 <b id="updAt">—</b></p>
   <button id="sndBtn" title="타이머 알림음 켜고 끄기">소리 켬</button>
 </header>
+<div id="installBar" hidden><span>휴대폰 홈 화면에 앱으로 설치할 수 있습니다.</span><button id="installBtn">설치</button></div>
 <nav>
   <button class="on" data-tab="plan">주간 계획</button>
   <button data-tab="dict">운동 사전</button>
@@ -1476,6 +1486,13 @@ document.querySelectorAll("nav button").forEach(b=>{
   updateSndBtn();
   (function(){const d=new Date(APP_UPDATED+"T00:00:00");const el=$("#updAt");if(el&&!isNaN(d))el.textContent=APP_UPDATED.replace(/-/g,".")+" "+"일월화수목금토"[d.getDay()];})();
   $("#sndBtn").onclick=()=>{S.mute=!S.mute;saveState();updateSndBtn();if(!S.mute)beep(880,0.12);};
+  /* 홈 화면 설치(PWA): 서비스 워커 등록과 설치 버튼 */
+  if("serviceWorker" in navigator&&/^https?:/.test(location.protocol)){try{navigator.serviceWorker.register("./sw.js").catch(()=>{});}catch(e){}}
+  let installEvt=null;
+  const standalone=()=>{try{return matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;}catch(e){return false;}};
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installEvt=e;if(!standalone())$("#installBar").hidden=false;});
+  $("#installBtn").onclick=async()=>{if(!installEvt)return;installEvt.prompt();try{await installEvt.userChoice;}catch(e){}installEvt=null;$("#installBar").hidden=true;};
+  window.addEventListener("appinstalled",()=>{$("#installBar").hidden=true;});
   document.querySelectorAll(".addbar button").forEach(b=>b.onclick=()=>{
     const dk=dateKey(selDay),k=b.dataset.add;
     let a=S.extra[dk]||[];
