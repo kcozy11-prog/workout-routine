@@ -206,6 +206,33 @@
   .fig .mkg{font-family:var(--sans);font-size:17px;font-weight:700;fill:var(--accent)}
   .lead{font-size:13px;color:var(--ink-soft);margin-bottom:12px}
 
+  /* 2026-09-16 발 진단: 발목 교정 표시, 보행 체크리스트, 체형 기록, 저녁 통증 메모 */
+  .badge.fix{background:#5C6BA6}
+  .painlbl{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin:10px 0 4px}
+  .gait-list{list-style:none}
+  .gait-list li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px;line-height:1.5}
+  .gait-list li:last-child{border-bottom:none}
+  .gait-list input{width:22px;height:22px;flex-shrink:0;accent-color:var(--accent);margin-top:3px}
+  .gait-list li.on{color:var(--ink-soft)}
+  .gait-week{display:flex;gap:4px;margin:10px 0 2px;font-family:var(--sans)}
+  .gait-week span{flex:1;text-align:center;font-size:11.5px;color:var(--ink-soft);border:1px solid var(--line);border-radius:3px;padding:4px 0;background:#fff}
+  .gait-week span b{display:block;font-size:14px;color:var(--accent)}
+  .gait-week span.today{border-color:var(--accent);background:var(--accent-soft)}
+  .body-form{display:flex;flex-direction:column;gap:6px;margin-top:8px;font-family:var(--sans)}
+  .body-form .row{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end}
+  .body-form input,.body-form textarea{border:1px solid var(--line-dark);border-radius:2px;background:#fff;font-family:var(--sans);font-size:12.5px;padding:7px 6px}
+  .body-form input.dt{width:118px}
+  .body-form input.num{width:64px;text-align:center}
+  .body-form input.txt{flex:1;min-width:140px}
+  .body-form textarea{width:100%;min-height:44px;resize:vertical}
+  .body-form label{font-size:11px;color:var(--ink-soft);display:flex;flex-direction:column;gap:2px}
+  .body-form button{align-self:flex-start;padding:8px 13px;font-family:var(--sans);font-size:12.5px;font-weight:700;background:var(--ink);color:#fff;border:none;border-radius:2px;cursor:pointer}
+  .body-cmp th,.body-cmp td{text-align:center;white-space:nowrap}
+  .body-cmp td:first-child,.body-cmp th:first-child{text-align:left;white-space:normal}
+  .body-cmp .diff{color:#7A3B2E;font-weight:700}
+  .fix-line{font-family:var(--sans);font-size:12.5px;margin:2px 0 7px}
+  .fix-line b{color:#5C6BA6}
+  .linkbtn{padding:7px 12px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:12.5px;color:var(--ink);border-radius:2px;cursor:pointer;margin-top:6px}
   .rec-sec{margin-bottom:22px}
   .rec-sec h3{font-family:var(--sans);font-size:13.5px;font-weight:700;margin-bottom:7px;padding-bottom:4px;border-bottom:1px solid var(--line-dark)}
   .rec-sec .empty{font-size:12.5px;color:var(--ink-soft);padding:4px 0}
@@ -313,6 +340,7 @@
     <tbody></tbody>
   </table>
   <p class="note">허리(요추) 위에서 폼롤러를 직접 굴리는 것은 협착이 있는 경우 피합니다. 등 상부까지만 다룹니다.</p>
+  <p class="note">저녁에는 <b>저녁 발 관리</b>(라크로스볼 발바닥 좌우 1~2분, 벽 밀기 종아리, 개구리 자세)를 따로 합니다. 주간 계획에 매일 저녁 블록으로 들어 있고, 거기서 체크와 타이머를 쓰고 통증 메모를 남깁니다.<br><button class="linkbtn" id="goEve">오늘의 저녁 발 관리 열기</button></p>
 </section>
 
 <section id="tab-habit" class="hidden">
@@ -332,7 +360,7 @@ const EX = {
   catcow:{n:"캣카우",d:"10회",sets:1,w:"네발기기 자세로 등을 둥글게 말았다 폈다 하며 척추 전체를 마디마디 움직이는 동작.",s:["손은 어깨 아래, 무릎은 골반 아래에 두고 네발기기.","숨을 내쉬며 등을 천장으로 둥글게 말고 시선은 배꼽.","숨을 마시며 가슴을 앞으로 열고 시선은 살짝 위. 허리는 과하게 꺾지 않는다.","천천히 10회 반복."],c:"허리를 아래로 꺾는 동작(카우)은 작게. 목도 과하게 젖히지 않는다."},
   chestOpen:{n:"누워서 가슴 열기",d:"1분",sets:1,timed:{work:60,rest:0},w:"라운드숄더로 짧아진 가슴 앞쪽을 여는 스트레칭. 폼롤러나 만 수건을 등에 받치고 눕기만 하면 됩니다.",s:["폼롤러를 척추 방향(세로)으로 놓고 그 위에 등 전체를 대고 눕는다. 머리도 롤러 위에 올린다.","무릎은 세우고, 양팔을 옆으로 벌려 손바닥이 천장을 보게 한다.","가슴 앞쪽이 당기는 지점에서 팔 높이를 조절하며 1분간 깊게 호흡한다.","수건을 쓸 경우 어깨뼈 아래에 가로로 받친다."],c:"목이 뒤로 꺾이면 수건을 접어 머리를 받친다. 손 저림이 심해지면 팔 각도를 낮춘다."},
   chinTuck:{n:"턱 당기기",d:"10회, 오전·오후",sets:2,setLbl:["오전","오후"],counter:10,w:"거북목 교정의 기본. 턱을 목 쪽으로 수평으로 당겨 뒤통수를 뒤로 미는 동작.",s:["앉거나 서서 시선은 정면.","턱 끝에 손가락을 대고, 턱을 아래로 숙이는 게 아니라 수평으로 뒤로 민다. 이중턱을 만드는 느낌.","뒤통수가 뒤로 길어지는 느낌으로 3초 유지.","10회. 벽에 뒤통수를 대고 지그시 미는 방식도 좋다."],c:"어지럽거나 손 저림이 심해지면 횟수를 줄인다.",figs:[{k:"chinTuck",cap:"✕ 고개를 아래로 숙이는 건 턱 당기기가 아니다. ○ 시선은 정면에 둔 채 턱을 수평으로 뒤로 민다. 이중턱이 생기고 뒤통수가 뒤로 길어지는 느낌. 회색이 원래 머리 위치."}]},
-  clamshell:{n:"클램쉘",d:"양쪽 10회씩",sets:2,setLbl:["왼쪽","오른쪽"],w:"옆으로 누워 조개가 열리듯 무릎을 벌리는 동작. 엉덩이 옆·바깥 근육(중둔근)을 깨워 골반 안정에 좋습니다.",s:["옆으로 눕고 무릎을 90도 정도 굽혀 포갠다. 발뒤꿈치는 붙인 채.","골반이 뒤로 넘어가지 않게 고정하고, 위쪽 무릎만 천장 쪽으로 벌린다.","엉덩이 옆이 조여지는 느낌에서 1초 멈췄다가 천천히 내린다.","10회 후 반대쪽. 익숙해지면 무릎에 테라밴드를 감는다."],c:"허리를 비틀며 벌리지 않는다. 골반은 고정. 오른쪽이 약하니 오른쪽은 한 세트 더.",figs:[{k:"clam",cap:"옆으로 누워 발뒤꿈치를 붙인 채 위쪽 무릎만 연다. 골반이 뒤로 따라 넘어가면 엉덩이 옆이 아니라 허리가 일한다. 골반은 벽에 등을 댄 것처럼 고정하고, 열리는 만큼만 연다."}]},
+  clamshell:{n:"클램쉘",d:"좌우 15회 3세트",sets:6,setLbl:["왼 1","오 1","왼 2","오 2","왼 3","오 3"],counter:15,w:"옆으로 누워 조개가 열리듯 무릎을 벌리는 동작. 엉덩이 옆·바깥 근육(중둔근)을 깨워 골반 안정에 좋습니다. 2026-09-16 매장 권고로 헬스장·집 루틴의 준비운동 맨 앞에 넣어 주 4회를 채웁니다. 테라밴드는 선택.",s:["옆으로 눕고 무릎을 90도 정도 굽혀 포갠다. 발뒤꿈치는 붙인 채.","골반이 뒤로 넘어가지 않게 고정하고, 위쪽 무릎만 천장 쪽으로 벌린다.","엉덩이 옆이 조여지는 느낌에서 1초 멈췄다가 천천히 내린다.","15회 후 반대쪽, 3세트. 쉬워지면 무릎 위에 테라밴드를 감는다(선택)."],c:"허리를 비틀며 벌리지 않는다. 골반은 고정. 오른쪽이 약하니 오른쪽은 한 세트 더.",figs:[{k:"clam",cap:"옆으로 누워 발뒤꿈치를 붙인 채 위쪽 무릎만 연다. 골반이 뒤로 따라 넘어가면 엉덩이 옆이 아니라 허리가 일한다. 골반은 벽에 등을 댄 것처럼 고정하고, 열리는 만큼만 연다."}]},
   ringSqueeze:{n:"필라테스링 무릎 조이기",d:"20초 조이기 5회",sets:5,timed:{work:20,rest:10},w:"약한 내전근(허벅지 안쪽)을 앉은 채로 깨우는 운동. 무릎이 벌어지는 습관의 직접 처방입니다. 타이머를 누르면 20초 조이기와 10초 휴식이 자동으로 번갈아 진행되고 세트가 체크됩니다.",s:["의자에 바르게 앉아 무릎 사이에 링(없으면 접은 수건이나 책)을 끼운다.","허벅지 안쪽으로 링을 지그시 조인 채 20초 유지. 호흡은 계속.","10초 쉬고 5회 반복."],c:"숨을 참지 않는다. 허리를 세운 상태에서. 허벅지 안쪽에 근육통이 남아 있는 날은 이 동작 대신 루틴 R의 약하게 조였다 풀기로 대체한다."},
   kegel:{n:"골반저근 조이기(케겔)",d:"내쉬며 5초 조이고 마시며 5초 풀기 10회, 오전·오후",sets:2,setLbl:["오전","오후"],timed:{work:5,rest:5,reps:10},ph:{w:"내쉬며 조이기",r:"마시며 풀기"},w:"골반저근 운동. 항문 조임과 변실금 개선의 핵심이며, 눈에 안 보이니 사무실이든 버스 안이든 어디서나 할 수 있습니다. 호흡과 짝을 지어야 제대로 됩니다. 숨을 내쉴 때 골반저근이 자연스럽게 올라오고 마실 때 내려오니, 그 리듬에 맞춥니다.",s:["앉아서 발을 바닥에 두고 골반을 세운다. 카피스코 안장 자세가 좋다.","숨을 내쉬면서 소변과 방귀를 동시에 참듯 항문과 그 앞쪽을 위로 끌어올린다. 5초.","숨을 마시면서 완전히 내려놓는다. 5초. 푸는 것까지가 한 세트.","엉덩이, 허벅지, 배에는 힘이 들어가지 않아야 한다. 손을 배에 얹어 확인한다.","10회. 기침이나 재채기가 나올 것 같으면 그 직전에 미리 한 번 조인다."],c:"열에 일곱이 엉덩이나 배로 대신 조인다. 배가 아플 때 대변이 새는 일이 있었다면 산부인과나 재활의학과에서 골반저근 물리치료(바이오피드백)를 받는 것이 가장 빠르다. 소변 보는 도중에 끊는 연습은 하지 않는다.",figs:[{k:"kegelBreath",cap:"숨을 마실 때 골반저근은 내려가고 내쉴 때 올라온다. 그래서 내쉬는 5초에 조이고 마시는 5초에 완전히 푼다. 타이머가 이 리듬을 안내한다. 기침·재채기 직전에 한 번 미리 조이는 것도 같은 원리다."}]},
   scapRetraction:{n:"어깨날개 모으기",d:"10회",sets:1,w:"날개뼈(견갑골)를 등 뒤로, 그리고 살짝 아래 방향까지 모으는 동작.",s:["앉거나 서서 팔은 편하게 둔다.","양쪽 날개뼈 사이에 연필을 끼워 잡는다는 느낌으로 뒤로, 그리고 살짝 아래로 모은다.","어깨가 귀 쪽으로 으쓱 올라가면 안 된다. 오히려 어깨는 끌어내린다.","3초 유지 후 풀기, 10회."],c:"허리를 꺾어 가슴만 내미는 것과 구별한다. 움직이는 건 날개뼈."},
@@ -361,7 +389,7 @@ const EX = {
   hip9090:{n:"90/90 힙 스트레치",d:"좌우 1분",sets:2,setLbl:["왼쪽","오른쪽"],timed:{work:60,rest:0},w:"바닥에 앉아 앞다리와 뒷다리를 각각 90도로 접는 자세. 앞다리는 바깥 회전, 뒷다리는 안쪽 회전이 동시에 늘어납니다. 오른쪽 고관절이 안으로 잘 안 돌아가는 문제를 겨냥합니다. 앉아서 굽히는 자세라 협착에 안전합니다.",s:["앉아서 오른다리를 앞에 90도, 왼다리를 옆으로 90도 접는다. 양쪽 무릎 모두 90도.","골반을 세우고 앞 무릎 쪽으로 상체를 살짝 숙인다. 앞다리 엉덩이 바깥이 당긴다.","1분 후 반대쪽. 뒷다리가 안쪽으로 돌아가는 쪽(오른쪽)이 뻣뻣하면 거기서 10초 더."],c:"무릎이 아프면 각도를 줄인다. 반동 없이 숨을 내쉬며 늘린다.",figs:[{k:"hip9090",cap:"위에서 본 모양. 앞다리는 무릎 90도로 정강이가 앞에 가로놓이고(바깥 회전), 뒷다리는 무릎 90도로 정강이가 뒤로 빠진다(안쪽 회전). 골반을 세우고 상체를 앞 무릎 쪽으로 살짝 숙인다."}]},
   sideBridgeKnee:{n:"무릎 사이드 브릿지",d:"좌우 20초 2세트",sets:2,setLbl:["왼쪽","오른쪽"],timed:{work:20,rest:10},w:"옆으로 누워 팔꿈치와 무릎으로 지지하고 골반을 들어 올리는 동작. 옆구리 코어와 중둔근이 골반을 잡아줍니다. 협착이 있는 허리에 안전한 코어 운동으로 꼽힙니다.",s:["옆으로 누워 팔꿈치를 어깨 바로 아래에 두고 무릎을 90도로 접는다.","골반을 들어 어깨-골반-무릎이 한 줄이 되게 한다.","위쪽 엉덩이를 조인 채 20초. 골반이 뒤로 넘어가지 않게.","반대쪽. 좌우가 1세트, 2세트."],c:"어깨가 아프면 팔꿈치 위치를 다시 잡는다. 골반이 처지면 시간을 줄인다.",figs:[{k:"sideBridge",cap:"팔꿈치는 어깨 바로 아래, 무릎은 바닥. 골반을 들어 어깨-골반-무릎이 한 줄. 골반이 처지거나 뒤로 넘어가면 시간을 줄인다."}]},
   doorStretch:{n:"문틀 가슴 스트레칭",d:"30초",sets:1,timed:{work:30,rest:0},w:"문틀에 팔을 대고 한 발 앞으로 나가 가슴 앞쪽을 여는 스트레칭. 어깨 앞이 타이트한 것에 가장 직접적이고, 사무실에서 30초면 됩니다. 11시·15시에 일어나서 할 것으로 정해 두면 좋습니다.",s:["문틀에 양 팔꿈치를 어깨 높이로 대고 선다.","한 발을 앞으로 내디디며 가슴을 앞으로 보낸다. 허리가 아니라 가슴이 나간다.","가슴 앞이 당기는 지점에서 30초 호흡."],c:"허리를 젖혀서 가슴을 내밀지 않는다. 갈비뼈는 내린 채. 손 저림이 오면 팔꿈치를 낮춘다.",figs:[{k:"doorStretch",cap:"문틀에 팔꿈치를 어깨 높이로 대고 한 발을 앞으로 내디디며 가슴을 앞으로 보낸다. 허리가 아니라 가슴이 나간다. 갈비뼈는 내린 채 30초."}]},
-  shortFoot:{n:"쇼트풋, 앉아서 아치 세우기",d:"좌우 10회, 5초 유지",sets:2,setLbl:["왼쪽","오른쪽"],counter:10,hold:5,w:"발가락을 구부리지 않고 발바닥 아치만 살짝 들어 올리는 동작. 수건 움켜쥐기처럼 발가락을 오므려 움켜쥐는 동작과는 다르다. 낮은 아치를 안쪽에서 받쳐주는 발 속 근육을 깨웁니다. 앉은 채로 티 나지 않게 되고, 버스나 지하철에서 하기 좋습니다.",s:["앉아서 발을 바닥에 평평하게 두고 발가락을 편다.","발가락은 그대로 편 채, 엄지발가락 뿌리를 뒤꿈치 쪽으로 끌어당긴다는 느낌으로 아치를 들어 올린다. 발이 아주 조금 짧아진다.","5초 유지, 힘을 뺀다. 10회. 발가락이 구부러지면 다시.","익숙해지면 서서, 그다음 한 발로."],c:"발가락을 오므리는 게 아니다. 종아리에 쥐가 나면 힘을 줄인다.",figs:[{k:"foot",cap:"왼쪽: 서고 걷고 운동할 때 발이 바닥을 누르는 세 점 — 뒤꿈치, 엄지 아래, 새끼 아래. 이 세 점을 유지하면 아치가 무너지지 않는다. 오른쪽: 아치 세우기. 발가락은 편 채로 엄지 뿌리를 뒤꿈치 쪽으로 당겨 발 가운데를 살짝 띄운다."}]},
+  shortFoot:{n:"쇼트풋, 앉아서 아치 세우기",d:"10회 3세트, 5초 유지",sets:3,counter:10,hold:5,w:"발가락을 구부리지 않고 발바닥 아치만 살짝 들어 올리는 동작. 수건 움켜쥐기처럼 발가락을 오므려 움켜쥐는 동작과는 다르다. 낮은 아치를 안쪽에서 받쳐주는 발 속 근육을 깨웁니다. 앉은 채로 티 나지 않게 되고, 버스나 지하철에서 하기 좋습니다.",s:["앉아서 발을 바닥에 평평하게 두고 발가락을 편다.","발가락은 그대로 편 채, 엄지발가락 뿌리를 뒤꿈치 쪽으로 끌어당긴다는 느낌으로 아치를 들어 올린다. 발이 아주 조금 짧아진다.","5초 유지, 힘을 뺀다. 10회가 1세트, 3세트. 양발을 같이 해도 되고 한 발씩 해도 된다. 발가락이 구부러지면 다시.","익숙해지면 서서, 그다음 한 발로."],c:"발가락을 오므리는 게 아니다. 종아리에 쥐가 나면 힘을 줄인다.",figs:[{k:"foot",cap:"왼쪽: 서고 걷고 운동할 때 발이 바닥을 누르는 세 점 — 뒤꿈치, 엄지 아래, 새끼 아래. 이 세 점을 유지하면 아치가 무너지지 않는다. 오른쪽: 아치 세우기. 발가락은 편 채로 엄지 뿌리를 뒤꿈치 쪽으로 당겨 발 가운데를 살짝 띄운다."}]},
   heelRaise:{n:"뒤꿈치 들기",d:"15회",sets:1,w:"서서 뒤꿈치를 천천히 들었다 내리는 동작. 종아리와 함께 아치를 안쪽에서 당겨 올리는 근육(후경골근)이 강해집니다. 신호 대기, 엘리베이터, 버스 안에서.",s:["발을 골반 너비로, 발끝은 정면.","엄지발가락 아래로 바닥을 누르며 뒤꿈치를 든다. 발이 바깥으로 기울지 않게.","꼭대기에서 1초, 천천히 내린다. 15회."],c:"발목이 바깥으로 꺾이면 새끼발가락 쪽으로 체중이 가는 것이니 엄지 쪽으로 다시.",figs:[{k:"heelUp",cap:"왼쪽: 엄지발가락 아래로 바닥을 누르며 뒤꿈치를 들고 꼭대기에서 1초. 오른쪽(뒤에서 본 발목): ✕ 발목이 바깥으로 꺾이면 새끼발가락 쪽으로 체중이 간다. ○ 발목을 곧게 세우고 엄지 쪽으로 누른다. 박스 없이 바닥에서 하는 버전이라 뒤꿈치는 바닥까지만 내려온다."}]},
   commuteWalk:{n:"출퇴근 걷기",d:"편도 30~35분",sets:2,setLbl:["출근","퇴근"],w:"회사와 집 사이 30~35분을 걷는 것이 이 계획의 유산소 전부입니다. 왕복이면 하루 65분, 주 5일이면 5시간이 넘습니다. 걷기 자세 연습 시간이기도 합니다. 최소 기준은 퇴근길만.",s:["발끝 정면, 두 발 사이 간격은 좁게. 뒷발로 밀고 그쪽 엉덩이가 조여지는지 느낀다.","팔은 뒤로. 시선은 10~15m 앞.","20~30분에 한 번, 5초만 앞으로 굽힌다.","출장으로 못 걷는 날은 이동 중 루틴으로 대체. 죄책감 없이."],c:"아침 첫걸음에 뒤꿈치가 찌르듯 아프거나 정강이 안쪽이 아프면 아치가 버티지 못하는 신호. 인솔부터 챙기고 편도만으로 줄인다.",figs:[{k:"stride",cap:"앞으로 크게 내딛지 말고 앞발은 몸 아래에, 추진은 뒷발과 엉덩이에서. 뒷발이 떠날 때 그쪽 엉덩이가 조여지는지 확인한다."},{k:"feet",cap:"위에서 본 걸음. 두 발 사이는 좁게, 발끝은 정면. 팔자로 벌어지면 내전근과 둔근이 할 일을 잃는다."}]},
   /* 2026-09-13 개편: 발·종아리, 사무실 자세 세트, 헬스장·집 */
@@ -378,6 +406,9 @@ const EX = {
   singleLegStand:{n:"한 발 서기",d:"좌우 30초, 2회",sets:4,setLbl:["왼쪽","오른쪽","왼쪽","오른쪽"],timed:{work:30,rest:5},w:"한 발로 서서 버티는 동작. 발목·아치·중둔근이 함께 균형을 잡는다. 흔들리는 버스 안에서 하던 것을 집에서 제대로.",s:["맨발로 세 점을 누르고 한 발을 든다. 무릎은 살짝 풀고 골반은 수평.","30초. 흔들리면 벽에 손가락 하나만 댄다.","좌우 번갈아 2회씩."],c:"무릎이 안으로 무너지면 엄지 아래를 더 누른다. 골반이 기울면 시간을 줄인다.",figs:[{k:"oneLeg",cap:"○ 골반이 수평(점선)인 채 한 발로 선다. 무릎은 살짝 풀고 세 점으로 바닥을 누른다. ✕ 든 다리 쪽 골반이 툭 떨어지면 중둔근이 못 잡는 것이니 시간을 줄인다."}]},
   bandSideStep:{n:"밴드 사이드 스텝",d:"15회",sets:1,counter:15,w:"무릎 위에 밴드를 두르고 옆으로 걷는 동작. 중둔근을 마지막에 태운다. 집 루틴의 마무리.",s:["밴드를 무릎 바로 위에 두르고 무릎을 살짝 굽혀 선다. 발끝은 정면.","한 발을 옆으로 내딛고 다른 발을 따라 붙인다. 밴드 장력이 풀리지 않게.","한쪽으로 15걸음, 반대로 15걸음이 1회분."],c:"상체가 좌우로 흔들리지 않게. 무릎이 안으로 모이면 보폭을 줄인다.",figs:[{k:"sideStep",cap:"밴드를 무릎 바로 위에 두르고 무릎을 살짝 굽혀 선다. 한 발을 옆으로 내딛고(회색) 다른 발을 따라 붙인다. 밴드 장력이 풀리지 않게, 무릎은 발끝 방향."}]},
   wallCalf:{n:"벽 밀기 종아리 스트레칭",d:"좌우, 무릎 펴고·굽히고 30초씩",sets:4,setLbl:["왼쪽 펴고","왼쪽 굽히고","오른쪽 펴고","오른쪽 굽히고"],timed:{work:30,rest:0},w:"벽을 밀며 뒷다리 종아리를 늘리는 스트레칭. 한쪽씩 한다. 무릎을 편 채 30초, 굽힌 채 30초로 종아리 위아래를 모두 푼다.",s:["벽에 양손을 대고 한 발을 뒤로 뺀다. 뒷발 뒤꿈치는 바닥에, 발끝은 정면.","뒷무릎을 편 채 골반을 벽 쪽으로 밀어 30초.","같은 자세에서 뒷무릎을 살짝 굽혀 30초. 반대쪽."],c:"뒤꿈치가 뜨면 효과가 없다. 뜨면 보폭을 줄인다.",figs:[{k:"wallCalf",cap:"벽에 양손을 대고 한 발을 뒤로. 뒷발 뒤꿈치는 바닥(점), 발끝은 정면. 뒷무릎을 편 채 30초, 이어서 살짝 굽혀 30초. 뒤꿈치가 뜨면 보폭을 줄인다."}]},
+  frog:{n:"개구리 자세",d:"60초 2회",sets:2,timed:{work:60,rest:10},w:"네발기기에서 무릎을 양옆으로 벌리고 엉덩이를 뒤로 보내 고관절 안쪽(내전근)을 늘리는 스트레칭. 2026-09-16 매장 권고, 아침·저녁. 발이 안쪽으로 무너지고 오른발이 팔자로 나가는 데에는 굳은 고관절 안쪽도 한몫하므로, 그곳을 여는 것이 목적입니다. 시간은 기본값 수정에서 바꿀 수 있습니다.",s:["매트에서 네발기기. 무릎을 어깨너비보다 넓게 벌리고 발끝은 바깥으로, 정강이는 서로 나란히 둔다.","팔꿈치를 바닥에 대고 허리를 편 채 엉덩이를 천천히 뒤꿈치 쪽으로 보낸다. 허리가 둥글게 말리거나 젖혀지지 않는 지점까지만.","고관절 안쪽이 당기는 곳에서 60초 호흡. 힘을 풀고 잠시 쉬었다가 한 번 더.","매장 시연 영상과 자세를 비교해 본다. 무릎 폭은 당기는 느낌이 나는 최소 폭부터."],c:"무릎이나 사타구니에 찌르는 통증이 있으면 무릎 폭을 줄인다. 허리를 젖혀 엉덩이를 내리지 않는다(협착). 내전근이 뭉친 날(루틴 R을 켠 날)은 폭을 줄이거나 건너뛴다. 밤새 유지하는 자세가 아니라 60초 스트레칭이다.",figs:[{k:"frog",cap:"왼쪽: 팔꿈치를 바닥에 대고 허리는 편 채(점선) 엉덩이를 뒤꿈치 쪽으로 보내, 고관절 안쪽이 당기는 곳에서 60초 호흡. 허리가 말리거나 젖혀지면 덜 보낸다. 오른쪽(위에서 본 모양): 무릎은 넓게, 정강이는 서로 나란히, 발끝은 바깥."}]},
+  calfBall:{n:"공 끼운 뒤꿈치 들기",d:"복사뼈 사이에 공, 10~15회 3세트",sets:3,counter:12,w:"안쪽 복사뼈 사이에 공이나 작게 접은 수건을 끼우고, 떨어뜨리지 않게 뒤꿈치를 천천히 올리고 내리는 동작. 공을 잡고 있으면 발목이 바깥으로 꺾이지 못하고, 아치를 안에서 당겨 올리는 근육(후경골근)이 일합니다. 2026-09-16 매장 권고. 발목 안쪽 무너짐(과내전) 교정의 핵심 동작.",s:["발을 골반 너비보다 좁게, 발끝 정면. 안쪽 복사뼈 사이에 테니스공이나 접은 수건을 끼운다.","공을 가볍게 조인 채 엄지발가락 아래로 바닥을 누르며 뒤꿈치를 2초에 걸쳐 든다.","꼭대기에서 1초, 2초에 걸쳐 내린다. 공이 떨어지면 그 회는 무효.","10~15회, 3세트. 벽이나 책상에 손가락만 댄다."],c:"공을 세게 조이느라 무릎이 안으로 모이면 안 된다. 무릎은 발끝 방향. 종아리에 쥐가 나면 횟수를 줄인다.",figs:[{k:"calfBall",cap:"뒤에서 본 모양. 안쪽 복사뼈 사이에 공을 끼우고 떨어뜨리지 않은 채 뒤꿈치를 든다. 공이 발목을 곧게 잡아 주어 바깥으로 꺾이지 않는다. 무릎은 발끝 방향, 엄지 아래로 누른다."}]},
+  officeOneLeg:{n:"한 발 서기, 오른쪽부터",d:"오른쪽 30초, 왼쪽 30초",sets:2,setLbl:["오른쪽","왼쪽"],timed:{work:30,rest:5},w:"오른다리로 서서 골반과 어깨를 수평으로 유지하는 균형 훈련. 2026-09-16 매장 권고. 오른발에 하중이 쏠리고 오른발목이 안쪽으로 무너지므로 오른쪽부터, 왼쪽도 이어서. 사무실에서 서 있는 틈에 합니다.",s:["세 점(뒤꿈치·엄지 아래·새끼 아래)을 누르고 왼발을 든다. 무릎은 살짝 풀고 골반과 어깨는 수평.","30초. 흔들리면 책상에 손가락 하나만 댄다.","30초가 안정되면 눈을 감고 한다.","왼다리도 이어서 30초."],c:"오른발목이 안으로 무너지면 엄지 아래를 더 누르고 시간을 줄인다. 골반이 기울면 벽 옆에서 한다.",figs:[{k:"oneLeg",cap:"○ 골반이 수평(점선)인 채 한 발로 선다. 무릎은 살짝 풀고 세 점으로 바닥을 누른다. ✕ 든 다리 쪽 골반이 툭 떨어지면 중둔근이 못 잡는 것이니 시간을 줄인다."}]},
   hangNegative:{n:"철봉 네거티브",d:"5회, 선택",sets:1,counter:5,w:"점프나 발판으로 턱을 봉 위에 올린 뒤 천천히 내려오는 동작. 등과 팔을 함께 키운다. 매달리기가 편해진 뒤의 선택 항목.",s:["발판이나 점프로 턱이 봉 위에 오게 한다.","3~5초에 걸쳐 팔을 펴며 천천히 내려온다.","5회."],c:"어깨가 귀 쪽으로 딸려 올라가면 중단. 손 저림이 오면 횟수를 줄인다.",figs:[{k:"hang",cap:"오른쪽 그림. 턱이 봉 위에 온 상태에서 시작해 3~5초에 걸쳐 팔을 펴며 내려온다. 어깨가 귀 쪽으로 딸려 올라가면 중단."}]},
   /* 루틴 R, 내전근이 뭉쳤을 때 사무실에서 푸는 동작 */
   reliefWalk:{n:"복도 걷기 리셋",d:"2~3분",sets:1,w:"뭉친 내전근에 가장 잘 듣는 것은 세게 늘리는 스트레칭이 아니라 자주 걷는 것입니다. 혈류가 늘면서 근육통이 빨리 가라앉고, 다리가 바깥으로 흐르는 걸음도 제자리를 찾습니다.",s:["한 시간에 한 번, 복도나 계단참을 2~3분 걷는다.","발끝은 정면, 보폭은 평소보다 좁게. 두 발이 한 줄 위를 지나간다는 느낌으로.","뒤꿈치가 먼저 닿고 엄지발가락으로 밀어내는 순서를 지킨다.","걷는 동안 무릎이 바깥으로 벌어지지 않는지 한 번씩 확인한다."],c:"절뚝일 정도면 한 번에 오래 걷지 말고 짧게 여러 번으로 나눈다."},
@@ -389,11 +420,28 @@ const EX = {
   bow108:{n:"108배",d:"36배씩 3세트",sets:3,setLbl:["1~36","37~72","73~108"],w:"절은 스쿼트와 플랭크와 호흡이 한 동작 안에 들어 있는 전신 운동입니다. 15~20분에 심박수가 오르고 하체 근지구력과 코어가 함께 좋아집니다. 협착이 있는 허리에는 굽히는 방향의 동작이라 대체로 편한 편입니다. 처음 2주는 1세트(36배)만 하고, 근육통이 이틀 안에 가시면 한 세트씩 늘립니다.",s:["무릎이 닿을 자리에 절 방석이나 접은 이불을 반드시 깐다. 맨바닥에서 108번은 무릎이 견디지 못한다.","내려갈 때 무릎부터 꺾지 말고 엉덩이를 뒤로 빼며 앉아 손을 먼저 짚는다. 무릎이 바닥에 툭 떨어지지 않게 손으로 체중을 나눠 받는다.","무릎을 꿇을 때 무릎 사이는 골반 너비로. 넓게 벌리면 내전근이 길게 늘어난다.","숨은 내려가며 내쉬고 올라오며 마신다. 반동으로 튕겨 일어나지 않는다.","일어설 때는 가슴을 먼저 세우고 머리는 마지막에 든다. 머리부터 홱 드는 것이 목에 가장 나쁘다.","1배에 6~8초, 36배에 4~5분. 염주나 계수기로 세면 숫자에 신경 쓰지 않아도 된다."],c:"기상 직후 한 시간 안에는 하지 않는다. 자고 일어난 척추는 물을 머금고 있어 굽히는 동작에 가장 약하다. 다리 저림이나 손 저림이 심해지면 그날은 중단한다. 무릎이 아프면 배 수를 줄이고 방석을 더 두껍게.",figs:[{k:"bowDown",cap:"무릎부터 꺾어 털썩 앉지 않는다. 엉덩이를 뒤로 빼며 앉아 손을 먼저 바닥에 짚고, 그 손으로 체중을 나눠 받으면서 무릎을 내려놓는다. 무릎 사이는 골반 너비로."},{k:"bowUp",cap:"일어설 때 머리부터 홱 드는 것이 목에 가장 나쁘다. 한 번의 습관이 108번 반복된다. 가슴을 먼저 세우고 머리는 척추 연장선을 따라 마지막에 올라온다."}]},
   reliefHeat:{n:"허벅지 안쪽 온찜질",d:"10~15분",sets:1,w:"운동 다음 날부터 남는 뭉침에는 냉찜질보다 온찜질입니다. 근육이 이완되고 혈류가 늘어 뻣뻣함이 줄어듭니다.",s:["핫팩이나 따뜻한 물을 담은 텀블러를 옷 위에 대고 허벅지 안쪽을 10~15분 데운다.","자리에 앉아 일하면서 그대로 두어도 된다.","데운 직후에 위의 이완 동작을 하면 훨씬 잘 풀린다."],c:"맨살에 직접 대지 않는다. 붓기나 열감이 있고 한 지점이 콕 아프면 온찜질보다 진료가 먼저다."}
 };
+/* 저녁 발 관리용 복제. 아침·사무실의 같은 동작과 체크가 섞이지 않게 키를 나눈다 */
+EX.ballFootEve=Object.assign({},EX.ballFoot,{n:"라크로스볼 발바닥 (저녁)",d:"좌우 60~120초",timed:{work:90,rest:5}});
+EX.wallCalfEve=Object.assign({},EX.wallCalf,{n:"벽 밀기 종아리 (저녁)"});
+EX.frogEve=Object.assign({},EX.frog,{n:"개구리 자세 (저녁)",d:"60초 2회, 아침과 같게"});
+/* 2026-09-16 발 진단 뒤 추가한 교정 운동. 루틴과 사전에 '발목 교정' 표시가 붙고, 기록 탭에서 완료율을 따로 본다 */
+const FIX_KEYS=["frog","shortFoot","calfBall","officeOneLeg","clamshell","ballFootEve","wallCalfEve","frogEve"];
+/* 보행 교정 체크리스트. 일상 습관 탭에서 날짜별로 체크한다 (S.gait[날짜]=체크한 번호들) */
+const GAIT_ITEMS=[
+  "턱을 뒤로 당기고 정수리를 위로 끌어올린다",
+  "어깨를 펴고 시선은 10~15m 앞 바닥",
+  "팔은 뒤로 크게, 앞으로는 적게 흔든다",
+  "배꼽 아래에 가볍게 힘을 주고 허리를 젖히지 않는다. 허리 뒤쪽이 뻐근하면 과신전",
+  "착지 순서: 뒤꿈치 바깥 착지, 발바닥 전체 지지, 엄지발가락 아래로 밀어내기",
+  "오른발 끝이 바깥으로 벌어지지 않게 11자 유지",
+  "양발 사이 주먹 하나 간격, 두 줄 레일을 걷는 느낌",
+  "교정화 착용"
+];
 const WEIGHTED_KEYS=["rdl","chestRow","facePull","gluteBridge","kbDeadlift","oneArmRow","hipAbduction","stepUp","innerThigh","latPulldown","seatedRow","gobletSquat","bulgarian"];
 /* 브릿지 8주 로드맵. 현재 단계는 S.goal.bridge */
 const GOAL_START="2026-09-07";
 /* 배포할 때마다 이 날짜를 갱신한다. 메인 화면 제목 아래에 표시된다. */
-const APP_UPDATED="2026-09-13";
+const APP_UPDATED="2026-09-16";
 const BRIDGE_STAGES=[
   {d:"12회 3세트",t:"양발, 엉덩이로 올리기",w:"1~2주",s:"양발"},
   {d:"10초 홀드 5회 3세트",t:"무릎에 밴드, 정점 홀드",w:"3~4주",s:"밴드 홀드"},
@@ -401,29 +449,30 @@ const BRIDGE_STAGES=[
   {d:"덤벨 10회 3세트",t:"골반 위에 무게",w:"9주~",s:"무게"}
 ];
 const STRENGTH_KEYS=["rdl","chestRow","facePull","sidePlank","kbDeadlift","boxHeelRaise","singleLegStand","bandSideStep"];
-const RCOLOR={WALK:"#4A6FA5",A:"#C28A2B",B:"#3A8F8A",C:"#2F5D3A",D:"#8A6D3B",SAT:"#6B6B62",SUN:"#9C9C93",BOW:"#6B6B62",INT:"#6B6B62",R:"#7A3B2E"};
-const RSHORT={WALK:"걷기",A:"A",B:"B",C:"C",D:"D",SAT:"토",SUN:"휴식",BOW:"108배",INT:"인터벌",R:"R"};
+const RCOLOR={WALK:"#4A6FA5",A:"#C28A2B",B:"#3A8F8A",C:"#2F5D3A",D:"#8A6D3B",SAT:"#6B6B62",SUN:"#9C9C93",BOW:"#6B6B62",INT:"#6B6B62",R:"#7A3B2E",EVE:"#5C6BA6"};
+const RSHORT={WALK:"걷기",A:"A",B:"B",C:"C",D:"D",SAT:"토",SUN:"휴식",BOW:"108배",INT:"인터벌",R:"R",EVE:"저녁"};
 
 const ROUTINES = {
   WALK:{title:"출퇴근 걷기",sub:"편도 30~35분",items:["commuteWalk"],key:"commuteWalk"},
-  A:{title:"루틴 A, 기상 직후",sub:"매트, 5분",items:["foamThoracic","toeSpread","towelCurl","gluteBridge"],key:"gluteBridge",extra:"이것만 하면 성공: 브릿지. 캣카우는 폼롤러 흉추 신전이 대신합니다."},
-  B:{title:"루틴 B, 사무실 틈틈이",sub:"오전·오후",items:["_자세 세트 — 오전 1회, 오후 1회","chinTuck","bandRow","wallSlide","kegel","_발과 종아리 — 하루 한 번","stretchBoard","ballFoot","shortFoot"],key:"kegel",extra:"자세 세트는 오전·오후를 각각 체크합니다. 버스나 지하철에서는 턱 당기기, 케겔, 쇼트풋을 그대로."},
-  C:{title:"루틴 C, 헬스장",sub:"월·목, 30분",items:["rdl","chestRow","facePull","gluteBridge","sidePlank"],key:"gluteBridge",extra:"당기는 동작(로우 4세트, 페이스풀 3세트)을 미는 동작보다 많게 잡았습니다. 힙 스러스트 자리는 단계별 브릿지 — 4단계에 이르면 그 칸에서 덤벨을 얹습니다. 이것만 하면 성공: 브릿지."},
-  D:{title:"루틴 D, 집 케틀벨",sub:"화·금, 20분",items:["kbDeadlift","gluteBridge","boxHeelRaise","singleLegStand","bandSideStep","wallCalf"],key:"gluteBridge",extra:"밴드 사이드 스텝이 마무리, 벽 밀기는 정리 운동입니다. 이것만 하면 성공: 브릿지."},
-  SAT:{title:"토요일",sub:"놀이터, 긴 보행 뒤",items:["hang","hangNegative","ballFoot","wallCalf"],key:"hang",extra:"매달리기는 스톱워치로 시간을 기록해 주마다 늘어나는지 봅니다. 네거티브는 선택. 긴 보행 뒤에는 발바닥과 종아리를 꼭 풀어 줍니다."},
+  A:{title:"루틴 A, 기상 직후",sub:"매트, 8분",items:["foamThoracic","toeSpread","towelCurl","frog","gluteBridge"],key:"gluteBridge",extra:"이것만 하면 성공: 브릿지. 개구리 자세는 2026-09-16 매장 권고(아침·저녁)로 넣었습니다. 캣카우는 폼롤러 흉추 신전이 대신합니다."},
+  B:{title:"루틴 B, 사무실 틈틈이",sub:"오전·오후, 합쳐서 20분",items:["_자세 세트 — 오전 1회, 오후 1회","chinTuck","bandRow","wallSlide","kegel","_발·종아리·균형 — 하루 한 번","stretchBoard","ballFoot","shortFoot","calfBall","officeOneLeg"],key:"kegel",extra:"자세 세트는 오전·오후를 각각 체크합니다. 버스나 지하철에서는 턱 당기기, 케겔, 쇼트풋을 그대로. 쇼트풋·공 끼운 뒤꿈치 들기·한 발 서기는 2026-09-16 발 진단의 교정 운동입니다."},
+  C:{title:"루틴 C, 헬스장",sub:"월·목, 35분",items:["_준비운동, 중둔근 깨우기","clamshell","_본운동","rdl","chestRow","facePull","gluteBridge","sidePlank"],key:"gluteBridge",extra:"당기는 동작(로우 4세트, 페이스풀 3세트)을 미는 동작보다 많게 잡았습니다. 힙 스러스트 자리는 단계별 브릿지 — 4단계에 이르면 그 칸에서 덤벨을 얹습니다. 이것만 하면 성공: 브릿지."},
+  D:{title:"루틴 D, 집 케틀벨",sub:"화·금, 25분",items:["_준비운동, 중둔근 깨우기","clamshell","_본운동","kbDeadlift","gluteBridge","boxHeelRaise","singleLegStand","bandSideStep","wallCalf"],key:"gluteBridge",extra:"클램쉘은 준비운동, 밴드 사이드 스텝이 마무리, 벽 밀기는 정리 운동입니다. 이것만 하면 성공: 브릿지."},
+  EVE:{title:"저녁 발 관리",sub:"매일 저녁, 8분",items:["ballFootEve","wallCalfEve","frogEve"],key:"ballFootEve",pain:true,extra:"2026-09-16 매장 권고. 하루 걷고 난 발바닥과 종아리를 풀고 고관절 안쪽을 엽니다. 통증이 생긴 날은 아래 칸에 어디가 어떻게 아픈지 남깁니다."},
+  SAT:{title:"토요일",sub:"놀이터",items:["hang","hangNegative"],key:"hang",extra:"매달리기는 스톱워치로 시간을 기록해 주마다 늘어나는지 봅니다. 네거티브는 선택. 발바닥과 종아리는 저녁 발 관리에서 풀어 줍니다."},
   SUN:{title:"일요일, 회복",sub:"완전 휴식",items:["lacrosseLight"]},
   BOW:{title:"108배 (선택)",sub:"15~20분",items:["bow108"],extra:"하면 좋고 안 해도 되는 항목입니다. 필수는 근력 3회와 단백질뿐. 몸이 데워진 저녁이나 여유 있는 오전이 안전하고, 마치고 종아리와 허벅지 앞을 30초씩 늘려 주면 다음 날이 가볍습니다."},
   INT:{title:"경사 걷기 인터벌 (선택)",sub:"근력 뒤 19분",items:["intervalWalk"],extra:"출퇴근 걷기가 유산소를 맡으므로 기본 계획에서는 뺐습니다. 걷지 못한 주에 헬스장 마지막에 붙일 수 있습니다. 반드시 근력을 마친 뒤에."},
   R:{title:"루틴 R, 내전근 풀기",sub:"뭉친 날, 5분",items:["reliefWalk","reliefSqueeze","reliefOpen","reliefPress","reliefSideShift","reliefHeat"],extra:"뭉침이 남아 있는 동안에는 루틴 B의 링 조이기를 약한 조이기로 바꾸고, 이너싸이와 스쿼트 무게를 절반으로 줄입니다. 양반다리와 무릎을 벌리고 앉는 자세는 내전근을 가장 길게 늘리는 자세이므로 피합니다. 사타구니 한 지점이 콕 찌르듯 아프거나 멍·붓기가 있거나 다리를 모으는 힘이 빠지면, 자가 이완 대신 정형외과나 재활의학과 진료를 먼저 받습니다."}
 };
 const WEEK = [
-  {name:"일",plan:["SUN"],note:"완전히 쉬는 것도 계획의 일부입니다."},
-  {name:"월",plan:["WALK","A","B","C"],note:"헬스장 30분. 이것만 하면 성공은 브릿지."},
-  {name:"화",plan:["WALK","A","B","D"],note:"집 케틀벨 20분."},
-  {name:"수",plan:["WALK","A","B"],note:"쉬는 날. 걷기와 아침·사무실 루틴만."},
-  {name:"목",plan:["WALK","A","B","C"],note:"헬스장 30분."},
-  {name:"금",plan:["WALK","A","B","D"],note:"집 케틀벨 20분."},
-  {name:"토",plan:["SAT"],note:"철봉과 발 관리. 근력은 주 4일 중 3일만 해도 성공입니다."}
+  {name:"일",plan:["SUN","EVE"],note:"완전히 쉬는 것도 계획의 일부입니다."},
+  {name:"월",plan:["WALK","A","B","C","EVE"],note:"헬스장 30분. 이것만 하면 성공은 브릿지."},
+  {name:"화",plan:["WALK","A","B","D","EVE"],note:"집 케틀벨 20분."},
+  {name:"수",plan:["WALK","A","B","EVE"],note:"쉬는 날. 걷기와 아침·사무실 루틴만."},
+  {name:"목",plan:["WALK","A","B","C","EVE"],note:"헬스장 30분."},
+  {name:"금",plan:["WALK","A","B","D","EVE"],note:"집 케틀벨 20분."},
+  {name:"토",plan:["SAT","EVE"],note:"철봉과 발 관리. 근력은 주 4일 중 3일만 해도 성공입니다."}
 ];
 const MASSAGE = [
   {t:"1:00",part:"라크로스볼, 가슴 왼쪽",how:"벽 모서리에 볼을 대고 쇄골 아래 어깨 안쪽 오목한 곳(소흉근)에 체중을 실어 지그시 누르며 작게 원을 그린다.",sec:60},
@@ -893,6 +942,29 @@ const FIGS = {
     +'<text class="sm" x="60" y="122">뒷다리, 안쪽 회전</text>'
     +'<text class="sm" x="170" y="28" text-anchor="middle">위에서 본 모양 · 양쪽 무릎 90도</text>'
     +'<path class="gr" d="M120,58 L160,58"/><path class="dot" d="M164,58 L156,54 L156,62 Z"/><text class="sm" x="120" y="46">상체를 앞 무릎 쪽으로</text></svg>',
+  frog:'<svg viewBox="0 0 340 160" role="img" aria-label="개구리 자세, 옆에서와 위에서 본 모양">'
+    +'<path class="gr" d="M14,136 L168,136"/>'
+    +'<circle class="ln good" cx="140" cy="100" r="9"/><path class="ln good" d="M131,102 L110,104"/>'
+    +'<path class="ln good" d="M110,104 L60,96"/><path class="gd" d="M58,88 L112,96"/>'
+    +'<path class="ln good" d="M110,104 L118,132 L152,132"/><circle class="dot" cx="118" cy="132" r="3"/>'
+    +'<path class="ln good" d="M60,96 L54,132 L26,132"/>'
+    +'<path class="gr" d="M76,76 L50,76"/><path class="dot" d="M46,76 L54,72 L54,80 Z"/>'
+    +'<text class="sm" x="66" y="66" text-anchor="middle">엉덩이를 뒤꿈치 쪽으로</text>'
+    +'<text class="sm" x="90" y="152" text-anchor="middle">팔꿈치는 바닥, 허리는 편 채(점선)</text>'
+    +'<circle class="ln good" cx="255" cy="26" r="9"/><rect class="ln good" x="243" y="37" width="24" height="50" rx="9"/>'
+    +'<path class="ln good" d="M243,44 L230,20 M267,44 L280,20"/>'
+    +'<path class="ln good" d="M244,84 L206,96 L206,136 L190,142 M266,84 L304,96 L304,136 L320,142"/>'
+    +'<path class="gr" d="M214,108 L296,108"/><path class="dot" d="M208,108 L216,104 L216,112 Z"/><path class="dot" d="M302,108 L294,104 L294,112 Z"/>'
+    +'<text class="sm" x="255" y="124" text-anchor="middle">무릎은 넓게</text>'
+    +'<text class="sm" x="255" y="156" text-anchor="middle">위에서 본 모양, 정강이는 나란히</text></svg>',
+  calfBall:'<svg viewBox="0 0 340 160" role="img" aria-label="복사뼈 사이에 공을 끼운 뒤꿈치 들기, 뒤에서 본 모양">'
+    +'<path class="gr" d="M96,140 L244,140"/>'
+    +'<path class="ln good" d="M150,30 L150,118 M190,30 L190,118"/>'
+    +'<path class="ln good" d="M144,140 L147,118 L153,118 L156,140 Z M184,140 L187,118 L193,118 L196,140 Z"/>'
+    +'<circle class="kb" cx="170" cy="119" r="12"/>'
+    +'<path class="gr" d="M130,136 L130,116 M210,136 L210,116"/><path class="dot" d="M130,112 L126,120 L134,120 Z"/><path class="dot" d="M210,112 L206,120 L214,120 Z"/>'
+    +'<text class="sm" x="170" y="18" text-anchor="middle">뒤에서 본 모양</text>'
+    +'<text class="sm" x="170" y="156" text-anchor="middle">안쪽 복사뼈 사이에 공을 끼우고 뒤꿈치를 든다</text></svg>',
   doorStretch:'<svg viewBox="0 0 340 156" role="img" aria-label="문틀 가슴 스트레칭">'
     +'<path class="gr" d="M40,148 L300,148"/><path class="bench" d="M172,18 L172,148"/>'
     +'<circle class="ln good" cx="138" cy="34" r="9"/><path class="ln good" d="M136,44 L132,104"/>'
@@ -933,6 +1005,7 @@ const HABITS = [
     "전화 통화는 서서 또는 걸으면서 한다. 서서 받을 때 한 발은 받침대에.",
     "신호 대기, 엘리베이터 대기, 서류 인쇄 대기를 항문 조이기 신호로 삼는다. 기다림이 곧 케겔 시간."]},
   {h:"걷는 자세",items:[
+    "2026-09-16 발 진단 뒤의 기준은 위의 보행 교정 체크리스트 8개다. 출퇴근은 교정화(860 v15)로 걷고, 아래의 인솔 항목은 단화를 신는 날에 해당한다.",
     "두 발 사이 간격을 지금보다 좁힌다. 한 줄 위를 지나간다는 느낌으로. 내전근이 약해 다리가 바깥으로 흐르는 것을 걸음마다 되돌리는 방법이다.",
     "발끝은 정면. 팔자로 벌어지면 엉덩이 근육을 쓰지 못하고 무릎 안쪽에 부담이 간다.",
     {fig:"feet",cap:"위에서 본 걸음. 두 발이 벌어지고 발끝이 바깥을 향하면 그 걸음마다 내전근과 둔근이 할 일을 잃는다. 발끝 정면, 간격은 좁게."},
@@ -976,7 +1049,7 @@ const HABITS = [
 const INBODY_SEED = [];
 
 /* ---------- 상태 ---------- */
-let S={checks:{},sets:{},weights:{},notes:{},cond:{},meal:{},extra:{},reps:{},sw:{},cfg:{},photos:{},walks:[],goal:{bridge:1},inbody:null};
+let S={checks:{},sets:{},weights:{},notes:{},cond:{},meal:{},extra:{},reps:{},sw:{},cfg:{},photos:{},walks:[],body:[],gait:{},goal:{bridge:1},inbody:null};
 async function loadState(){
   /* 1순위 클로드 저장소, 2순위 브라우저 localStorage */
   let raw=null;
@@ -1113,7 +1186,7 @@ function exRowHTML(key,dk,isKey){
   const e=EX[key];
   const prog=dk?progText(dk,key):"";
   return '<div class="ex" data-ex="'+key+'"'+(dk?' data-dk="'+dk+'"':'')+'>'
-    +'<div class="ex-head"><span class="arrow">▸</span><span class="n">'+e.n+(isKey?'<span class="badge">핵심</span>':'')+'</span>'
+    +'<div class="ex-head"><span class="arrow">▸</span><span class="n">'+e.n+(isKey?'<span class="badge">핵심</span>':'')+(FIX_KEYS.includes(key)?'<span class="badge fix">발목 교정</span>':'')+'</span>'
     +(prog?'<span class="prog">'+prog+'</span>':'')
     +'<span class="d">'+exDose(key)+'</span></div>'
     +'<div class="ex-detail">'+detailBaseHTML(e)+(dk?trackerHTML(key,dk):'')+'</div></div>';
@@ -1265,10 +1338,12 @@ function renderPlan(){
     div.className="block"+(checked?" done":"");div.id="blk-"+rk;div.style.setProperty("--rc",col);
     div.innerHTML='<div class="block-head"><input type="checkbox" '+(checked?"checked":"")+'><span class="t">'+r.title+'</span><span class="s">'+r.sub+'</span><span class="bp">'+done+'/'+tot+'</span></div>'
       +'<div class="bar"><i style="width:'+(tot?Math.round(done/tot*100):0)+'%"></i></div>'
-      +'<div class="block-body">'+r.items.map(k=>k.charAt(0)==="_"?'<div class="subhdr">'+k.slice(1)+'</div>':exRowHTML(k,dk,r.key===k)).join('')+(r.extra?'<p class="note">'+r.extra+'</p>':'')+'</div>'
+      +'<div class="block-body">'+r.items.map(k=>k.charAt(0)==="_"?'<div class="subhdr">'+k.slice(1)+'</div>':exRowHTML(k,dk,r.key===k)).join('')+(r.extra?'<p class="note">'+r.extra+'</p>':'')
+      +(r.pain?'<div class="painlbl">통증 메모, 아픈 날만</div><textarea class="memo" data-pain placeholder="어디가, 언제부터, 어떤 동작에서. 예: 오른발 안쪽 복사뼈 아래, 퇴근길 후반">'+esc(S.notes[dk+"|_pain"]||"")+'</textarea>':'')+'</div>'
       +'<button class="unfold">펼치기</button>';
     div.querySelector(".block-head input").onchange=ev=>{if(ev.target.checked)S.checks[ck]=true;else delete S.checks[ck];saveState();div.classList.toggle("done",ev.target.checked);div.classList.remove("open");updateBlockProg(div);renderGoals();};
     div.querySelector(".unfold").onclick=()=>{div.classList.toggle("open");div.querySelector(".unfold").textContent=div.classList.contains("open")?"접기":"펼치기";};
+    const pm=div.querySelector("[data-pain]");if(pm)pm.onchange=()=>{const v=pm.value.trim();if(v)S.notes[dk+"|_pain"]=v;else delete S.notes[dk+"|_pain"];saveState();};
     area.appendChild(div);
     rows.push({rk:rk,title:RSHORT[rk]||rk,done:done,tot:tot,checked:checked,col:col});
   });
@@ -1385,12 +1460,13 @@ function bindOne(exDiv){
 function renderDict(){
   const area=$("#dictArea");area.innerHTML="";
   [["출퇴근","commuteWalk"],
-   ["아침 루틴 A","foamThoracic toeSpread towelCurl gluteBridge"],
-   ["사무실 루틴 B","chinTuck bandRow wallSlide kegel stretchBoard ballFoot shortFoot"],
-   ["헬스장 루틴 C","rdl chestRow facePull gluteBridge sidePlank oneArmRow"],
-   ["집 루틴 D","kbDeadlift boxHeelRaise singleLegStand bandSideStep wallCalf"],
+   ["아침 루틴 A","foamThoracic toeSpread towelCurl frog gluteBridge"],
+   ["사무실 루틴 B","chinTuck bandRow wallSlide kegel stretchBoard ballFoot shortFoot calfBall officeOneLeg"],
+   ["헬스장 루틴 C","clamshell rdl chestRow facePull gluteBridge sidePlank oneArmRow"],
+   ["집 루틴 D","clamshell kbDeadlift boxHeelRaise singleLegStand bandSideStep wallCalf"],
+   ["저녁 발 관리, 매일","ballFootEve wallCalfEve frogEve"],
    ["토요일","hang hangNegative"],
-   ["선택","hip9090 clamshell deadBug sideBridgeKnee doorStretch heelRaise bow108 intervalWalk walk"],
+   ["선택","hip9090 deadBug sideBridgeKnee doorStretch heelRaise bow108 intervalWalk walk"],
    ["뭉쳤을 때 루틴 R","reliefWalk reliefSqueeze reliefOpen reliefPress reliefSideShift reliefHeat"],
    ["이전 동작, 참고용","pelvicTilt catcow chestOpen scapRetraction extRotation ringSqueeze treadmill hipAbduction stepUp latPulldown seatedRow innerThigh gobletSquat bulgarian birdDog bandPullApart"]
   ].forEach(([title,keys])=>{
@@ -1428,12 +1504,31 @@ $("#timerBtn").onclick=()=>{
 };
 
 /* ---------- 습관 ---------- */
+function gaitHTML(){
+  const dk=isoLocal(new Date()),on=S.gait[dk]||[],wd=weekDates(0),today=new Date().getDay();
+  let h='<div class="block" id="gaitBlock" style="--rc:#5C6BA6"><div class="block-head"><span class="t">보행 교정 체크리스트</span><span class="s">걸을 때 확인. 날마다 새로 체크 · '+dk.slice(5).replace('-','.')+'</span><span class="bp">'+on.length+'/'+GAIT_ITEMS.length+'</span></div>';
+  h+='<div class="bar"><i style="width:'+Math.round(on.length/GAIT_ITEMS.length*100)+'%"></i></div><div class="block-body"><ul class="gait-list">';
+  GAIT_ITEMS.forEach((t,i)=>{const c=on.includes(i);h+='<li class="'+(c?"on":"")+'"><input type="checkbox" data-gait="'+i+'"'+(c?' checked':'')+'><span>'+t+'</span></li>';});
+  h+='</ul><div class="gait-week">'+wd.map((d,i)=>'<span class="'+(i===today?"today":"")+'">'+WEEK[i].name+'<b>'+((S.gait[d]||[]).length||"·")+'</b></span>').join('')+'</div>';
+  h+='<p class="note" style="padding-bottom:0">2026-09-16 발 진단(과내전, 오른발 하중 쏠림) 뒤 매장 권고와 걷는 자세 항목을 합친 것. 출근길에 한 번 훑고, 퇴근 뒤 지킨 항목을 체크한다. 기록 탭의 발목 교정 완료율에 함께 집계된다.</p></div></div>';
+  return h;
+}
 function renderHabits(){
-  $("#habitArea").innerHTML=HABITS.map(g=>'<div class="habit-group"><h3>'+g.h+'</h3><ul>'+g.items.map(i=>
+  $("#habitArea").innerHTML=gaitHTML()+HABITS.map(g=>'<div class="habit-group"><h3>'+g.h+'</h3><ul>'+g.items.map(i=>
     typeof i==="string"
       ? '<li>'+i+'</li>'
       : '<li class="figli">'+figHTML({k:i.fig,cap:i.cap})+'</li>'
   ).join('')+'</ul></div>').join('');
+  const dk=isoLocal(new Date());
+  document.querySelectorAll("#habitArea [data-gait]").forEach(cb=>cb.onchange=()=>{
+    const i=+cb.dataset.gait;let a=(S.gait[dk]||[]).slice();
+    if(cb.checked){if(!a.includes(i))a.push(i);}else a=a.filter(x=>x!==i);
+    a.sort((x,y)=>x-y);if(a.length)S.gait[dk]=a;else delete S.gait[dk];
+    saveState();
+    const blk=$("#gaitBlock");cb.closest("li").classList.toggle("on",cb.checked);
+    blk.querySelector(".bp").textContent=a.length+"/"+GAIT_ITEMS.length;blk.querySelector(".bar i").style.width=Math.round(a.length/GAIT_ITEMS.length*100)+"%";
+    const w=blk.querySelector(".gait-week span.today b");if(w)w.textContent=a.length||"·";
+  });
 }
 
 
@@ -1541,13 +1636,13 @@ function walkLogHTML(){
   let h='<div class="rec-sec"><h3>걷기 기록</h3>';
   h+='<div class="walk-form"><input type="date" class="dt" id="wkD" value="'+today+'"><input type="number" class="num" id="wkMin" placeholder="분" min="0" inputmode="numeric"><input type="number" class="num" id="wkKm" placeholder="km" step="0.1" min="0" inputmode="decimal"></div>';
   h+='<div class="dx-row"><span class="dx-lbl">발바닥 피로도</span><div class="tagbtns" id="wkTire">'+[1,2,3,4,5].map(v=>'<button data-v="'+v+'">'+v+'</button>').join('')+'</div></div>';
-  h+='<div class="dx-row nb"><span class="dx-lbl">인솔</span><div class="tagbtns" id="wkIns"><button data-v="1">착용 O</button><button data-v="0" class="no">미착용 ×</button></div></div>';
+  h+='<div class="dx-row nb"><span class="dx-lbl">교정화·인솔</span><div class="tagbtns" id="wkIns"><button data-v="1">착용 O</button><button data-v="0" class="no">미착용 ×</button></div></div>';
   h+='<input class="meal-memo" id="wkMemo" placeholder="한 줄 메모, 예: 퇴근길 35분, 뒤꿈치 뻐근"><div class="bk-btns"><button id="wkAdd">기록 추가</button></div>';
   const cmp=walkCompare();
   const cell=x=>x.n?x.avg.toFixed(1)+' <span class="n">('+x.n+'회)</span>':'—';
-  h+='<table class="cmp"><thead><tr><th>기간</th><th>인솔 O 피로도</th><th>인솔 × 피로도</th></tr></thead><tbody>'+cmp.map(r=>'<tr><td>'+r.label+'</td><td>'+cell(r.on)+'</td><td>'+cell(r.off)+'</td></tr>').join('')+'</tbody></table>';
+  h+='<table class="cmp"><thead><tr><th>기간</th><th>교정화·인솔 O</th><th>미착용 ×</th></tr></thead><tbody>'+cmp.map(r=>'<tr><td>'+r.label+'</td><td>'+cell(r.on)+'</td><td>'+cell(r.off)+'</td></tr>').join('')+'</tbody></table>';
   h+=list.length?'<div class="walk-list">'+list.slice(0,14).map(w=>'<div class="memoline"><button class="del" data-wdel="'+(w.t||0)+'">삭제</button><b>'+w.d.slice(5)+' · '+(w.min?w.min+'분 ':'')+(w.km?w.km+'km ':'')+'· 피로도 '+w.tire+' · 인솔 '+(w.insole?'O':'×')+'</b>'+esc(w.memo||'')+'</div>').join('')+'</div>':'<div class="empty">보행 후 발바닥 피로도를 매일 남기면 3주 뒤 인솔 판단이 저절로 나옵니다.</div>';
-  h+='<p class="note">피로도는 1이 가뿐함, 5가 걷기 싫을 만큼 피로함. 표는 인솔을 신은 날과 안 신은 날의 평균을 기간별로 나눈 것이라, 같은 거리를 두 조건으로 몇 번씩 걸으면 차이가 보입니다.</p></div>';
+  h+='<p class="note">피로도는 1이 가뿐함, 5가 걷기 싫을 만큼 피로함. 교정화나 인솔을 착용한 날은 O. 표는 착용한 날과 안 한 날의 평균을 기간별로 나눈 것이라, 같은 거리를 두 조건으로 몇 번씩 걸으면 차이가 보입니다.</p></div>';
   return h;
 }
 let wkSel={tire:null,insole:null};
@@ -1591,8 +1686,9 @@ function backupHTML(){
    +'<p class="note">기록은 이 브라우저에 저장됩니다. 기기를 바꾸거나 브라우저 데이터를 지우기 전에 파일로 내려받아 두세요. 내려받기가 막힌 환경이라면 텍스트로 열어 복사해 보관하면 됩니다.</p></div>';
 }
 function normalizeState(){
-  ["checks","sets","weights","notes","cond","meal","extra","reps","sw","cfg","photos"].forEach(k=>{if(!S[k]||typeof S[k]!=="object"||Array.isArray(S[k]))S[k]={};});
+  ["checks","sets","weights","notes","cond","meal","extra","reps","sw","cfg","photos","gait"].forEach(k=>{if(!S[k]||typeof S[k]!=="object"||Array.isArray(S[k]))S[k]={};});
   if(!Array.isArray(S.walks))S.walks=[];
+  if(!Array.isArray(S.body))S.body=[];
   /* 이전 버전의 relief(내전근 풀기 토글)를 extra 형식으로 옮긴다 */
   if(S.relief&&typeof S.relief==="object"){Object.keys(S.relief).forEach(dk=>{if(S.relief[dk]){const a=S.extra[dk]||[];if(!a.includes("R"))a.push("R");S.extra[dk]=a;}});delete S.relief;}
   if(!S.goal||typeof S.goal!=="object")S.goal={};
@@ -1602,9 +1698,17 @@ function normalizeState(){
 function applyImport(txt){
   let p=null;
   try{p=JSON.parse(txt);}catch(e){}
+  if(p&&typeof p==="object"&&Array.isArray(p.body)&&!p.checks&&!p.sets&&!p.inbody){
+    /* 체형 기록만 담긴 파일: 덮어쓰지 않고 날짜별로 합친다 */
+    const rows=p.body.filter(r=>r&&typeof r==="object"&&r.d);
+    if(!rows.length){alert("체형 기록이 비어 있습니다.");return;}
+    if(!confirm("체형 기록 "+rows.length+"건을 현재 기록에 추가합니다. 같은 날짜가 있으면 새 내용으로 바뀝니다. 계속할까요?"))return;
+    rows.forEach(r=>{S.body=S.body.filter(x=>x.d!==r.d);S.body.push(Object.assign({},r,{t:r.t||Date.now()}));});
+    saveState();renderRecord();alert("체형 기록 "+rows.length+"건을 추가했습니다.");return;
+  }
   if(!p||typeof p!=="object"||(!p.checks&&!p.sets&&!p.inbody)){alert("운동 기록 백업이 아닌 것 같습니다. 내용을 확인해 주세요.");return;}
   if(!confirm("현재 기록을 이 백업 내용으로 덮어씁니다. 계속할까요?"))return;
-  S={checks:{},sets:{},weights:{},notes:{},cond:{},meal:{},extra:{},reps:{},sw:{},cfg:{},photos:{},walks:[],goal:{bridge:1},inbody:null};
+  S={checks:{},sets:{},weights:{},notes:{},cond:{},meal:{},extra:{},reps:{},sw:{},cfg:{},photos:{},walks:[],body:[],gait:{},goal:{bridge:1},inbody:null};
   Object.assign(S,p);normalizeState();
   saveState();renderDays();renderPlan();renderRecord();
   alert("복원했습니다.");
@@ -1642,6 +1746,62 @@ function bindBackup(){
   $("#bkRestore").onclick=()=>applyImport($("#bkTa").value);
 }
 
+/* ---------- 발목 교정 완료율 (2026-09-16 진단) ---------- */
+function fixStats(dk,i){
+  const all=WEEK[i].plan.concat((S.extra[dk]||[]).filter(k=>ROUTINES[k]&&!WEEK[i].plan.includes(k)));
+  let done=0,tot=0;
+  all.forEach(rk=>ROUTINES[rk].items.forEach(k=>{if(k.charAt(0)==="_"||!FIX_KEYS.includes(k))return;const st=getSets(dk,k);tot+=st.length;done+=st.filter(Boolean).length;}));
+  return {done:done,tot:tot,gait:(S.gait[dk]||[]).length};
+}
+function fixSummaryHTML(dks){
+  let d=0,t=0,g=0,rows='';
+  dks.forEach((dk,i)=>{const s=fixStats(dk,i);d+=s.done;t+=s.tot;g+=s.gait;
+    rows+='<tr><td>'+WEEK[i].name+'</td><td>'+(s.tot?s.done+' / '+s.tot+(s.done>=s.tot?' ✓':''):'—')+'</td><td>'+(s.gait?s.gait+' / '+GAIT_ITEMS.length:'—')+'</td></tr>';});
+  let h='<div class="rec-sec"><h3>발목 교정 완료율</h3>';
+  h+='<div class="fix-line">교정 운동 세트 <b>'+(t?Math.round(d/t*100):0)+'%</b> ('+d+' / '+t+') · 보행 체크 <b>'+g+'</b> / '+(GAIT_ITEMS.length*7)+'</div>';
+  h+='<table><thead><tr><th>요일</th><th>교정 운동 세트</th><th>보행 체크</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  h+='<p class="note">발목 교정 표시가 붙은 동작(개구리 자세, 쇼트풋, 공 끼운 뒤꿈치 들기, 한 발 서기, 클램쉘, 저녁 발 관리 세 가지)의 세트 완료와 일상 습관 탭의 보행 교정 체크를 모은 것입니다.</p></div>';
+  return h;
+}
+/* ---------- 체형 기록 (족저압, 발 유형, 소견. 재측정 비교) ---------- */
+const BODY_NUM=[["l","왼발 하중 %"],["r","오른발 하중 %"],["fore","앞꿈치 %"],["hind","뒤꿈치 %"],["bal","균형 점수"]];
+const BODY_TXT=[["type","발 유형"],["store","매장 소견"],["shoe","신발 비교 소견"],["ortho","정형외과 소견"],["memo","메모"]];
+function bodyHTML(){
+  const recs=S.body.slice().sort((a,b)=>a.d<b.d?-1:1),today=isoLocal(new Date());
+  let h='<div class="rec-sec"><h3>체형 기록, 발 진단</h3>';
+  if(recs.length){
+    const show=recs.slice(-4),num=v=>(v==null||v==="")?"—":v;
+    h+='<div style="overflow-x:auto"><table class="body-cmp"><thead><tr><th>항목</th>'+show.map(r=>'<th>'+esc(r.d.slice(2).replace(/-/g,'.'))+'<br><span class="n">'+esc(r.place||'')+'</span></th>').join('')+'</tr></thead><tbody>';
+    BODY_NUM.forEach(([k,l])=>{h+='<tr><td>'+l+'</td>'+show.map(r=>'<td>'+esc(num(r[k]))+'</td>').join('')+'</tr>';});
+    h+='<tr><td>좌우 차이, 오른발−왼발</td>'+show.map(r=>{const ok=typeof r.l==="number"&&typeof r.r==="number";const v=ok?r.r-r.l:0;return '<td>'+(ok?'<span class="'+(Math.abs(v)>=10?'diff':'')+'">'+(v>0?'+':'')+v.toFixed(1)+'%p</span>':'—')+'</td>';}).join('')+'</tr>';
+    h+='<tr><td>발 유형</td>'+show.map(r=>'<td style="white-space:normal">'+esc(r.type||'—')+'</td>').join('')+'</tr>';
+    h+='</tbody></table></div>';
+    if(recs.length>4)h+='<p class="note">표에는 최근 4회만 보입니다.</p>';
+    h+=recs.slice().reverse().map(r=>'<div class="memoline"><button class="del" data-bdel="'+esc(r.d)+'">삭제</button><b>'+esc(r.d)+(r.place?' · '+esc(r.place):'')+'</b>'
+      +BODY_TXT.slice(1).filter(([k])=>r[k]).map(([k,l])=>'<div><span class="n">'+l+'</span> '+esc(r[k])+'</div>').join('')+'</div>').join('');
+  }else h+='<div class="empty">족저압 스캔이나 발 유형 검사 결과를 날짜별로 남기면, 재측정 때 같은 항목끼리 나란히 비교됩니다.</div>';
+  h+='<details class="cfg"'+(recs.length?'':' open')+'><summary>측정 추가</summary><div class="body-form">'
+    +'<div class="row"><input type="date" class="dt" id="bdD" value="'+today+'"><input class="txt" id="bdPlace" placeholder="장소, 예: 러너스클럽"></div>'
+    +'<div class="row">'+BODY_NUM.map(([k,l])=>'<label>'+l+'<input type="number" step="0.1" class="num" id="bd_'+k+'" inputmode="decimal"></label>').join('')+'</div>'
+    +BODY_TXT.map(([k,l])=>k==="memo"?'<textarea id="bd_memo" placeholder="메모, 예: 1회 측정값이라 재측정으로 확인 필요"></textarea>':'<input class="txt" id="bd_'+k+'" placeholder="'+l+'">').join('')
+    +'<button id="bdAdd">저장</button></div></details>';
+  h+='<p class="note">같은 매장, 같은 장비, 같은 신발 조건으로 재측정해야 비교가 됩니다. 값은 이 휴대폰에만 저장되고 백업 파일에 함께 들어갑니다. 체형 기록만 담긴 파일도 백업의 "파일에서 복원"으로 넣을 수 있습니다(덮어쓰지 않고 합쳐짐).</p></div>';
+  return h;
+}
+function bindBody(){
+  const area=$("#recordArea"),btn=area.querySelector("#bdAdd");if(!btn)return;
+  btn.onclick=()=>{
+    const d=area.querySelector("#bdD").value;if(!d){alert("측정일을 골라 주세요.");return;}
+    const r={d:d,place:area.querySelector("#bdPlace").value.trim(),t:Date.now()};let any=false;
+    BODY_NUM.forEach(([k])=>{const v=parseFloat(area.querySelector("#bd_"+k).value);if(!isNaN(v)){r[k]=v;any=true;}});
+    BODY_TXT.forEach(([k])=>{const v=area.querySelector("#bd_"+k).value.trim();if(v){r[k]=v;any=true;}});
+    if(!any){alert("수치나 소견을 하나 이상 입력해 주세요.");return;}
+    if(S.body.some(x=>x.d===d)&&!confirm(d+" 기록이 이미 있습니다. 새 내용으로 바꿀까요?"))return;
+    S.body=S.body.filter(x=>x.d!==d);S.body.push(r);saveState();renderRecord();
+  };
+  area.querySelectorAll("[data-bdel]").forEach(b=>b.onclick=()=>{if(!confirm(b.dataset.bdel+" 체형 기록을 지울까요?"))return;S.body=S.body.filter(x=>x.d!==b.dataset.bdel);saveState();renderRecord();});
+}
+
 /* ---------- 기록 ---------- */
 function weekDates(off){const a=[];for(let i=0;i<7;i++)a.push(dateKey(i,off));return a;}
 function renderRecord(){
@@ -1662,6 +1822,7 @@ function renderRecord(){
   });
   h+='</tbody></table></div>';
 
+  h+=fixSummaryHTML(dks);
   h+=condSummaryHTML(dks);
   h+=mealSummaryHTML(dks);
 
@@ -1686,7 +1847,7 @@ function renderRecord(){
     Object.keys(S.notes).forEach(k=>{
       if(!k.startsWith(dk+"|"))return;
       const part=k.split("|")[1];
-      const label=part==="_day"?"총평":(EX[part]?EX[part].n:part);
+      const label=part==="_day"?"총평":(part==="_pain"?"통증 메모":(EX[part]?EX[part].n:part));
       anyN=true;
       nRows+='<div class="memoline"><b>'+WEEK[i].name+' ('+dk.slice(5)+') · '+label+'</b>'+esc(S.notes[k])+'</div>';
     });
@@ -1703,12 +1864,13 @@ function renderRecord(){
   h+='<div class="ib-form"><input type="date" class="dt" id="ibD"><input type="number" step="0.1" class="num" id="ibW" placeholder="체중"><input type="number" step="0.1" class="num" id="ibM" placeholder="골격근"><input type="number" step="0.1" class="num" id="ibF" placeholder="체지방%"><button id="ibAdd">추가</button></div>';
   h+='<p class="note">아침 공복, 같은 시간대로 측정 조건을 통일하면 추세 비교가 정확해집니다.</p></div>';
 
+  h+=bodyHTML();
   h+=walkLogHTML();
   h+=photoLogHTML();
   h+=backupHTML();
 
   area.innerHTML=h;
-  bindWalkLog();bindPhotoLog();
+  bindWalkLog();bindPhotoLog();bindBody();
   $("#wkPrev").onclick=()=>{recOff--;renderRecord();};
   $("#wkNext").onclick=()=>{if(recOff<0){recOff++;renderRecord();}};
   bindBackup();
@@ -1728,6 +1890,7 @@ document.querySelectorAll("nav button").forEach(b=>{
     b.classList.add("on");
     ["plan","dict","massage","habit","record"].forEach(t=>$("#tab-"+t).classList.toggle("hidden",t!==b.dataset.tab));
     if(b.dataset.tab==="record"){recOff=0;renderRecord();}
+    if(b.dataset.tab==="habit")renderHabits();
   };
 });
 
@@ -1755,6 +1918,7 @@ document.querySelectorAll("nav button").forEach(b=>{
     if(a.length)S.extra[dk]=a;else delete S.extra[dk];
     saveState();stopExTimer();renderPlan();
   });
+  const goEve=$("#goEve");if(goEve)goEve.onclick=()=>{selDay=new Date().getDay();document.querySelector('nav button[data-tab="plan"]').click();renderDays();renderPlan();const t=document.getElementById("blk-EVE");if(t)t.scrollIntoView({behavior:"smooth",block:"start"});};
   renderDays();renderPlan();renderDict();renderMassage();renderHabits();
 })();
 </script>
