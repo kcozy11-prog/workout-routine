@@ -1,7 +1,7 @@
 /* 주간 운동 루틴 서비스 워커.
    네트워크 우선: 온라인이면 항상 최신 파일을 받고 캐시를 갱신한다.
    오프라인이면 캐시에서 연다. 캐시 이름은 배포 날짜로 바꾼다. */
-const CACHE = "workout-routine-2026-09-16";
+const CACHE = "workout-routine-2026-09-22";
 const ASSETS = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./icon-512-maskable.png", "./apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
