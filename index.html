@@ -450,7 +450,7 @@ const WEIGHTED_KEYS=["rdl","chestRow","facePull","gluteBridge","kbDeadlift","one
 /* 브릿지 8주 로드맵. 현재 단계는 S.goal.bridge */
 const GOAL_START="2026-09-07";
 /* 배포할 때마다 이 날짜를 갱신한다. 메인 화면 제목 아래에 표시된다. */
-const APP_UPDATED="2026-10-02";
+const APP_UPDATED="2026-10-05";
 const BRIDGE_STAGES=[
   {d:"12회 3세트",t:"양발, 엉덩이로 올리기",w:"1~2주",s:"양발"},
   {d:"10초 홀드 5회 3세트",t:"무릎에 밴드, 정점 홀드",w:"3~4주",s:"밴드 홀드"},
@@ -1007,6 +1007,53 @@ const FIGS = {
     +'<text class="sm" x="289" y="54" text-anchor="middle">볼 위에서 무릎을</text><text class="sm" x="289" y="66" text-anchor="middle">안·밖으로 천천히</text>'
     +'<text class="sm" x="260" y="156" text-anchor="middle">볼은 엉덩이 옆 오목한 곳</text>'
     +'<text class="sm" x="260" y="168" text-anchor="middle">벽에 기대면 더 약하게</text></svg>',
+  screwFeet:'<svg viewBox="0 0 340 170" role="img" aria-label="발로 바닥 비틀기, 앞에서 본 다리와 옆에서 본 발 아치">'
+    +'<text class="sm" x="130" y="14" text-anchor="middle">앞에서 본 다리</text>'
+    +'<path class="gr" d="M40,152 L220,152"/>'
+    +'<path class="ln good" d="M98,30 L162,30 L156,52 L104,52 Z"/>'
+    +'<path class="ln good" d="M110,52 L106,100 L108,146 M150,52 L154,100 L152,146"/>'
+    +'<path class="ln good" d="M96,150 L118,150 M142,150 L164,150"/>'
+    +'<circle class="ln good" cx="106" cy="100" r="5"/><circle class="ln good" cx="154" cy="100" r="5"/>'
+    +'<path class="gr" d="M116,110 A14,7 0 0 1 90,106"/><path class="dot" d="M86,104 L94,100 L94,110 Z"/>'
+    +'<path class="gr" d="M144,110 A14,7 0 0 0 170,106"/><path class="dot" d="M174,104 L166,100 L166,110 Z"/>'
+    +'<circle class="dot" cx="100" cy="44" r="3"/><circle class="dot" cx="160" cy="44" r="3"/>'
+    +'<text class="sm" x="84" y="88" text-anchor="end">무릎만 바깥으로</text><text class="sm" x="84" y="100" text-anchor="end">돌리는 힘</text>'
+    +'<path class="gr" d="M98,42 L80,30"/><text class="sm" x="78" y="26" text-anchor="end">엉덩이 옆·뒤가</text><text class="sm" x="78" y="38" text-anchor="end">단단해진다</text>'
+    +'<text class="sm" x="130" y="166" text-anchor="middle">발은 움직이지 않는다</text>'
+    +'<path class="gd" d="M232,20 L232,160"/>'
+    +'<text class="sm" x="286" y="76" text-anchor="middle">옆에서 본 발</text>'
+    +'<path class="gr" d="M242,132 L332,132"/>'
+    +'<path class="ln lt" d="M250,130 L318,130 L316,122 C304,116 292,112 278,108 L262,106 C254,108 250,118 250,130 Z"/>'
+    +'<path class="ln good" d="M262,130 C270,118 290,118 300,130"/>'
+    +'<path class="gr" d="M281,128 L281,124"/><path class="dot" d="M281,119 L277,126 L285,126 Z"/>'
+    +'<text class="sm" x="286" y="96" text-anchor="middle">아치가 올라온다</text>'
+    +'<text class="sm" x="286" y="148" text-anchor="middle">엄지 아래는</text><text class="sm" x="286" y="160" text-anchor="middle">계속 누른다</text></svg>',
+  leanRest:'<svg viewBox="0 0 340 172" role="img" aria-label="허리 뒤로 젖히기와 앞으로 기대어 쉬기 비교">'
+    +'<path class="gr" d="M10,152 L160,152 M180,152 L330,152"/>'
+    +'<path class="ln bad mk" d="M12,16 L24,28 M24,16 L12,28"/>'
+    +'<circle class="ln good mk" cx="188" cy="22" r="7"/>'
+    +'<path class="ln bad" d="M70,150 L84,98 L96,150"/>'
+    +'<path class="ln bad" d="M84,98 Q92,70 66,46"/><circle class="ln bad" cx="60" cy="36" r="9"/>'
+    +'<path class="ln bad" d="M70,54 L54,74 L78,92"/>'
+    +'<path class="gr" d="M92,78 L110,70"/><text class="sm" x="112" y="68">허리를 뒤로</text>'
+    +'<text class="sm" x="80" y="168" text-anchor="middle">신경 통로가 좁아진다</text>'
+    +'<path class="bench" d="M300,152 L300,100 M282,100 L328,100"/>'
+    +'<path class="ln good" d="M214,150 L226,98 L238,150"/>'
+    +'<path class="ln good" d="M226,98 Q248,66 274,70"/><circle class="ln good" cx="284" cy="64" r="9"/>'
+    +'<path class="ln good" d="M270,72 L284,94 L306,94"/>'
+    +'<path class="gr" d="M244,50 L246,72"/><text class="sm" x="244" y="44" text-anchor="middle">허리가 굽는 방향</text>'
+    +'<text class="sm" x="255" y="168" text-anchor="middle">팔을 얹고 앞으로 기대어 20~30초</text></svg>',
+  figure4:'<svg viewBox="0 0 340 174" role="img" aria-label="의자 4자 스트레칭, 앞에서 본 모양">'
+    +'<path class="gr" d="M70,154 L280,154 M118,108 L118,152 M226,108 L226,152"/><path class="bench" d="M112,104 L232,104"/>'
+    +'<circle class="ln good" cx="172" cy="28" r="10"/><path class="ln good" d="M172,39 L172,98 M150,46 L194,46"/>'
+    +'<path class="ln good" d="M172,98 L160,100 M172,98 L184,100"/>'
+    +'<path class="ln good" d="M184,100 L194,106 L194,150 L206,152"/><circle class="ln good" cx="194" cy="106" r="6"/>'
+    +'<path class="ln good" d="M160,100 L120,116 L188,98"/><circle class="ln good" cx="120" cy="116" r="6"/><circle class="dot" cx="188" cy="98" r="3"/>'
+    +'<path class="ln lt" d="M150,46 L130,76 L124,110 M194,46 L204,74 L196,96"/>'
+    +'<text class="sm" x="110" y="128" text-anchor="end">무릎은 바깥으로</text><text class="sm" x="110" y="140" text-anchor="end">벌어진다</text>'
+    +'<path class="gr" d="M192,100 L232,118"/><text class="sm" x="234" y="122">발목을 반대 무릎 위에</text>'
+    +'<text class="sm" x="234" y="34">허리를 편 채</text><text class="sm" x="234" y="46">상체를 앞으로 숙여</text><text class="sm" x="234" y="58">엉덩이 뒤가 당기는 곳</text>'
+    +'<text class="sm" x="172" y="168" text-anchor="middle">앞에서 본 모양, 좌우 30초</text></svg>',
   kneeChest:'<svg viewBox="0 44 340 116" role="img" aria-label="무릎 가슴 당기기, 누워서 한쪽 무릎을 가슴 쪽으로">'
     +'<path class="gr" d="M30,136 L310,136"/>'
     +'<circle class="ln good" cx="62" cy="122" r="10"/><path class="ln good" d="M73,126 L160,126"/>'
@@ -1100,6 +1147,18 @@ const HABITS = [
     "벽에 기댈 때는 허리가 아니라 등 상부를 대고 발을 벽에서 20~30cm 앞에 둔다. 그러면 골반이 자연스럽게 뒤로 기운다.",
     "전화 통화는 서서 또는 걸으면서 한다. 서서 받을 때 한 발은 받침대에.",
     "신호 대기, 엘리베이터 대기, 서류 인쇄 대기를 항문 조이기 신호로 삼는다. 기다림이 곧 케겔 시간."]},
+  {h:"기다리거나 쉴 때",items:[
+    "기다리는 시간은 엉덩이를 깨우는 시간이다. 줄 서기, 신호 대기, 엘리베이터, 인쇄 대기에서 아래 둘 중 하나를 한다. 엉덩이 조이기, 케겔, 뒤꿈치 들기, 한 발 받침대는 위 '서 있는 자세'에 있다.",
+    "발로 바닥 비틀기. 두 발을 골반 너비로 바닥에 박아 둔 채, 무릎을 바깥으로 돌리려는 힘만 5초 준다. 발은 움직이지 않는다. 10회. 엉덩이 옆·뒤 깊은 곳이 단단해지고 발 아치가 함께 올라간다. 엉덩이 속근육과 과내전을 한 번에 겨냥하면서 남은 알아채지 못하는 동작이다. 발이 바깥 날로 넘어가지 않게 엄지발가락 아래는 계속 누른다.",
+    {fig:"screwFeet",cap:"발은 그대로 두고 무릎만 바깥으로 돌리려는 힘을 준다. 무릎이 실제로 많이 돌아가지 않아도 된다. 엉덩이 옆·뒤(점)가 단단해지고, 옆에서 보면 발 아치(초록)가 올라온다. 엄지 아래가 뜨면 힘을 줄인다."},
+    "한쪽 다리로 체중 받치기. 한쪽 뒤꿈치를 살짝 들어 체중을 반대 다리에 30초 싣고, 골반은 수평으로 둔다. 좌우 번갈아. 엉덩이 속근육은 한 발로 체중을 받칠 때 일한다. 루틴 B 한 발 서기를 대기 시간에 하는 것이다.",
+    "서 있다가 엉덩이나 다리가 아파 오면 참고 버티지 않는다. 난간, 쇼핑카트, 책상에 팔을 얹고 상체를 숙여 20~30초 기대어 쉰다. 협착 통증은 허리를 굽히면 가라앉는다. 쉬고 나서 다시 서거나 걷는다.",
+    {fig:"leanRest",cap:"✕ 아플 때 흔히 하는 허리 뒤로 젖히기는 협착에서 신경 통로를 더 좁힌다. ○ 팔을 얹고 앞으로 기대면 허리가 굽는 방향이라 통로가 넓어진다. 쇼핑카트를 밀 때 걷기가 편한 것과 같은 이치다."},
+    "오래 앉았다가 일어난 직후에는 책상을 잡고 한 발을 뒤로 빼, 꼬리뼈를 말아 넣고 뒷다리 엉덩이를 조인 채 30초. 루틴 A의 고관절 앞 스트레칭을 선 채로 하는 것이다. 허리가 젖혀지면 틀린 자세다.",
+    "앉아서 쉴 때는 의자 4자 스트레칭. 아픈 쪽 발목을 반대쪽 무릎 위에 올리고, 허리를 편 채 상체를 앞으로 숙여 엉덩이 뒤가 당기는 곳에서 30초 호흡한다. 좌우. 엉덩이 속근육(이상근 등)을 늘리는 자세이고, 숙이는 방향이라 협착에도 무리가 없다.",
+    {fig:"figure4",cap:"앞에서 본 모양. 발목을 반대 무릎 위에 얹으면 그쪽 무릎이 바깥으로 벌어진다. 등을 둥글게 말지 말고, 허리를 편 채 고관절에서 접듯이 숙인다. 허리를 젖혀 가슴을 내밀 필요는 없다. 엉덩이 뒤쪽이 당기면 거기서 멈춘다."},
+    "4자 스트레칭은 다리 꼬기와 다르다. 무릎이 몸 안쪽으로 모이는 다리 꼬기는 엉덩이 바깥 힘줄을 누르지만, 4자는 무릎이 바깥으로 벌어진다. 사타구니 앞이 끼이듯 아프면 숙이는 정도를 줄이고, 다리 뒤로 저림이 내려가면 중단한다. 앉아서 무릎 밀기와 케겔도 쉬는 시간에 그대로 할 수 있다.",
+    "기다리는 동안 하지 않을 것: 허리를 뒤로 젖히는 스트레칭, 짝다리, 서서 다리 꼬기."]},
   {h:"걷는 자세",items:[
     "2026-09-16 발 진단 뒤의 기준은 위의 보행 교정 체크리스트 8개다. 출퇴근은 교정화(860 v15)로 걷고, 아래의 인솔 항목은 단화를 신는 날에 해당한다.",
     "두 발 사이 간격을 지금보다 좁힌다. 한 줄 위를 지나간다는 느낌으로. 내전근이 약해 다리가 바깥으로 흐르는 것을 걸음마다 되돌리는 방법이다.",
