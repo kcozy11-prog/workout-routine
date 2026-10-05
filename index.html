@@ -295,7 +295,7 @@
   <div id="goalArea"></div>
   <div class="days" id="dayStrip"></div>
   <div class="today-label" id="todayLabel"></div>
-  <div class="addbar"><span class="lbl">오늘 추가</span><button data-add="C">헬스장 C</button><button data-add="D">집 D</button><button data-add="R">내전근 풀기</button></div>
+  <div class="addbar"><span class="lbl">오늘 추가</span><button data-add="C">헬스장 C</button><button data-add="D">집 D</button><button data-add="R">내전근 풀기</button><button data-add="W">엉덩이 10분</button></div>
   <div id="planArea"></div>
 </section>
 
@@ -426,6 +426,8 @@ const EX = {
   seatedHipPush:{n:"앉아서 무릎 바깥으로 밀기",d:"5초 밀기 10회, 오전·오후",sets:2,setLbl:["오전","오후"],timed:{work:5,rest:5,reps:10},ph:{w:"바깥으로 밀기",r:"풀기"},w:"의자에 앉아 손바닥이나 무릎에 감은 밴드에 대고 무릎을 바깥으로 미는 등척성 운동. 고관절을 굽힌 자세에서는 엉덩이 속근육과 중둔근이 다리를 벌리는 일을 함께 맡는다. 앉은 채로 그 근육을 켤 수 있고, 관절을 거의 움직이지 않는 수축이라 엉덩이가 아픈 날에도 하기 쉽다. 하루 대부분 앉아 있는 동안 꺼져 있던 엉덩이를 오전·오후 두 번 깨운다.",s:["의자에 골반을 세우고 앉는다. 두 발은 바닥에, 무릎은 골반 너비. 카피스코 안장 자세도 좋다.","양손을 무릎 바깥에 대거나 무릎 바로 위에 밴드를 감는다.","숨을 내쉬며 무릎을 바깥으로 5초 민다. 힘은 최대의 30~50%. 손이 버텨 무릎은 거의 움직이지 않는다.","5초 풀기. 10회. 처음 몇 번은 한 손으로 엉덩이 옆 오목한 곳을 짚어 그곳이 단단해지는지 확인한다."],c:"숨을 참지 않는다. 허벅지 앞쪽만 단단해지면 힘을 줄이고 골반을 다시 세운다. 엉덩이가 찌르듯 아프면 힘을 절반으로.",figs:[{k:"seatedPush",cap:"앞에서 본 모양. 손을 무릎 바깥에 대고 무릎으로 손을 5초 민다. 손이 버티므로 무릎은 거의 움직이지 않는다. 엉덩이 옆·뒤 깊은 곳이 단단해지면 맞다. 밴드를 무릎 위에 감아도 같다."}]},
   copenhagenShort:{n:"무릎 코펜하겐",d:"좌우 15초 버티기 2세트",sets:4,setLbl:["왼 1","오 1","왼 2","오 2"],timed:{work:15,rest:15},w:"옆으로 누워 위쪽 무릎 안쪽을 의자나 스텝박스에 걸치고 골반을 들어 버티는 내전근 근력 운동. 풋샵 소견은 허벅지 안쪽이 '짧아지고 붙었다'는 것이고, 이전 판단은 내전근이 약해 무릎이 벌어진다는 것이었다. 둘은 함께 맞을 수 있다. 늘리기만 하면 약한 채로 남으므로, 개구리 자세로 연 범위를 이 동작으로 버티게 만든다. 근력 운동이 가동범위를 늘리는 데에도 스트레칭과 차이가 없었다는 메타분석이 있다. 축구 선수 대상 무작위 연구에서 사타구니 문제를 줄인 코펜하겐 내전근 운동을, 무릎으로 받쳐 가볍게 만든 것이다.",s:["의자나 스텝박스 옆에 옆으로 눕는다. 아래 팔꿈치는 어깨 바로 아래.","위쪽 다리의 무릎 안쪽을 의자 위에 걸친다. 정강이까지 의자에 올려도 된다. 아래 다리는 무릎을 굽혀 바닥 가까이 두되 체중은 싣지 않는다. 힘들면 그 발끝을 바닥에 살짝 대어 돕는다.","위 무릎으로 의자를 아래로 누르며 골반을 들어 어깨-골반-무릎을 한 줄로. 15초 버틴다.","내려와 15초 쉬고 반대쪽. 좌우 2세트. 쉬워지면 시간을 20~30초로 늘리고, 그다음에 아래 다리를 의자 쪽으로 들어 올리는 동작을 더한다."],c:"사타구니 한 지점이 찌르듯 아프면 즉시 중단하고 루틴 R의 기준을 따른다. 허벅지 안쪽 근육통이 남아 있는 날(루틴 R을 켠 날)은 건너뛴다. 골반이 처지거나 뒤로 넘어가면 시간을 줄인다. 어깨가 아프면 무릎 사이드 브릿지부터.",figs:[{k:"copenhagen",cap:"위 무릎 안쪽을 의자에 걸치고 아래로 누르며 골반을 든다. 일하는 것은 위 다리의 허벅지 안쪽이다. 어깨-골반-무릎이 한 줄(점선)이 되게 버티고, 아래 다리는 굽혀 체중을 싣지 않는다."}]},
   screwFeet:{n:"발로 바닥 비틀기",d:"5초 10회",sets:1,timed:{work:5,rest:3,reps:10},ph:{w:"무릎 바깥으로",r:"풀기"},w:"두 발을 바닥에 박아 둔 채 무릎을 바깥으로 돌리려는 힘만 주는 등척성 운동. 엉덩이 옆·뒤 깊은 곳(속근육)이 켜지고 발 아치가 함께 올라간다. 출근 걷기 직전 현관에서 하면 엉덩이가 켜진 상태로 걷기를 시작한다. 줄 서기·신호 대기에서 해도 남이 알아채지 못한다.",s:["신발을 신고 현관에 선다. 발은 골반 너비, 발끝은 정면. 뒤꿈치·엄지 아래·새끼 아래 세 점으로 바닥을 누른다.","발은 움직이지 않게 둔 채, 두 무릎을 바깥으로 돌리려는 힘을 5초 준다. 무릎이 실제로 많이 돌아가지 않아도 된다.","엉덩이 옆·뒤가 단단해지고 발 아치가 올라오는지 느낀다. 3초 풀기.","10회."],c:"발이 바깥 날로 넘어가면 힘이 너무 크다. 엄지발가락 아래가 뜨지 않는 만큼만. 무릎을 꽉 펴서 잠그지 않는다.",figs:[{k:"screwFeet",cap:"발은 그대로 두고 무릎만 바깥으로 돌리려는 힘을 준다. 엉덩이 옆·뒤(점)가 단단해지고, 옆에서 보면 발 아치(초록)가 올라온다. 엄지 아래가 뜨면 힘을 줄인다."}]},
+  legsUpRest:{n:"의자에 종아리 올리고 눕기",d:"5분",sets:1,timed:{work:300,rest:0},w:"바닥에 누워 종아리를 의자나 소파에 올려 고관절과 무릎을 90도로 두는 휴식 자세. 하루 서 있고 걸으며 젖혀진 허리를, 힘들이지 않고 굽힌 자세로 쉬게 한다. 협착은 허리를 굽히면 신경 통로가 넓어지므로 같은 원리다. 다리 붓기에도 편하다. 퇴근해서 가장 먼저 한다.",s:["바닥에 매트를 깔고 누워 종아리를 의자 시트나 소파 위에 올린다.","엉덩이를 의자 쪽으로 당겨 고관절과 무릎이 모두 90도쯤 되게 한다. 허리 아래가 바닥에 편히 닿으면 맞다.","팔은 몸 옆에 두고 배로 천천히 숨쉰다. 5분. 휴대폰은 내려놓는다.","일어날 때는 다리를 내리고 옆으로 굴러 일어난다."],c:"의자가 높아 허벅지 뒤가 당기거나 엉덩이가 들리면 더 낮은 것(소파, 상자)을 쓴다. 다리가 저리면 엉덩이를 의자에서 조금 떨어뜨린다. 이 자세만 따로 시험한 연구는 없으므로 효과는 통증 기록으로 판단한다.",figs:[{k:"legsUp",cap:"옆에서 본 모양. 종아리를 의자 위에 올려 고관절과 무릎이 90도가 되면, 허리 아래가 힘을 주지 않아도 바닥에 닿는다(점선). 하루 동안 젖혀진 허리가 굽힌 쪽에서 쉰다."}]},
+  sideLyingAbd:{n:"옆으로 누워 다리 들기",d:"좌우 12회 2세트",sets:4,setLbl:["왼 1","오 1","왼 2","오 2"],counter:12,w:"옆으로 누워 위쪽 다리를 곧게 편 채 천장 쪽으로 드는 동작. 흔히 하는 재활 운동 가운데 중둔근 근전도가 가장 높게 나온 동작이다(DiStefano 2009). 클램쉘이 무릎을 굽힌 채 고관절을 돌리는 동작이라면, 이것은 다리 전체 무게를 엉덩이 옆이 버티는 동작이다.",s:["옆으로 누워 아래 무릎은 굽혀 받치고, 위 다리는 몸과 일직선으로 곧게 편다. 등을 벽에 대면 몸이 뒤로 넘어가지 않는다.","발끝은 정면 또는 살짝 아래. 발끝이 천장을 보면 허벅지 앞 근육이 대신 일한다.","뒤꿈치로 이끌듯 다리를 골반 높이보다 조금 위까지 들어 1초 멈추고, 3초에 걸쳐 내린다.","12회 후 반대쪽. 2세트."],c:"다리를 앞으로 가져오며 들면 엉덩이 옆이 아니라 허벅지 앞이 일한다. 다리는 몸과 일직선이거나 살짝 뒤로. 허리를 비틀어 들지 않는다. 아래쪽 엉덩이 뼈 돌기가 눌려 아프면 쿠션을 깔고, 그래도 아프면 이 동작은 빼고 클램쉘만 한다.",figs:[{k:"sideLyingAbd",cap:"앞에서 본 모양. 위 다리를 몸과 일직선(점선)에서 시작해 뒤꿈치로 이끌듯 든다. 엉덩이 옆(점)이 일해야 맞다. 다리가 몸 앞으로 오거나 발끝이 천장을 보면 허벅지 앞이 대신 일한다."}]},
   reliefHeat:{n:"허벅지 안쪽 온찜질",d:"10~15분",sets:1,w:"운동 다음 날부터 남는 뭉침에는 냉찜질보다 온찜질입니다. 근육이 이완되고 혈류가 늘어 뻣뻣함이 줄어듭니다.",s:["핫팩이나 따뜻한 물을 담은 텀블러를 옷 위에 대고 허벅지 안쪽을 10~15분 데운다.","자리에 앉아 일하면서 그대로 두어도 된다.","데운 직후에 위의 이완 동작을 하면 훨씬 잘 풀린다."],c:"맨살에 직접 대지 않는다. 붓기나 열감이 있고 한 지점이 콕 아프면 온찜질보다 진료가 먼저다."}
 };
 /* 저녁 발 관리용 복제. 아침·사무실의 같은 동작과 체크가 섞이지 않게 키를 나눈다 */
@@ -437,7 +439,7 @@ EX.oneLegDoor=Object.assign({},EX.officeOneLeg,{n:"한 발 서기 (현관)",d:"�
 /* 2026-09-16 발 진단 뒤 추가한 교정 운동. 루틴과 사전에 '발목 교정' 표시가 붙고, 기록 탭에서 완료율을 따로 본다 */
 const FIX_KEYS=["frog","shortFoot","calfBall","officeOneLeg","clamshell","ballFootEve","wallCalfEve","frogEve"];
 /* 2026-10-02 풋샵 소견 뒤 추가한 엉덩이·협착 운동. '엉덩이' 표시가 붙고, 기록 탭에서 완료율과 엉덩이 통증을 함께 본다 */
-const HIP_KEYS=["ballGlute","kneeChest","hipFlexor","seatedHipPush","copenhagenShort","screwFeet","oneLegDoor"];
+const HIP_KEYS=["ballGlute","kneeChest","hipFlexor","seatedHipPush","copenhagenShort","screwFeet","oneLegDoor","legsUpRest","sideLyingAbd"];
 /* 보행 교정 체크리스트. 일상 습관 탭에서 날짜별로 체크한다 (S.gait[날짜]=체크한 번호들) */
 const GAIT_ITEMS=[
   "턱을 뒤로 당기고 정수리를 위로 끌어올린다",
@@ -461,16 +463,17 @@ const BRIDGE_STAGES=[
   {d:"덤벨 10회 3세트",t:"골반 위에 무게",w:"9주~",s:"무게"}
 ];
 const STRENGTH_KEYS=["rdl","chestRow","facePull","sidePlank","kbDeadlift","boxHeelRaise","singleLegStand","bandSideStep"];
-const RCOLOR={WALK:"#4A6FA5",A:"#C28A2B",B:"#3A8F8A",C:"#2F5D3A",D:"#8A6D3B",SAT:"#6B6B62",SUN:"#9C9C93",BOW:"#6B6B62",INT:"#6B6B62",R:"#7A3B2E",EVE:"#5C6BA6"};
-const RSHORT={WALK:"걷기",A:"A",B:"B",C:"C",D:"D",SAT:"토",SUN:"휴식",BOW:"108배",INT:"인터벌",R:"R",EVE:"저녁"};
+const RCOLOR={WALK:"#4A6FA5",A:"#C28A2B",B:"#3A8F8A",C:"#2F5D3A",D:"#8A6D3B",SAT:"#6B6B62",SUN:"#9C9C93",BOW:"#6B6B62",INT:"#6B6B62",R:"#7A3B2E",EVE:"#5C6BA6",W:"#8A5A44"};
+const RSHORT={WALK:"걷기",A:"A",B:"B",C:"C",D:"D",SAT:"토",SUN:"휴식",BOW:"108배",INT:"인터벌",R:"R",EVE:"저녁",W:"W"};
 
 const ROUTINES = {
   WALK:{title:"출퇴근 걷기",sub:"편도 30~35분",items:["commuteWalk"],key:"commuteWalk"},
   A:{title:"루틴 A, 기상 직후",sub:"매트 10분 + 현관 1분",items:["_매트","foamThoracic","toeSpread","towelCurl","frog","hipFlexor","gluteBridge","_현관 1분, 출근 걷기 직전","screwFeet","oneLegDoor"],key:"gluteBridge",extra:"이것만 하면 성공: 브릿지. 개구리 자세는 2026-09-16 매장 권고(아침·저녁)로 넣었습니다. 고관절 앞 스트레칭은 2026-10-02 풋샵 소견 뒤 브릿지 바로 앞에 넣었습니다. 반드시 골반을 말아 넣은 ○ 자세로. 캣카우는 폼롤러 흉추 신전이 대신합니다. 이 루틴은 허리를 반복해 굽히거나 젖히는 동작 없이 짜여 있습니다. 기상 후 한 시간은 굽힘을, 협착 때문에 젖힘을 피하기 때문입니다. 현관 1분은 엉덩이를 켠 채 걷기를 시작하려는 것입니다. 시간이 없는 날은 고관절 앞 스트레칭 좌우 30초, 브릿지 1세트, 현관 1분만 해도 성공으로 칩니다."},
   B:{title:"루틴 B, 사무실 틈틈이",sub:"오전·오후, 합쳐서 22분",items:["_자세 세트 — 오전 1회, 오후 1회","chinTuck","bandRow","wallSlide","kegel","seatedHipPush","_발·종아리·균형 — 하루 한 번","stretchBoard","ballFoot","shortFoot","calfBall","officeOneLeg"],key:"kegel",extra:"자세 세트는 오전·오후를 각각 체크합니다. 버스나 지하철에서는 턱 당기기, 케겔, 쇼트풋을 그대로. 쇼트풋·공 끼운 뒤꿈치 들기·한 발 서기는 2026-09-16 발 진단의 교정 운동입니다. 앉아서 무릎 밀기는 2026-10-02 풋샵 소견 뒤 넣은 것으로, 앉은 채 엉덩이 속근육을 깨웁니다."},
-  C:{title:"루틴 C, 헬스장",sub:"월·목, 35분",items:["_준비운동, 중둔근 깨우기","clamshell","_본운동","rdl","chestRow","facePull","gluteBridge","sidePlank"],key:"gluteBridge",extra:"당기는 동작(로우 4세트, 페이스풀 3세트)을 미는 동작보다 많게 잡았습니다. 힙 스러스트 자리는 단계별 브릿지 — 4단계에 이르면 그 칸에서 덤벨을 얹습니다. 이것만 하면 성공: 브릿지."},
-  D:{title:"루틴 D, 집 케틀벨",sub:"화·금, 28분",items:["_준비운동, 중둔근 깨우기","clamshell","_본운동","kbDeadlift","gluteBridge","boxHeelRaise","singleLegStand","bandSideStep","copenhagenShort","wallCalf"],key:"gluteBridge",extra:"클램쉘은 준비운동, 밴드 사이드 스텝과 무릎 코펜하겐이 마무리, 벽 밀기는 정리 운동입니다. 무릎 코펜하겐은 2026-10-02 풋샵 소견(허벅지 안쪽이 짧아지고 붙음) 뒤, 개구리 자세로 연 범위에 힘을 붙이려고 넣었습니다. 이것만 하면 성공: 브릿지."},
-  EVE:{title:"저녁 발·엉덩이 관리",sub:"매일 저녁, 12분",items:["ballFootEve","ballGlute","wallCalfEve","frogEve","kneeChest"],key:"ballFootEve",pain:true,extra:"발은 2026-09-16 매장 권고, 엉덩이는 2026-10-02 풋샵 소견. 하루 걷고 난 발바닥과 종아리를 풀고, 엉덩이 옆 오목한 곳을 눌러 속근육을 풀고, 고관절 안쪽을 연 뒤, 무릎 가슴 당기기로 젖혀진 허리를 되돌리고 잠자리에 듭니다. 볼로 푼 효과는 오래가지 않으므로 다음 날 아침 브릿지와 사무실의 무릎 밀기로 이어 붙입니다. 통증이 생긴 날은 아래 칸에 어디가, 어떤 자세에서 아픈지 남깁니다."},
+  C:{title:"루틴 C, 헬스장",sub:"월·목, 38분",items:["_준비운동, 엉덩이 풀고 깨우기","ballGlute","clamshell","_본운동","rdl","chestRow","facePull","gluteBridge","sidePlank"],key:"gluteBridge",extra:"준비운동 맨 앞의 엉덩이 볼은 저녁 블록과 같은 칸입니다. 여기서 하면 저녁에는 이미 체크되어 있으니 건너뜁니다. 볼은 가방에 넣어 다닙니다. 풀고 바로 클램쉘로 깨우고 본운동으로 힘을 쓰는 순서이고, 잠들기 1시간 전까지는 마칩니다. 당기는 동작(로우 4세트, 페이스풀 3세트)을 미는 동작보다 많게 잡았습니다. 힙 스러스트 자리는 단계별 브릿지 — 4단계에 이르면 그 칸에서 덤벨을 얹습니다. 이것만 하면 성공: 브릿지."},
+  D:{title:"루틴 D, 집 케틀벨",sub:"화·금, 31분",items:["_준비운동, 엉덩이 풀고 깨우기","ballGlute","clamshell","_본운동","kbDeadlift","gluteBridge","boxHeelRaise","singleLegStand","bandSideStep","copenhagenShort","wallCalf"],key:"gluteBridge",extra:"엉덩이 볼과 클램쉘이 준비운동입니다. 엉덩이 볼은 저녁 블록과 같은 칸이라 여기서 하면 저녁에는 건너뜁니다. 밴드 사이드 스텝과 무릎 코펜하겐이 마무리, 벽 밀기는 정리 운동입니다. 잠들기 1시간 전까지는 마칩니다. 무릎 코펜하겐은 2026-10-02 풋샵 소견(허벅지 안쪽이 짧아지고 붙음) 뒤, 개구리 자세로 연 범위에 힘을 붙이려고 넣었습니다. 이것만 하면 성공: 브릿지."},
+  EVE:{title:"저녁 발·엉덩이 관리",sub:"매일 저녁, 17분",items:["legsUpRest","ballFootEve","ballGlute","wallCalfEve","frogEve","kneeChest"],key:"ballFootEve",pain:true,extra:"의자에 종아리 올리고 눕기는 퇴근해서 가장 먼저, 5분. 근력 날 준비운동에서 엉덩이 볼을 이미 했다면 여기에는 체크되어 있으니 건너뜁니다. 발은 2026-09-16 매장 권고, 엉덩이는 2026-10-02 풋샵 소견. 하루 걷고 난 발바닥과 종아리를 풀고, 엉덩이 옆 오목한 곳을 눌러 속근육을 풀고, 고관절 안쪽을 연 뒤, 무릎 가슴 당기기로 젖혀진 허리를 되돌리고 잠자리에 듭니다. 볼로 푼 효과는 오래가지 않으므로 다음 날 아침 브릿지와 사무실의 무릎 밀기로 이어 붙입니다. 통증이 생긴 날은 아래 칸에 어디가, 어떤 자세에서 아픈지 남깁니다."},
+  W:{title:"루틴 W, 근력 없는 날 저녁",sub:"선택, 10분",items:["sideLyingAbd","clamshell","deadBug"],key:"sideLyingAbd",extra:"수요일처럼 근력 운동이 없는 날, 여유가 있을 때만 '오늘 추가'에서 켭니다. 엉덩이 옆(중둔근)과 속근육, 허리를 붙인 채 버티는 코어를 가볍게 다룹니다. 피곤한 날은 생략하고, 근력은 주 3회 기준 그대로입니다. 아래쪽 엉덩이 뼈 돌기가 눌려 아프면 옆으로 누워 다리 들기는 빼고 클램쉘만 합니다."},
   SAT:{title:"토요일",sub:"놀이터",items:["hang","hangNegative"],key:"hang",extra:"매달리기는 스톱워치로 시간을 기록해 주마다 늘어나는지 봅니다. 네거티브는 선택. 발바닥과 종아리, 엉덩이는 저녁 발·엉덩이 관리에서 풀어 줍니다."},
   SUN:{title:"일요일, 회복",sub:"완전 휴식",items:["lacrosseLight"]},
   BOW:{title:"108배 (선택)",sub:"15~20분",items:["bow108"],extra:"하면 좋고 안 해도 되는 항목입니다. 필수는 근력 3회와 단백질뿐. 몸이 데워진 저녁이나 여유 있는 오전이 안전하고, 마치고 종아리와 허벅지 앞을 30초씩 늘려 주면 다음 날이 가볍습니다."},
@@ -481,7 +484,7 @@ const WEEK = [
   {name:"일",plan:["SUN","EVE"],note:"완전히 쉬는 것도 계획의 일부입니다."},
   {name:"월",plan:["WALK","A","B","C","EVE"],note:"헬스장 30분. 이것만 하면 성공은 브릿지."},
   {name:"화",plan:["WALK","A","B","D","EVE"],note:"집 케틀벨 20분."},
-  {name:"수",plan:["WALK","A","B","EVE"],note:"쉬는 날. 걷기와 아침·사무실 루틴만."},
+  {name:"수",plan:["WALK","A","B","EVE"],note:"쉬는 날. 걷기와 아침·사무실 루틴만. 저녁에 여유가 있으면 '오늘 추가'에서 엉덩이 10분."},
   {name:"목",plan:["WALK","A","B","C","EVE"],note:"헬스장 30분."},
   {name:"금",plan:["WALK","A","B","D","EVE"],note:"집 케틀벨 20분."},
   {name:"토",plan:["SAT","EVE"],note:"철봉과 발 관리. 근력은 주 4일 중 3일만 해도 성공입니다."}
@@ -1057,6 +1060,30 @@ const FIGS = {
     +'<path class="gr" d="M192,100 L232,118"/><text class="sm" x="234" y="122">발목을 반대 무릎 위에</text>'
     +'<text class="sm" x="234" y="34">허리를 편 채</text><text class="sm" x="234" y="46">상체를 앞으로 숙여</text><text class="sm" x="234" y="58">엉덩이 뒤가 당기는 곳</text>'
     +'<text class="sm" x="172" y="168" text-anchor="middle">앞에서 본 모양, 좌우 30초</text></svg>',
+  legsUp:'<svg viewBox="0 52 340 108" role="img" aria-label="의자에 종아리 올리고 눕기, 옆에서 본 모양">'
+    +'<path class="gr" d="M20,138 L320,138"/>'
+    +'<rect class="box" x="176" y="88" width="104" height="10"/><path class="gr" d="M182,98 L182,138 M274,98 L274,138"/>'
+    +'<circle class="ln good" cx="52" cy="124" r="10"/><path class="ln good" d="M63,128 L160,130"/>'
+    +'<path class="ln good" d="M160,130 L164,86 L262,86"/>'
+    +'<path class="gd" d="M110,136 C126,132 146,132 160,136"/>'
+    +'<path class="gr" d="M160,118 L172,118 L172,130"/><path class="gr" d="M164,98 L176,98 L176,86"/>'
+    +'<text class="sm" x="154" y="100" text-anchor="end">고관절·무릎 90도</text>'
+    +'<text class="sm" x="228" y="76" text-anchor="middle">종아리는 의자 위에</text>'
+    +'<text class="sm" x="132" y="154" text-anchor="middle">허리 아래가 바닥에 편히 닿는다(점선)</text></svg>',
+  sideLyingAbd:'<svg viewBox="0 56 340 108" role="img" aria-label="옆으로 누워 다리 들기, 앞에서 본 모양">'
+    +'<path class="gr" d="M20,140 L320,140"/>'
+    +'<circle class="ln good" cx="44" cy="110" r="10"/>'
+    +'<path class="ln good" d="M40,121 L44,138 L74,138"/>'
+    +'<path class="ln good" d="M55,112 L150,118"/>'
+    +'<path class="ln lt" d="M150,124 L190,138 L170,138"/>'
+    +'<path class="gd" d="M150,118 L300,124"/>'
+    +'<path class="ln good" d="M150,118 L292,78"/>'
+    +'<path class="gr" d="M268,120 A44,44 0 0 0 262,90"/><path class="dot" d="M260,86 L257,95 L266,94 Z"/>'
+    +'<circle class="dot" cx="150" cy="114" r="3"/>'
+    +'<text class="sm" x="296" y="72" text-anchor="end">뒤꿈치로 이끌듯</text>'
+    +'<text class="sm" x="324" y="136" text-anchor="end">몸과 일직선(점선)에서 시작</text>'
+    +'<path class="gr" d="M146,110 L124,86"/><text class="sm" x="124" y="80" text-anchor="middle">엉덩이 옆이 일한다</text>'
+    +'<text class="sm" x="170" y="156" text-anchor="middle">아래 무릎은 굽혀 받치고, 위 다리는 곧게, 발끝은 정면</text></svg>',
   sleepSide:'<svg viewBox="0 0 340 200" role="img" aria-label="옆으로 누운 자세, 위 다리가 앞으로 떨어진 것과 긴 베개로 받친 것 비교">'
     +'<path class="ln bad mk" d="M8,6 L20,18 M20,6 L8,18"/>'
     +'<path class="gr" d="M14,90 L326,90"/>'
@@ -1153,6 +1180,14 @@ const HABITS = [
     "아침에 하지 않을 것. (1) 반복해 굽히는 동작: 무릎 가슴 당기기, 108배, 서서 발끝 닿기, 윗몸일으키기. 무릎 가슴 당기기는 저녁에 한다. (2) 허리를 젖히는 동작: 엎드려 상체를 드는 코브라, 서서 허리 뒤로 젖히기.",
     "현관 1분. 출근 걷기 직전에 발로 바닥 비틀기 10회와 한 발 서기 좌우 30초. 엉덩이가 켜진 상태로 걷기 시작하면 보행 체크리스트의 '엄지발가락 아래로 밀어내기'와, 걷는 자세 칸의 '뒷발이 떠날 때 엉덩이가 조여지는지'가 쉬워진다. 루틴 A 끝에 체크와 타이머가 있다.",
     "시간이 없는 날의 3분판. 고관절 앞 스트레칭 좌우 30초, 브릿지 1세트, 현관 1분. 이것만 해도 루틴 A는 성공으로 친다."]},
+  {h:"저녁, 퇴근 후",items:[
+    "퇴근해서 가장 먼저 의자에 종아리 올리고 눕기 5분. 하루 서 있고 걸으며 젖혀진 허리를 굽힌 자세로 쉬게 한다. 저녁 블록 맨 앞에 타이머가 있다.",
+    "저녁은 허리를 굽히는 동작의 시간이다. 낮 동안 디스크의 수분이 빠져 아침보다 굽힘에 덜 약하다(Adams 1987). 무릎 가슴 당기기와 108배는 저녁에 한다.",
+    "근력 날의 순서. 엉덩이 볼 좌우, 클램쉘, 본운동, 그다음 저녁 블록의 나머지. 볼로 푼 효과는 30분 안팎이면 사라지므로 풀고 곧바로 깨우고 힘을 쓴다. 볼은 하루 한 번이면 되고, 근력 날은 준비운동에서 해서 저녁 블록에서는 건너뛴다.",
+    "근력 없는 날(수요일 등)에 여유가 있으면 주간 계획의 '오늘 추가'에서 '엉덩이 10분'(루틴 W)을 켠다. 옆으로 누워 다리 들기, 클램쉘, 데드버그. 피곤하면 생략한다. 근력은 주 3회 기준 그대로다.",
+    "걷기가 엉덩이 통증으로 힘든 날은 실내 자전거 20분으로 바꾼다. 상체가 숙여진 자세라 협착에 편하다.",
+    "숨이 차는 운동(헬스장, 케틀벨)은 잠들기 1시간 전까지 끝낸다. 저녁 운동은 대체로 잠을 해치지 않지만, 잠들기 1시간 안에 끝낸 격한 운동은 잠드는 시간과 수면 효율을 나쁘게 할 수 있다(Stutz 2019). 그 뒤에는 저녁 블록처럼 가벼운 것만 한다.",
+    "소파에 비스듬히 기대 휴대폰을 보지 않는다. 허리는 말리고 목은 앞으로 빠진다. 쉬고 싶으면 의자에 종아리 올리고 눕기를 한 번 더 한다."]},
   {h:"앉은 자세",items:[
     "카피스코는 세 자세를 돌아가며 앉는 의자다. 기본은 안장 자세: 시트를 올려 고관절이 무릎보다 높게, 다리를 벌려 앞으로 앉는다. 골반이 저절로 서고 다리를 꼴 수 없는 구조라, 다리 꼬는 습관은 따로 고치는 게 아니라 이 자세가 고친다.",
     {fig:"capisco",cap:"1 안장 — 시트를 올려 고관절이 무릎보다 높게. 협착에 가장 편한 앉기이고 케겔도 이 자세에서 잘 된다. 2 등받이 앞으로 — 의자를 돌려 등받이를 가슴에 대고 앉는다. 라운드숄더가 물리적으로 막힌다. 3 반 서기 — 시트를 최대로 올려 엉덩이만 걸친다. 40분마다 하나씩 바꾼다."},
@@ -1665,9 +1700,10 @@ function renderDict(){
    ["사무실 루틴 B","chinTuck bandRow wallSlide kegel seatedHipPush stretchBoard ballFoot shortFoot calfBall officeOneLeg"],
    ["헬스장 루틴 C","clamshell rdl chestRow facePull gluteBridge sidePlank oneArmRow"],
    ["집 루틴 D","clamshell kbDeadlift boxHeelRaise singleLegStand bandSideStep copenhagenShort wallCalf"],
-   ["저녁 발·엉덩이 관리, 매일","ballFootEve ballGlute wallCalfEve frogEve kneeChest"],
+   ["저녁 발·엉덩이 관리, 매일","legsUpRest ballFootEve ballGlute wallCalfEve frogEve kneeChest"],
+   ["근력 없는 날 저녁 W, 선택","sideLyingAbd clamshell deadBug"],
    ["토요일","hang hangNegative"],
-   ["선택","hip9090 deadBug sideBridgeKnee doorStretch heelRaise bow108 intervalWalk walk"],
+   ["선택","hip9090 sideBridgeKnee doorStretch heelRaise bow108 intervalWalk walk"],
    ["뭉쳤을 때 루틴 R","reliefWalk reliefSqueeze reliefOpen reliefPress reliefSideShift reliefHeat"],
    ["이전 동작, 참고용","pelvicTilt catcow chestOpen scapRetraction extRotation ringSqueeze treadmill hipAbduction stepUp latPulldown seatedRow innerThigh gobletSquat bulgarian birdDog bandPullApart"]
   ].forEach(([title,keys])=>{
@@ -1950,8 +1986,8 @@ function bindBackup(){
 /* ---------- 발목 교정 완료율 (2026-09-16 진단) ---------- */
 function keyStats(dk,i,keys){
   const all=WEEK[i].plan.concat((S.extra[dk]||[]).filter(k=>ROUTINES[k]&&!WEEK[i].plan.includes(k)));
-  let done=0,tot=0;
-  all.forEach(rk=>ROUTINES[rk].items.forEach(k=>{if(k.charAt(0)==="_"||!keys.includes(k))return;const st=getSets(dk,k);tot+=st.length;done+=st.filter(Boolean).length;}));
+  let done=0,tot=0;const seen=[];
+  all.forEach(rk=>ROUTINES[rk].items.forEach(k=>{if(k.charAt(0)==="_"||!keys.includes(k)||seen.includes(k))return;seen.push(k);const st=getSets(dk,k);tot+=st.length;done+=st.filter(Boolean).length;}));
   return {done:done,tot:tot};
 }
 function fixStats(dk,i){return Object.assign(keyStats(dk,i,FIX_KEYS),{gait:(S.gait[dk]||[]).length});}
@@ -1973,7 +2009,7 @@ function hipSummaryHTML(dks){
   let h='<div class="rec-sec"><h3>엉덩이·협착 관리 완료율</h3>';
   h+='<div class="fix-line">엉덩이 운동 세트 <b>'+(t?Math.round(d/t*100):0)+'%</b> ('+d+' / '+t+')</div>';
   h+='<table><thead><tr><th>요일</th><th>엉덩이 운동 세트</th><th>엉덩이 통증</th></tr></thead><tbody>'+rows+'</tbody></table>';
-  h+='<p class="note">엉덩이 표시가 붙은 동작(엉덩이 옆 볼, 무릎 가슴 당기기, 고관절 앞 스트레칭, 앉아서 무릎 밀기, 무릎 코펜하겐, 현관 1분의 바닥 비틀기와 한 발 서기)의 세트 완료와, 주간 계획 하단 몸 상태 칸의 엉덩이 통증(0 없음, 10 심함)을 나란히 놓은 것입니다. 완료율이 쌓이는 동안 통증 숫자가 내려가는지를 봅니다. 6주가 지나도 그대로면 진료를 받습니다.</p></div>';
+  h+='<p class="note">엉덩이 표시가 붙은 동작(엉덩이 옆 볼, 무릎 가슴 당기기, 고관절 앞 스트레칭, 앉아서 무릎 밀기, 무릎 코펜하겐, 현관 1분의 바닥 비틀기와 한 발 서기, 의자에 종아리 올리고 눕기, 옆으로 누워 다리 들기)의 세트 완료와, 주간 계획 하단 몸 상태 칸의 엉덩이 통증(0 없음, 10 심함)을 나란히 놓은 것입니다. 완료율이 쌓이는 동안 통증 숫자가 내려가는지를 봅니다. 6주가 지나도 그대로면 진료를 받습니다.</p></div>';
   return h;
 }
 /* ---------- 체형 기록 (족저압, 발 유형, 소견. 재측정 비교) ---------- */
