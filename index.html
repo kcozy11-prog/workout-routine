@@ -121,8 +121,9 @@
   .ex-detail .cau{margin-top:7px;font-size:13.5px;color:#7A3B2E}
   .ex-detail .cau::before{content:"주의, "}
 
-  .tracker{margin-top:10px;padding-top:9px;border-top:1px solid #CBDACE;font-family:var(--sans)}
-  .tracker .lbl{font-size:12.5px;color:var(--ink-soft);margin-bottom:5px}
+  .tracker{margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid #CBDACE;font-family:var(--sans)}
+  .tracker .lbl,.exmemo .lbl{font-size:12.5px;color:var(--ink-soft);margin-bottom:5px}
+  .exmemo{margin-top:10px;padding-top:9px;border-top:1px solid #CBDACE;font-family:var(--sans)}
   .setrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px}
   .setrow button{min-width:48px;height:40px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:14px;color:var(--ink-soft);border-radius:3px;cursor:pointer}
   .setrow button.done{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -1422,9 +1423,11 @@ function trackerHTML(key,dk){
       +(e.counter?'<label>목표 횟수<input type="number" min="1" data-cfg="target" value="'+esc(c.target||"")+'" placeholder="'+e.counter+'"></label>':'')
       +'<button data-cfg-reset>기본으로</button></div></details>';
   }
-  const note=S.notes[setKey(dk,key)]||"";
-  h+='<div class="lbl" style="margin-top:6px">오늘 소감</div><textarea class="memo" data-memo placeholder="느낀 점, 통증 여부, 다음에 바꿀 것">'+esc(note)+'</textarea>';
   return h+'</div>';
+}
+function memoHTML(key,dk){
+  const note=S.notes[setKey(dk,key)]||"";
+  return '<div class="exmemo"><div class="lbl">오늘 소감</div><textarea class="memo" data-memo placeholder="느낀 점, 통증 여부, 다음에 바꿀 것">'+esc(note)+'</textarea></div>';
 }
 function cntLabel(dk,key){
   const e=EX[key],sets=getSets(dk,key),i=sets.findIndex(v=>!v);
@@ -1441,7 +1444,7 @@ function exRowHTML(key,dk,isKey){
     +'<div class="ex-head'+(dk?' ck':'')+'">'+(dk?'<input type="checkbox" class="exck" data-exck aria-label="'+esc(e.n)+' 완료"'+(getSets(dk,key).every(Boolean)?' checked':'')+'>':'')+'<span class="arrow">▸</span><span class="n">'+e.n+(isKey?'<span class="badge">핵심</span>':'')+(FIX_KEYS.includes(key)?'<span class="badge fix">발목 교정</span>':'')+(HIP_KEYS.includes(key)?'<span class="badge hip">엉덩이</span>':'')+'</span>'
     +(prog?'<span class="prog">'+prog+'</span>':'')
     +'<span class="d">'+exDose(key)+'</span></div>'
-    +'<div class="ex-detail">'+detailBaseHTML(e)+(dk?trackerHTML(key,dk):'')+'</div></div>';
+    +'<div class="ex-detail">'+(dk?trackerHTML(key,dk):'')+detailBaseHTML(e)+(dk?memoHTML(key,dk):'')+'</div></div>';
 }
 
 /* ---------- 세트 타이머 ---------- */
@@ -1516,6 +1519,23 @@ function refreshSetRow(exDiv){
   const rows=[...document.querySelectorAll('.ex[data-dk="'+dk+'"][data-ex="'+key+'"]')];
   if(!rows.includes(exDiv))rows.push(exDiv);
   rows.forEach(paintSetRow);
+  rows.map(r=>r.closest(".block")).filter((b,i,a)=>b&&a.indexOf(b)===i).forEach(autoBlockDone);
+}
+/* 블록의 모든 세트가 끝나면 블록을 'auto'로 체크해 접는다. 그 뒤 동작 하나를 되돌리면
+   자동으로 체크했던 블록만 다시 연다. 손으로 체크한 블록(true)은 건드리지 않는다 */
+function autoBlockDone(blk){
+  const rk=blk.id.replace(/^blk-/,""),first=blk.querySelector(".ex[data-dk]");
+  if(!first||!ROUTINES[rk])return;
+  const ck=first.dataset.dk+"|"+rk,inp=blk.querySelector(".block-head input");
+  let d=0,t=0;blk.querySelectorAll(".ex[data-dk]").forEach(x=>{const st=getSets(x.dataset.dk,x.dataset.ex);t+=st.length;d+=st.filter(Boolean).length;});
+  if(t>0&&d===t&&!S.checks[ck]){
+    S.checks[ck]="auto";saveState();if(inp)inp.checked=true;renderGoals();
+    clearTimeout(blk._fold);
+    blk._fold=setTimeout(()=>{if(!S.checks[ck])return;blk.classList.add("done");blk.classList.remove("open");const u=blk.querySelector(".unfold");if(u)u.textContent="펼치기";updateBlockProg(blk);},700);
+  }else if(d<t&&S.checks[ck]==="auto"){
+    delete S.checks[ck];saveState();if(inp)inp.checked=false;clearTimeout(blk._fold);
+    blk.classList.remove("done","open");updateBlockProg(blk);renderGoals();
+  }
 }
 function paintExCheck(exDiv){
   const ck=exDiv.querySelector("[data-exck]");if(!ck)return;
