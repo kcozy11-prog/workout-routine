@@ -107,6 +107,11 @@
   .ex-head .arrow{grid-column:1;grid-row:1/span 2;font-size:12px;color:var(--line-dark)}
   .ex-head .n{grid-column:2;grid-row:1;font-family:var(--sans);font-weight:700;font-size:16px;line-height:1.3}
   .ex-head .d{grid-column:2;grid-row:2;font-size:13px;color:var(--ink-soft);font-family:var(--sans);text-align:left;margin:0;line-height:1.3}
+  .ex-head.ck{grid-template-columns:26px 12px 1fr auto;column-gap:7px}
+  .ex-head.ck .exck{grid-column:1;grid-row:1/span 2;width:22px;height:22px;margin:0;accent-color:var(--accent);cursor:pointer}
+  .ex-head.ck .arrow{grid-column:2}
+  .ex-head.ck .n,.ex-head.ck .d{grid-column:3}
+  .ex-head.ck .prog{grid-column:4}
   .ex-head .prog{grid-column:3;grid-row:1/span 2;font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:12px}
   .ex-detail{display:none;margin-top:8px;padding:10px 11px;background:var(--accent-soft);border-left:3px solid var(--accent);font-size:14.5px;border-radius:0 3px 3px 0}
   .ex.open .ex-detail{display:block}
@@ -1433,7 +1438,7 @@ function exRowHTML(key,dk,isKey){
   const e=EX[key];
   const prog=dk?progText(dk,key):"";
   return '<div class="ex" data-ex="'+key+'"'+(dk?' data-dk="'+dk+'"':'')+'>'
-    +'<div class="ex-head"><span class="arrow">▸</span><span class="n">'+e.n+(isKey?'<span class="badge">핵심</span>':'')+(FIX_KEYS.includes(key)?'<span class="badge fix">발목 교정</span>':'')+(HIP_KEYS.includes(key)?'<span class="badge hip">엉덩이</span>':'')+'</span>'
+    +'<div class="ex-head'+(dk?' ck':'')+'">'+(dk?'<input type="checkbox" class="exck" data-exck aria-label="'+esc(e.n)+' 완료"'+(getSets(dk,key).every(Boolean)?' checked':'')+'>':'')+'<span class="arrow">▸</span><span class="n">'+e.n+(isKey?'<span class="badge">핵심</span>':'')+(FIX_KEYS.includes(key)?'<span class="badge fix">발목 교정</span>':'')+(HIP_KEYS.includes(key)?'<span class="badge hip">엉덩이</span>':'')+'</span>'
     +(prog?'<span class="prog">'+prog+'</span>':'')
     +'<span class="d">'+exDose(key)+'</span></div>'
     +'<div class="ex-detail">'+detailBaseHTML(e)+(dk?trackerHTML(key,dk):'')+'</div></div>';
@@ -1508,7 +1513,19 @@ function updateBlockProg(blk){
 }
 function refreshSetRow(exDiv){
   const key=exDiv.dataset.ex,dk=exDiv.dataset.dk;
+  const rows=[...document.querySelectorAll('.ex[data-dk="'+dk+'"][data-ex="'+key+'"]')];
+  if(!rows.includes(exDiv))rows.push(exDiv);
+  rows.forEach(paintSetRow);
+}
+function paintExCheck(exDiv){
+  const ck=exDiv.querySelector("[data-exck]");if(!ck)return;
+  const sets=getSets(exDiv.dataset.dk,exDiv.dataset.ex),n=sets.filter(Boolean).length;
+  ck.checked=n===sets.length;ck.indeterminate=n>0&&n<sets.length;
+}
+function paintSetRow(exDiv){
+  const key=exDiv.dataset.ex,dk=exDiv.dataset.dk;
   const sets=getSets(dk,key);
+  paintExCheck(exDiv);
   exDiv.querySelectorAll(".setrow button").forEach(b=>{const i=b.dataset.set!=null?+b.dataset.set:+b.dataset.extimer;if(!isNaN(i))b.classList.toggle("done",!!sets[i]);});
   const cb=exDiv.querySelector("[data-cnt]");if(cb){cb.innerHTML=cntLabel(dk,key);cb.disabled=sets.every(Boolean);}
   updateBlockProg(exDiv.closest(".block"));
@@ -1631,6 +1648,19 @@ function bindOne(exDiv){
   };
   const dk=exDiv.dataset.dk,key=exDiv.dataset.ex;
   if(!dk)return;
+  const ck=exDiv.querySelector("[data-exck]");
+  if(ck){
+    paintExCheck(exDiv);
+    ck.onclick=ev=>ev.stopPropagation();
+    ck.onchange=()=>{
+      if(T.id&&T.el&&T.el.dataset.ex===key&&T.el.dataset.dk===dk)stopExTimer();
+      const n=EX[key].sets;
+      S.sets[setKey(dk,key)]=Array(n).fill(ck.checked);
+      if(!ck.checked)delete S.reps[setKey(dk,key)];
+      saveState();refreshSetRow(exDiv);renderGoals();
+      if(ck.checked)vib([40]);
+    };
+  }
   exDiv.querySelectorAll(".setrow button[data-set]").forEach(b=>{
     b.onclick=ev=>{
       ev.stopPropagation();
