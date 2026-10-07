@@ -278,6 +278,30 @@
   .bk-btns{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 4px;font-family:var(--sans)}
   .bk-btns button{padding:8px 12px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:12.5px;color:var(--ink);border-radius:2px;cursor:pointer}
   #bkTa{width:100%;min-height:110px;margin-top:6px;font-family:Consolas,monospace;font-size:11px;border:1px solid var(--line-dark);border-radius:2px;padding:6px;background:#fff;resize:vertical}
+  /* 2026-10-08 인바디 뒤: 최소 보기, 선택 블록 접기, 단백질 g 기록 */
+  .modebar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:0 10px 9px;font-family:var(--sans)}
+  .modebar .k{font-size:12px;color:var(--ink-soft);margin-right:2px}
+  .modebar button{padding:6px 13px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);border-radius:2px;cursor:pointer}
+  .modebar button.on{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:700}
+  .modebar .mh{flex-basis:100%;font-size:11px;color:var(--ink-soft);line-height:1.4}
+  .opt-hdr{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin:16px 2px 8px;padding-top:9px;border-top:1px dashed var(--line-dark)}
+  .block.opt:not(.open) .block-body,.block.opt:not(.open) .bar{display:none}
+  .block.opt .unfold{display:block}
+  .daysum button.opt{border-style:dashed;border-left-style:solid;color:var(--ink-soft)}
+  .badge.req{background:#B0623A}
+  .pq{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+  .pq button{padding:8px 11px;border:1px solid var(--line-dark);background:#fff;font-family:var(--sans);font-size:13px;color:var(--ink);border-radius:3px;cursor:pointer}
+  .pq button b{color:#B0623A;margin-left:3px}
+  .pc-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;font-family:var(--sans)}
+  .pc-row input{height:34px;border:1px solid var(--line-dark);border-radius:2px;background:#fff;font-family:var(--sans);font-size:12.5px;padding:0 6px}
+  .pc-row input.num{width:62px;text-align:center}
+  .pc-row input.txt{flex:1;min-width:110px}
+  .pc-row button{height:34px;padding:0 12px;border:none;background:var(--ink);color:#fff;font-family:var(--sans);font-size:12.5px;font-weight:700;border-radius:2px;cursor:pointer}
+  .plist{display:flex;gap:5px;flex-wrap:wrap;margin:4px 0 6px}
+  .plist span{display:inline-flex;align-items:center;gap:2px;padding:3px 2px 3px 9px;border:1px solid var(--line);border-radius:12px;background:var(--paper);font-family:var(--sans);font-size:12px}
+  .plist button{border:none;background:none;color:var(--ink-soft);font-size:14px;line-height:1;padding:2px 6px;cursor:pointer}
+  .pstat{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin:2px 0 4px}
+  .pstat b{color:#B0623A}
 </style>
 </head>
 <body>
@@ -380,7 +404,7 @@ const EX = {
   seatedRow:{n:"시티드로우",d:"3세트 12회",sets:3,weighted:true,w:"앉아서 손잡이를 배 쪽으로 당기는 머신. 등 중부와 날개뼈 사이를 강화하는 라운드숄더 교정 운동.",s:["가슴 패드나 발판에 자세를 잡고 손잡이를 잡는다.","허리를 세운 채 팔꿈치를 뒤로 빼며 배꼽 쪽으로 당긴다.","날개뼈를 모으고 1초, 천천히 되돌린다.","12회 3세트."],c:"허리를 뒤로 눕히며 반동으로 당기지 않는다."},
   birdDog:{n:"버드독",d:"양쪽 10회씩 3세트",sets:3,w:"네발기기에서 반대쪽 팔과 다리를 뻗는 동작. 허리를 움직이지 않고 버티는 코어를 만들어 협착이 있는 허리에 특히 적합합니다.",s:["네발기기 자세. 허리는 평평하게.","오른팔을 앞으로, 왼다리를 뒤로 바닥과 평행하게 뻗는다.","허리가 처지거나 골반이 기울지 않게 3초 버틴다.","제자리로 돌아와 반대쪽. 양쪽 10회가 1세트."],c:"다리를 높이 드는 게 목표가 아니다. 골반이 수평인 높이까지만."},
   deadBug:{n:"데드버그",d:"양쪽 10회씩 3세트",sets:3,w:"누워서 반대쪽 팔다리를 천천히 내리는 동작. 허리를 바닥에 붙인 채 버티는 코어 운동으로 버드독과 같은 목적.",s:["누워서 팔은 천장으로, 무릎은 90도로 든다.","허리를 바닥에 지그시 붙인 상태를 유지하며 오른팔과 왼다리를 천천히 바닥 쪽으로 내린다.","허리가 뜨려는 직전에 멈추고 되돌아온다.","반대쪽과 번갈아 양쪽 10회가 1세트."],c:"허리가 바닥에서 뜨면 가동범위를 줄인다.",figs:[{k:"deadBug",cap:"허리를 바닥에 붙인 채 반대쪽 팔과 다리를 천천히 멀어지게 한다. 허리가 뜨려는 직전이 멈추는 지점이다. 회색이 제자리, 초록이 움직이는 쪽."}]},
-  gobletSquat:{n:"고블릿 스쿼트",d:"3세트 10회",sets:3,weighted:true,w:"케틀벨을 가슴 앞에 안고 하는 스쿼트. 무게가 앞에 있어 상체가 저절로 서고 허리 부담이 적습니다.",s:["케틀벨 손잡이 양옆을 잡아 가슴 앞에 밀착.","발은 어깨너비보다 약간 넓게, 발끝은 살짝 바깥.","엉덩이를 뒤로 빼며 무릎이 발끝 방향을 따라가도록 앉는다. 허벅지가 바닥과 평행 근처까지.","발 전체로 바닥을 밀며 일어나고, 꼭대기에서 엉덩이를 조인다.","10회 3세트. 무릎이 안으로 모이려 하면 그게 내전근·중둔근 약화 신호이니 가볍게."],c:"내려갈 때 무릎이 안쪽으로 무너지지 않게. 통증 없는 깊이까지만."},
+  gobletSquat:{n:"고블릿 스쿼트",d:"3세트 10회",sets:3,weighted:true,w:"케틀벨을 가슴 앞에 안고 하는 스쿼트. 무게가 앞에 있어 상체가 저절로 서고 허리 부담이 적습니다. 2026-10-08부터 집 D에 넣었습니다. 허벅지 앞쪽(대퇴사두근)은 몸에서 가장 큰 근육 묶음이라 근육량을 늘리는 데 효율이 좋습니다. 깊이를 매번 같게 하려면 의자나 스텝박스를 뒤에 두고 엉덩이가 닿으면 일어서는 박스 스쿼트로 합니다. 무릎이나 엉덩이가 불편한 날은 스텝업으로 바꾸고 같은 칸에 체크합니다.",s:["케틀벨 손잡이 양옆을 잡아 가슴 앞에 밀착.","발은 어깨너비보다 약간 넓게, 발끝은 살짝 바깥.","엉덩이를 뒤로 빼며 무릎이 발끝 방향을 따라가도록 앉는다. 허벅지가 바닥과 평행 근처까지.","발 전체로 바닥을 밀며 일어나고, 꼭대기에서 엉덩이를 조인다.","10회 3세트. 무릎이 안으로 모이려 하면 그게 내전근·중둔근 약화 신호이니 가볍게."],c:"내려갈 때 무릎이 안쪽으로 무너지지 않게. 통증 없는 깊이까지만. 일어선 끝에서 허리를 젖히며 마무리하지 않는다(협착)."},
   kbDeadlift:{n:"케틀벨 데드리프트 (RDL 방식)",d:"3세트 10회",sets:3,weighted:true,w:"케틀벨을 든 채 엉덩이를 뒤로 밀어 상체를 눕혔다가 엉덩이로 일어서는 동작. 바닥까지 내려가지 않고 정강이 중간까지만 갑니다. 둔근 아래쪽과 햄스트링, 즉 엉덩이와 허벅지의 경계선을 만드는 운동이라 힙업에 직접 관여합니다.",s:["케틀벨을 양손으로 들고 발은 골반 너비로 선다. 세 점으로 바닥을 누른다.","무릎을 살짝 굽힌 채 고정하고, 엉덩이를 뒤로 밀며 상체를 숙인다. 케틀벨은 다리에 붙여 내려간다.","등은 꼬리뼈부터 뒤통수까지 한 줄. 정강이 중간쯤에서 햄스트링이 당기면 멈춘다.","엉덩이를 앞으로 밀며 일어선다. 선 자세에서 엉덩이를 조이되 허리를 젖히지 않는다.","10회 3세트. 가벼운 무게로 형태부터."],c:"등이 말리면 안 된다. 거울 옆모습으로 확인. 허리에 찌릿함이 오면 즉시 중단. 브릿지에서 엉덩이 느낌을 잡기 전에는 무게를 올리지 않는다.",figs:[{k:"hinge",cap:"무릎을 굽혀 앉는 것이 아니라 엉덩이를 뒤로 밀어 상체를 눕히는 동작이다. ✕ 등이 굽으면 그 힘이 그대로 디스크로 간다. ○ 꼬리뼈부터 뒤통수까지 한 줄을 유지한 채 엉덩이만 뒤로 보낸다. 정강이는 거의 수직으로 둔다."}]},
   stepUp:{n:"스텝박스 스텝업",d:"양쪽 10회씩 3세트",sets:3,weighted:true,w:"박스에 한 발을 올리고 그 발의 힘만으로 올라서는 동작. 둔근과 다리를 동시에 강화합니다. 아령을 들면 무게란에 기록.",s:["박스 앞에 서서 오른발 전체를 박스 위에 올린다. 발이 반쯤 걸치면 안 된다.","오른발 뒤꿈치로 박스를 눌러 몸을 끌어올린다. 뒤에 남은 왼발로 차고 오르지 않는 게 핵심.","박스 위에서 골반을 완전히 펴고 잠깐 선다.","오른발에 힘을 유지한 채 천천히 왼발부터 내려온다.","오른쪽 10회를 다 하고 왼쪽 10회. 이것이 1세트, 3세트."],c:"올라설 때 무릎이 안쪽으로 무너지지 않게 발끝 방향과 무릎 방향을 맞춘다. 상체를 과하게 숙이지 않는다."},
   bulgarian:{n:"불가리안 스플릿 스쿼트",d:"양쪽 8회씩 2세트",sets:2,weighted:true,w:"뒷발을 벤치에 올리고 앞다리로 앉았다 일어나는 동작. 둔근 자극이 크고 좌우 불균형 교정에 좋습니다. 무게 없이 시작.",s:["벤치를 등지고 서서 한 발등을 벤치에 올린다. 앞발은 크게 한 걸음 앞에.","처음에는 손으로 벽이나 봉을 잡고 균형을 잡는다.","상체를 살짝 숙이며 앞다리 엉덩이에 체중을 싣고 수직으로 내려간다.","앞발 뒤꿈치로 밀며 일어난다. 양쪽 8회씩이 1세트, 2세트."],c:"앞 무릎이 안으로 무너지거나 발끝보다 과하게 나가지 않게. 균형이 어려우면 잡을 것을 꼭 둔다."},
@@ -392,6 +416,8 @@ const EX = {
   /* 2026-09 개편: 등 운동 대체, 골반·발, 이동 중 */
   chestRow:{n:"체스트 서포티드 덤벨 로우",d:"4세트 12회",sets:4,weighted:true,w:"경사 벤치에 가슴을 대고 엎드려 덤벨을 당기는 동작. 몸이 받쳐져 있어 허리 부담이 없고 반동이 불가능하며, 어깨가 힘을 뺄 수 있습니다. 랫풀다운과 시티드로우에서 허리가 아프고 어깨에 힘이 들어가던 문제를 구조적으로 막아주는 등 운동입니다.",s:["인클라인 벤치를 30도로 세우고 가슴을 대고 엎드린다. 발은 바닥.","양손에 덤벨을 들고 팔을 늘어뜨린다. 어깨는 귀에서 멀리.","팔꿈치를 뒷주머니에 넣는다는 느낌으로 뒤로 당긴다. 날개뼈가 모이는 걸 느끼고 1초.","천천히 내린다. 12회 3세트."],c:"덤벨을 위로 드는 게 아니라 팔꿈치를 뒤로 보내는 것. 어깨가 으쓱 올라가면 무게를 줄인다.",figs:[{k:"chestRow",cap:"가슴이 벤치에 받쳐져 있으니 허리가 일할 수 없고 반동도 불가능하다. 회색이 시작 자세, 초록이 당긴 자세. 손을 올리는 게 아니라 팔꿈치를 뒤로 보낸다."}]},
   oneArmRow:{n:"원암 덤벨 로우",d:"3세트 10회 좌우",sets:3,weighted:true,w:"벤치에 한 손과 한 무릎을 대고 반대 손으로 덤벨을 당기는 동작. 랫풀다운·시티드로우 대신 허리 개입 없이 등을 쓰기 위한 대체 동작이다. 한쪽씩 하니 좌우 차이가 드러나고, 상체가 벤치에 지지되어 허리가 편합니다.",s:["벤치에 왼 무릎과 왼손을 대고 등을 바닥과 평행하게 편다. 오른발은 바닥.","오른손 덤벨을 늘어뜨린다. 어깨를 바닥 쪽으로 늘어뜨려 등을 늘인다.","팔꿈치를 골반 옆으로 당긴다. 몸통은 비틀지 않는다. 1초 멈추고 천천히 내린다.","10회 후 반대쪽. 좌우 10회씩이 1세트, 3세트."],c:"몸통을 비틀어 당기면 허리로 간다. 등은 한 줄 유지. 약한 쪽이 있으면 그쪽을 먼저.",figs:[{k:"oneArmRow",cap:"한 손과 한 무릎으로 벤치를 짚어 상체를 받친다. 등은 바닥과 평행한 한 줄. 팔꿈치가 골반 옆으로 올 때까지 당기되 몸통은 비틀지 않는다."}]},
+  inclinePushup:{n:"경사 푸시업",d:"8~12회 3세트",sets:3,w:"책상이나 싱크대 모서리를 짚고 몸을 비스듬히 기울여 하는 팔굽혀펴기. 가슴과 어깨 앞, 팔 뒤쪽(삼두)을 쓰는 미는 동작입니다. 2026-10-08 인바디에서 다섯 부위 가운데 팔 근육이 가장 낮았는데, 그때까지 이 계획에는 미는 동작이 하나도 없었습니다. 짚는 곳이 높을수록 쉽고 낮을수록 어렵습니다. 헬스장에서는 벤치 끝이나 스미스머신 봉을 짚습니다.",s:["밀리지 않는 책상이나 싱크대 모서리를 어깨너비보다 조금 넓게 짚는다. 바퀴 달린 의자나 가벼운 탁자는 쓰지 않는다.","발을 뒤로 빼서 뒤꿈치부터 머리까지 한 줄을 만든다. 엉덩이를 조이고 아랫배에 가볍게 힘을 줘 허리가 처지지 않게 한다.","턱을 살짝 당긴 채 가슴을 모서리 쪽으로 내린다. 팔꿈치는 몸통에서 45도쯤, 옆으로 활짝 벌리지 않는다.","손바닥으로 밀어 올라온다. 8~12회 3세트. 마지막 2~3회가 버거운 높이가 맞다.","12회가 쉬워지면 한 단계 낮은 곳으로 옮긴다. 싱크대, 식탁, 의자 좌석, 스텝박스 순."],c:"허리가 처지면 허리가 젖혀져 협착에 불리하다. 처지기 시작하면 그 세트는 거기서 끝낸다. 턱부터 내려가며 고개를 내밀지 않는다(목디스크). 손목이 아프면 더 높은 곳을 짚어 손목 꺾임을 줄인다.",figs:[{k:"inclinePush",cap:"✕ 허리가 처지고 고개가 먼저 나가면 허리는 젖혀지고 목은 꺾인다. ○ 뒤꿈치부터 머리까지 점선 한 줄을 유지한 채 가슴이 모서리로 내려간다. 짚는 곳을 낮출수록 어려워진다."}]},
+  kbRow:{n:"케틀벨 원암 로우, 책상 짚고",d:"좌우 10회 3세트",sets:3,weighted:true,w:"한 손으로 책상을 짚어 상체를 받친 채 반대 손으로 케틀벨을 당기는 동작. 등과 팔 앞쪽(이두)을 씁니다. 헬스장 원암 덤벨 로우의 집 판이고, 경사 푸시업과 짝을 이뤄 미는 근육과 당기는 근육을 같은 날 다룹니다. 상체가 받쳐져 허리 부담이 적습니다.",s:["식탁이나 책상 앞에서 왼손으로 모서리를 짚고, 오른발을 한 걸음 뒤로 뺀다. 무릎은 살짝 굽힌다.","엉덩이를 뒤로 빼며 고관절에서 상체를 숙인다. 등은 꼬리뼈부터 뒤통수까지 한 줄. 케틀벨 RDL의 힙힌지와 같은 모양이다.","오른손으로 케틀벨을 들어 늘어뜨린다. 팔꿈치를 골반 옆으로 당겨 1초 멈추고 천천히 내린다.","10회 뒤 손과 발을 바꿔 반대쪽. 좌우 10회씩이 1세트, 3세트."],c:"몸통을 비틀어 당기면 허리로 간다. 어깨가 귀 쪽으로 올라가면 무게가 무겁다는 신호이니 횟수를 8회로 줄이고 동작부터 익힌다.",figs:[{k:"hinge",cap:"상체를 숙이는 모양은 힙힌지와 같다. 무릎을 살짝 굽히고 등을 한 줄로 편 채 고관절에서 접는다. 로우에서는 한 손으로 책상을 짚어 상체를 받친다."}]},
   facePull:{n:"밴드 페이스풀",d:"3세트 15회",sets:3,w:"밴드를 얼굴 쪽으로 당기며 팔꿈치를 벌리는 동작. 어깨 뒤쪽과 외회전근, 하부 승모근을 함께 씁니다. 어깨 앞쪽 타이트함과 어깨 으쓱 습관을 동시에 잡는 라운드숄더 교정 운동입니다.",s:["밴드를 얼굴 높이에 고정하고(문이나 기둥) 양손으로 잡는다.","팔꿈치를 높이 들고 밴드를 얼굴 쪽으로 당긴다. 끝에서 양손이 귀 옆에 온다.","날개뼈가 모이고 어깨가 뒤로 열리는 느낌. 1초 멈춘다.","천천히 돌아간다. 15회 2세트."],c:"허리를 젖혀 당기지 않는다. 어깨가 올라가면 밴드 장력을 줄인다.",figs:[{k:"facePull",cap:"밴드를 얼굴 높이에 고정하고, 팔꿈치를 높이 벌리며 얼굴 쪽으로 당긴다. 끝에서 양손이 귀 옆. 회색이 시작, 초록이 당긴 자세. 허리를 젖혀 당기지 않는다."}]},
   hip9090:{n:"90/90 힙 스트레치",d:"좌우 1분",sets:2,setLbl:["왼쪽","오른쪽"],timed:{work:60,rest:0},w:"바닥에 앉아 앞다리와 뒷다리를 각각 90도로 접는 자세. 앞다리는 바깥 회전, 뒷다리는 안쪽 회전이 동시에 늘어납니다. 오른쪽 고관절이 안으로 잘 안 돌아가는 문제를 겨냥합니다. 앉아서 굽히는 자세라 협착에 안전합니다.",s:["앉아서 오른다리를 앞에 90도, 왼다리를 옆으로 90도 접는다. 양쪽 무릎 모두 90도.","골반을 세우고 앞 무릎 쪽으로 상체를 살짝 숙인다. 앞다리 엉덩이 바깥이 당긴다.","1분 후 반대쪽. 뒷다리가 안쪽으로 돌아가는 쪽(오른쪽)이 뻣뻣하면 거기서 10초 더."],c:"무릎이 아프면 각도를 줄인다. 반동 없이 숨을 내쉬며 늘린다.",figs:[{k:"hip9090",cap:"위에서 본 모양. 앞다리는 무릎 90도로 정강이가 앞에 가로놓이고(바깥 회전), 뒷다리는 무릎 90도로 정강이가 뒤로 빠진다(안쪽 회전). 골반을 세우고 상체를 앞 무릎 쪽으로 살짝 숙인다."}]},
   sideBridgeKnee:{n:"무릎 사이드 브릿지",d:"좌우 20초 2세트",sets:2,setLbl:["왼쪽","오른쪽"],timed:{work:20,rest:10},w:"옆으로 누워 팔꿈치와 무릎으로 지지하고 골반을 들어 올리는 동작. 옆구리 코어와 중둔근이 골반을 잡아줍니다. 협착이 있는 허리에 안전한 코어 운동으로 꼽힙니다.",s:["옆으로 누워 팔꿈치를 어깨 바로 아래에 두고 무릎을 90도로 접는다.","골반을 들어 어깨-골반-무릎이 한 줄이 되게 한다.","위쪽 엉덩이를 조인 채 20초. 골반이 뒤로 넘어가지 않게.","반대쪽. 좌우가 1세트, 2세트."],c:"어깨가 아프면 팔꿈치 위치를 다시 잡는다. 골반이 처지면 시간을 줄인다.",figs:[{k:"sideBridge",cap:"팔꿈치는 어깨 바로 아래, 무릎은 바닥. 골반을 들어 어깨-골반-무릎이 한 줄. 골반이 처지거나 뒤로 넘어가면 시간을 줄인다."}]},
@@ -459,43 +485,48 @@ const GAIT_ITEMS=[
   "양발 사이 주먹 하나 간격, 두 줄 레일을 걷는 느낌",
   "교정화 착용"
 ];
-const WEIGHTED_KEYS=["rdl","chestRow","facePull","gluteBridge","kbDeadlift","oneArmRow","hipAbduction","stepUp","innerThigh","latPulldown","seatedRow","gobletSquat","bulgarian"];
+const WEIGHTED_KEYS=["rdl","chestRow","facePull","gluteBridge","kbDeadlift","kbRow","oneArmRow","hipAbduction","stepUp","innerThigh","latPulldown","seatedRow","gobletSquat","bulgarian"];
 /* 브릿지 8주 로드맵. 현재 단계는 S.goal.bridge */
 const GOAL_START="2026-09-07";
 /* 배포할 때마다 이 날짜를 갱신한다. 메인 화면 제목 아래에 표시된다. */
-const APP_UPDATED="2026-10-05";
+const APP_UPDATED="2026-10-08";
 const BRIDGE_STAGES=[
   {d:"12회 3세트",t:"양발, 엉덩이로 올리기",w:"1~2주",s:"양발"},
   {d:"10초 홀드 5회 3세트",t:"무릎에 밴드, 정점 홀드",w:"3~4주",s:"밴드 홀드"},
   {d:"한 다리 8회 좌우 3세트",t:"한 다리 브릿지",w:"5~8주",s:"한 다리"},
   {d:"덤벨 10회 3세트",t:"골반 위에 무게",w:"9주~",s:"무게"}
 ];
-const STRENGTH_KEYS=["rdl","chestRow","facePull","sidePlank","kbDeadlift","boxHeelRaise","singleLegStand","bandSideStep"];
-const RCOLOR={WALK:"#4A6FA5",A:"#C28A2B",B:"#3A8F8A",C:"#2F5D3A",D:"#8A6D3B",SAT:"#6B6B62",SUN:"#9C9C93",BOW:"#6B6B62",INT:"#6B6B62",R:"#7A3B2E",EVE:"#5C6BA6",W:"#8A5A44"};
-const RSHORT={WALK:"걷기",A:"A",B:"B",C:"C",D:"D",SAT:"토",SUN:"휴식",BOW:"108배",INT:"인터벌",R:"R",EVE:"저녁",W:"W"};
+const STRENGTH_KEYS=["rdl","chestRow","facePull","sidePlank","inclinePushup","kbDeadlift","gobletSquat","kbRow","oneArmRow","stepUp"];
+/* 2026-10-08 인바디 뒤 우선순위. 최소 보기에서 펼쳐 두는 루틴, 단백질 목표와 빠른 입력 버튼(g은 기록 화면에서 바꿀 수 있다) */
+const REQ_ROUTINES=["WALK","D"];
+const PROT_MIN=70,PROT_GOAL=90;
+const PROT_PRESETS=[["shake","쉐이크",20],["milk","우유 1팩",6],["egg2","달걀 2개",12],["lunch","점심 반찬",25],["dinner","저녁 반찬",25]];
+const RCOLOR={WALK:"#4A6FA5",A:"#C28A2B",B:"#3A8F8A",C:"#2F5D3A",D:"#8A6D3B",F:"#9A6B8F",SAT:"#6B6B62",SUN:"#9C9C93",BOW:"#6B6B62",INT:"#6B6B62",R:"#7A3B2E",EVE:"#5C6BA6",W:"#8A5A44"};
+const RSHORT={WALK:"걷기",A:"A",B:"B",C:"C",D:"D",F:"F",SAT:"토",SUN:"휴식",BOW:"108배",INT:"인터벌",R:"R",EVE:"저녁",W:"W"};
 
 const ROUTINES = {
   WALK:{title:"출퇴근 걷기",sub:"편도 30~35분",items:["commuteWalk"],key:"commuteWalk"},
   A:{title:"루틴 A, 기상 직후",sub:"매트 10분 + 현관 1분",items:["_매트","foamThoracic","toeSpread","towelCurl","frog","hipFlexor","gluteBridge","_현관 1분, 출근 걷기 직전","screwFeet","oneLegDoor"],key:"gluteBridge",extra:"이것만 하면 성공: 브릿지. 개구리 자세는 2026-09-16 매장 권고(아침·저녁)로 넣었습니다. 고관절 앞 스트레칭은 2026-10-02 풋샵 소견 뒤 브릿지 바로 앞에 넣었습니다. 반드시 골반을 말아 넣은 ○ 자세로. 캣카우는 폼롤러 흉추 신전이 대신합니다. 이 루틴은 허리를 반복해 굽히거나 젖히는 동작 없이 짜여 있습니다. 기상 후 한 시간은 굽힘을, 협착 때문에 젖힘을 피하기 때문입니다. 현관 1분은 엉덩이를 켠 채 걷기를 시작하려는 것입니다. 시간이 없는 날은 고관절 앞 스트레칭 좌우 30초, 브릿지 1세트, 현관 1분만 해도 성공으로 칩니다."},
   B:{title:"루틴 B, 사무실 틈틈이",sub:"오전·오후, 합쳐서 22분",items:["_자세 세트 — 오전 1회, 오후 1회","chinTuck","bandRow","wallSlide","kegel","seatedHipPush","_발·종아리·균형 — 하루 한 번","stretchBoard","ballFoot","shortFoot","calfBall","officeOneLeg"],key:"kegel",extra:"자세 세트는 오전·오후를 각각 체크합니다. 버스나 지하철에서는 턱 당기기, 케겔, 쇼트풋을 그대로. 쇼트풋·공 끼운 뒤꿈치 들기·한 발 서기는 2026-09-16 발 진단의 교정 운동입니다. 앉아서 무릎 밀기는 2026-10-02 풋샵 소견 뒤 넣은 것으로, 앉은 채 엉덩이 속근육을 깨웁니다."},
-  C:{title:"루틴 C, 헬스장",sub:"월·목, 38분",items:["_준비운동, 엉덩이 풀고 깨우기","ballGlute","clamshell","_본운동","rdl","chestRow","facePull","gluteBridge","sidePlank"],key:"gluteBridge",extra:"준비운동 맨 앞의 엉덩이 볼은 저녁 블록과 같은 칸입니다. 여기서 하면 저녁에는 이미 체크되어 있으니 건너뜁니다. 볼은 가방에 넣어 다닙니다. 풀고 바로 클램쉘로 깨우고 본운동으로 힘을 쓰는 순서이고, 잠들기 1시간 전까지는 마칩니다. 당기는 동작(로우 4세트, 페이스풀 3세트)을 미는 동작보다 많게 잡았습니다. 힙 스러스트 자리는 단계별 브릿지 — 4단계에 이르면 그 칸에서 덤벨을 얹습니다. 이것만 하면 성공: 브릿지."},
-  D:{title:"루틴 D, 집 케틀벨",sub:"화·금, 31분",items:["_준비운동, 엉덩이 풀고 깨우기","ballGlute","clamshell","_본운동","kbDeadlift","gluteBridge","boxHeelRaise","singleLegStand","bandSideStep","copenhagenShort","wallCalf"],key:"gluteBridge",extra:"엉덩이 볼과 클램쉘이 준비운동입니다. 엉덩이 볼은 저녁 블록과 같은 칸이라 여기서 하면 저녁에는 건너뜁니다. 밴드 사이드 스텝과 무릎 코펜하겐이 마무리, 벽 밀기는 정리 운동입니다. 잠들기 1시간 전까지는 마칩니다. 무릎 코펜하겐은 2026-10-02 풋샵 소견(허벅지 안쪽이 짧아지고 붙음) 뒤, 개구리 자세로 연 범위에 힘을 붙이려고 넣었습니다. 이것만 하면 성공: 브릿지."},
+  C:{title:"루틴 C, 헬스장",sub:"월·목, 선택, 42분",items:["_준비운동, 엉덩이 풀고 깨우기","ballGlute","clamshell","_본운동","rdl","chestRow","inclinePushup","facePull","gluteBridge","sidePlank"],key:"gluteBridge",extra:"헬스장은 가면 보너스입니다. 주 2회 근력의 하한은 화·금 집 D가 맡습니다. 준비운동 맨 앞의 엉덩이 볼은 저녁 블록과 같은 칸입니다. 여기서 하면 저녁에는 이미 체크되어 있으니 건너뜁니다. 볼은 가방에 넣어 다닙니다. 풀고 바로 클램쉘로 깨우고 본운동으로 힘을 쓰는 순서이고, 잠들기 1시간 전까지는 마칩니다. 당기는 동작(로우 4세트, 페이스풀 3세트)을 미는 동작(경사 푸시업 3세트)보다 많게 잡았습니다. 경사 푸시업은 2026-10-08 인바디 뒤 넣은 이 계획의 첫 미는 동작으로, 벤치 끝이나 스미스머신 봉을 짚습니다. 힙 스러스트 자리는 단계별 브릿지 — 4단계에 이르면 그 칸에서 덤벨을 얹습니다. 이것만 하면 성공: 브릿지."},
+  D:{title:"루틴 D, 집 전신 근력",sub:"화·금, 필수, 30분",items:["_준비운동 5분, 엉덩이 풀고 깨우기","ballGlute","clamshell","_본운동 25분, 큰 동작 다섯","kbDeadlift","gobletSquat","inclinePushup","kbRow","gluteBridge"],extra:"2026-10-08 인바디 뒤 다시 짠, 주 2회 근력의 기본 세션입니다. 엉덩이·허벅지 뒤(RDL), 허벅지 앞(스쿼트), 가슴·팔 뒤(푸시업), 등·팔 앞(로우), 엉덩이(브릿지) 순으로 전신을 한 번에 다룹니다. 강도는 세트의 마지막 2~3회가 버거운 정도이고, 15회가 쉬워지면 무게나 난이도를 올립니다. 고블릿 스쿼트는 무릎이나 엉덩이가 불편한 날 스텝업으로 바꿔 같은 칸에 체크합니다. 엉덩이 볼은 저녁 블록과 같은 칸이라 여기서 하면 저녁에는 건너뜁니다. 전에 여기 있던 발·균형 동작은 F 블록으로 옮겼습니다. 퇴근길을 걸어 들어오면 종아리 올리고 5분 쉰 뒤 바로 시작하고, 잠들기 1시간 전까지는 마칩니다. 이것만 하면 성공: 다섯 동작 1세트씩. 시간이 없는 날은 세트를 줄여도 근력과 근육량이 늡니다."},
+  F:{title:"루틴 F, 발·균형 마무리",sub:"화·금, 선택, 10분",items:["boxHeelRaise","singleLegStand","bandSideStep","copenhagenShort","wallCalf"],extra:"전에는 집 D 안에 있던 발·균형·허벅지 안쪽 동작입니다. 뒤꿈치 들기와 한 발 서기는 2026-09-16 매장 권고, 무릎 코펜하겐은 2026-10-02 풋샵 소견(허벅지 안쪽이 짧아지고 붙음) 뒤 개구리 자세로 연 범위에 힘을 붙이려고 넣은 것입니다. 근력 세션을 30분으로 줄이려고 따로 뗐습니다. 여유 있는 날 D에 이어서 하고, 벽 밀기 종아리가 정리 운동입니다."},
   EVE:{title:"저녁 발·엉덩이 관리",sub:"매일 저녁, 17분",items:["legsUpRest","ballFootEve","ballGlute","wallCalfEve","frogEve","kneeChest"],key:"ballFootEve",pain:true,extra:"의자에 종아리 올리고 눕기는 퇴근해서 가장 먼저, 5분. 근력 날 준비운동에서 엉덩이 볼을 이미 했다면 여기에는 체크되어 있으니 건너뜁니다. 발은 2026-09-16 매장 권고, 엉덩이는 2026-10-02 풋샵 소견. 하루 걷고 난 발바닥과 종아리를 풀고, 엉덩이 옆 오목한 곳을 눌러 속근육을 풀고, 고관절 안쪽을 연 뒤, 무릎 가슴 당기기로 젖혀진 허리를 되돌리고 잠자리에 듭니다. 볼로 푼 효과는 오래가지 않으므로 다음 날 아침 브릿지와 사무실의 무릎 밀기로 이어 붙입니다. 통증이 생긴 날은 아래 칸에 어디가, 어떤 자세에서 아픈지 남깁니다."},
-  W:{title:"루틴 W, 근력 없는 날 저녁",sub:"선택, 10분",items:["sideLyingAbd","clamshell","deadBug"],key:"sideLyingAbd",extra:"수요일처럼 근력 운동이 없는 날, 여유가 있을 때만 '오늘 추가'에서 켭니다. 엉덩이 옆(중둔근)과 속근육, 허리를 붙인 채 버티는 코어를 가볍게 다룹니다. 피곤한 날은 생략하고, 근력은 주 3회 기준 그대로입니다. 아래쪽 엉덩이 뼈 돌기가 눌려 아프면 옆으로 누워 다리 들기는 빼고 클램쉘만 합니다."},
+  W:{title:"루틴 W, 근력 없는 날 저녁",sub:"선택, 10분",items:["sideLyingAbd","clamshell","deadBug"],key:"sideLyingAbd",extra:"수요일처럼 근력 운동이 없는 날, 여유가 있을 때만 '오늘 추가'에서 켭니다. 엉덩이 옆(중둔근)과 속근육, 허리를 붙인 채 버티는 코어를 가볍게 다룹니다. 피곤한 날은 생략하고, 근력은 주 2회 기준 그대로입니다. 아래쪽 엉덩이 뼈 돌기가 눌려 아프면 옆으로 누워 다리 들기는 빼고 클램쉘만 합니다."},
   SAT:{title:"토요일",sub:"놀이터·긴 걷기",items:["hang","hangNegative","weekendWalk"],key:"hang",extra:"매달리기는 스톱워치로 시간을 기록해 주마다 늘어나는지 봅니다. 네거티브는 선택. 긴 걷기는 평일 출퇴근 걷기가 없는 주말의 유산소를 채웁니다. 평일 근력을 빠뜨린 주는 '오늘 추가'에서 집 D를 켜 채웁니다. 108배를 한다면 시간 여유가 있는 오후에. 발바닥과 종아리, 엉덩이는 저녁 발·엉덩이 관리에서 풀어 줍니다."},
   SUN:{title:"일요일, 회복",sub:"완전 휴식",items:["sundayWalk","lacrosseLight"],extra:"둘 다 선택입니다. 하지 않아도 일요일은 성공입니다."},
-  BOW:{title:"108배 (선택)",sub:"15~20분",items:["bow108"],extra:"하면 좋고 안 해도 되는 항목입니다. 필수는 근력 3회와 단백질뿐. 몸이 데워진 저녁이나 여유 있는 오전이 안전하고, 마치고 종아리와 허벅지 앞을 30초씩 늘려 주면 다음 날이 가볍습니다."},
+  BOW:{title:"108배 (선택)",sub:"15~20분",items:["bow108"],extra:"하면 좋고 안 해도 되는 항목입니다. 필수는 단백질, 근력 주 2회, 걷기뿐. 몸이 데워진 저녁이나 여유 있는 오전이 안전하고, 마치고 종아리와 허벅지 앞을 30초씩 늘려 주면 다음 날이 가볍습니다."},
   INT:{title:"경사 걷기 인터벌 (선택)",sub:"근력 뒤 19분",items:["intervalWalk"],extra:"출퇴근 걷기가 유산소를 맡으므로 기본 계획에서는 뺐습니다. 걷지 못한 주에 헬스장 마지막에 붙일 수 있습니다. 반드시 근력을 마친 뒤에."},
   R:{title:"루틴 R, 내전근 풀기",sub:"뭉친 날, 5분",items:["reliefWalk","reliefSqueeze","reliefOpen","reliefPress","reliefSideShift","reliefHeat"],extra:"뭉침이 남아 있는 동안에는 루틴 B의 링 조이기를 약한 조이기로 바꾸고, 이너싸이와 스쿼트 무게를 절반으로 줄입니다. 양반다리와 무릎을 벌리고 앉는 자세는 내전근을 가장 길게 늘리는 자세이므로 피합니다. 사타구니 한 지점이 콕 찌르듯 아프거나 멍·붓기가 있거나 다리를 모으는 힘이 빠지면, 자가 이완 대신 정형외과나 재활의학과 진료를 먼저 받습니다. 2026-10-02 풋샵 소견은 허벅지 안쪽이 뭉친 것이 아니라 짧아지고 붙은 것이라는 것이었습니다. 그래서 평소에는 개구리 자세로 열고 무릎 코펜하겐으로 힘을 붙이며, 이 루틴은 근육통이 도진 날 달래는 용도로만 씁니다."}
 };
 const WEEK = [
   {name:"일",plan:["SUN","EVE"],note:"완전히 쉬는 것도 계획의 일부입니다. 가벼운 산책 20분은 선택."},
-  {name:"월",plan:["WALK","A","B","C","EVE"],note:"헬스장 30분. 이것만 하면 성공은 브릿지."},
-  {name:"화",plan:["WALK","A","B","D","EVE"],note:"집 케틀벨 20분."},
-  {name:"수",plan:["WALK","A","B","EVE"],note:"쉬는 날. 걷기와 아침·사무실 루틴만. 저녁에 여유가 있으면 '오늘 추가'에서 엉덩이 10분."},
-  {name:"목",plan:["WALK","A","B","C","EVE"],note:"헬스장 30분."},
-  {name:"금",plan:["WALK","A","B","D","EVE"],note:"집 케틀벨 20분."},
-  {name:"토",plan:["SAT","EVE"],note:"철봉, 평지 긴 걷기 40~60분, 발 관리. 근력은 주 4일 중 3일만 해도 성공이고, 평일에 빠뜨렸으면 오늘 집 D로 채웁니다."}
+  {name:"월",plan:["WALK","A","B","C","EVE"],note:"필수는 걷기와 단백질. 헬스장 C는 가면 보너스."},
+  {name:"화",plan:["WALK","A","B","D","F","EVE"],note:"집 전신 30분. 퇴근길 걷기로 들어오면 종아리 올리고 5분, 그다음 바로."},
+  {name:"수",plan:["WALK","A","B","EVE"],note:"근력 쉬는 날. 걷기와 단백질만 챙기면 성공. 저녁에 여유가 있으면 '오늘 추가'에서 엉덩이 10분."},
+  {name:"목",plan:["WALK","A","B","C","EVE"],note:"필수는 걷기와 단백질. 헬스장 C는 가면 보너스."},
+  {name:"금",plan:["WALK","A","B","D","F","EVE"],note:"집 전신 30분. 이번 주 근력 두 번째."},
+  {name:"토",plan:["SAT","EVE"],note:"철봉, 평지 긴 걷기 40~60분, 발 관리. 근력은 주 2회가 하한이고, 화·금에 빠뜨렸으면 '오늘 추가'에서 집 D로 채웁니다."}
 ];
 const MASSAGE = [
   {t:"1:00",part:"라크로스볼, 가슴 왼쪽",how:"벽 모서리에 볼을 대고 쇄골 아래 어깨 안쪽 오목한 곳(소흉근)에 체중을 실어 지그시 누르며 작게 원을 그린다.",sec:60},
@@ -737,6 +768,27 @@ const FIGS = {
     +'<path class="ln lt" d="M204,60 L206,110"/><rect class="db" x="199" y="110" width="14" height="6" rx="2"/>'
     +'<path class="ln good" d="M204,60 L188,74 L200,96"/><rect class="db" x="193" y="96" width="14" height="6" rx="2"/>'
     +'<text class="sm" x="240" y="94">팔꿈치는 골반 쪽</text></svg>',
+  inclinePush:'<svg viewBox="0 0 340 200" role="img" aria-label="경사 푸시업, 허리가 처진 자세와 한 줄로 편 자세 비교">'
+    +'<path class="gr" d="M12,174 L160,174 M182,174 L330,174"/>'
+    +'<path class="ln bad mk" d="M12,26 L26,40 M26,26 L12,40"/>'
+    +'<circle class="ln good mk" cx="185" cy="33" r="8"/>'
+    +'<rect class="box" x="112" y="100" width="44" height="7" rx="2"/><path class="gr" d="M118,107 L118,174 M150,107 L150,174"/>'
+    +'<path class="gd" d="M26,170 L130,57"/>'
+    +'<path class="ln bad" d="M20,173 L28,169"/>'
+    +'<path class="ln bad" d="M26,170 L70,142 Q100,118 118,70"/>'
+    +'<path class="ln bad" d="M118,70 L122,100"/>'
+    +'<path class="ln bad" d="M118,70 L126,74"/><circle class="ln bad" cx="134" cy="78" r="8"/>'
+    +'<path class="gr" d="M124,48 L131,67"/><text class="sm" x="98" y="44">고개를 내밂</text>'
+    +'<text class="sm" x="58" y="160">허리가 처짐</text>'
+    +'<text class="sm" x="85" y="192" text-anchor="middle">허리가 젖혀진다</text>'
+    +'<rect class="box" x="282" y="100" width="44" height="7" rx="2"/><path class="gr" d="M288,107 L288,174 M320,107 L320,174"/>'
+    +'<path class="gd" d="M196,170 L300,57"/>'
+    +'<path class="ln good" d="M190,173 L198,169"/>'
+    +'<path class="ln good" d="M196,170 L288,70"/>'
+    +'<path class="ln good" d="M288,70 L292,100"/>'
+    +'<path class="ln good" d="M288,70 L294,63"/><circle class="ln good" cx="300" cy="56" r="8"/>'
+    +'<text class="sm" x="176" y="104">뒤꿈치부터</text><text class="sm" x="176" y="116">머리까지 한 줄</text>'
+    +'<text class="sm" x="255" y="192" text-anchor="middle">몸통이 한 덩어리</text></svg>',
   deadBug:'<svg viewBox="0 0 340 142" role="img" aria-label="데드버그, 반대쪽 팔과 다리를 뻗는 동작">'
     +'<path class="gr" d="M30,120 L310,120"/>'
     +'<circle class="ln good" cx="54" cy="110" r="9"/>'
@@ -1169,6 +1221,29 @@ const FIGS = {
     +'<text class="sm" x="80" y="164" text-anchor="middle">팔꿈치는 어깨 바로 아래</text></svg>'
 };
 const HABITS = [
+  {h:"우선순위와 식사 (2026-10-08 인바디 뒤)",items:[
+    "판독 요약. 체중은 정상 범위인데 근육이 적고 체지방 비율이 높다. 부위별로는 팔이 가장 낮고 다리는 표준에 가깝다. 내장지방과 세포외수분비는 기준 안이다. 과제는 살 빼기가 아니라 체중을 유지하면서 근육을 늘리는 것이다.",
+    "굶지 않는다. 정상 체중에서 열량을 깎으면 근육이 먼저 빠져 체지방률은 그대로이거나 오른다. 근육이 적고 운동 경력이 짧은 사람은 체중을 유지한 채 근육 증가와 지방 감소가 함께 일어날 수 있다(Barakat, Strength Cond J 2020). 체중계 숫자가 그대로이거나 1~2kg 늘어도 괜찮다. 판단은 골격근량과 체지방률로 한다.",
+    "우선순위. (1) 단백질 하루 70g 이상, 목표 90g. (2) 근력 주 2회, 화·금 집 D 30분. 헬스장 C는 가면 보너스. (3) 출퇴근 걷기, 추운 날은 퇴근길만. (4) 아침·사무실·저녁 루틴은 통증 관리용이라 체성분에는 거의 기여하지 않는다. 아픈 곳 위주로 짧게. 주간 계획의 '최소' 보기는 (1)~(3)만 펼쳐 둔다.",
+    "단백질 목표의 근거. 근력운동과 함께 먹는 단백질의 효과는 체중 1kg당 하루 약 1.6g에서 더 늘지 않았다(Morton, Br J Sports Med 2018, 무작위 대조시험 49편 메타분석). 국제스포츠영양학회 권고는 1.4~2.0g이다(Jäger, JISSN 2017). 2020 한국인 영양소 섭취기준의 30~49세 여성 권장량 50g은 근육을 유지하는 기준이지 늘리는 기준이 아니다.",
+    "아침은 식사가 아니라 단백질 한 번이다. 아침을 먹는다고 체중 관리에 도움이 된다는 근거는 없다(Sievert, BMJ 2019). 다만 단백질을 세 끼에 고르게 나눴을 때 저녁에 몰아 먹을 때보다 24시간 근단백 합성이 약 25% 높았고(Mamerow, J Nutr 2014), 한 끼에 체중 1kg당 0.4g, 곧 20~25g씩 나누는 것이 권고된다(Schoenfeld·Aragon, JISSN 2018). 두 끼로 90g은 어렵다. 출근해 자리에 앉으면 쉐이크부터. 물 대신 우유에 타면 6g이 더해진다.",
+    "쉐이크는 거르던 아침 자리에 더하는 것이다. 점심이나 저녁을 쉐이크로 바꾸면 총 열량이 줄어 근육이 먼저 빠진다. 감량 프로그램의 '쉐이크로 끼니 대신하기'는 따르지 않는다.",
+    "늘 가지고 다니는 것의 역할. 쉐이크 1회 18~23g(제품과 1회 분량마다 다르니 라벨 확인), 삶은 달걀 2개 12g, 아몬드 한 줌(약 20g) 4g 남짓. 아몬드는 100g에 단백질 21g이지만 열량이 580kcal라 단백질 간식으로는 효율이 낮다(USDA FoodData Central). 열량을 줄일 이유가 없으니 하루 한 줌은 그대로 먹되 단백질 칸에는 넣지 않는다.",
+    "하루 배치 예. 출근 후 쉐이크 20~25g, 점심 단백질 반찬 25g, 오후 달걀 2개 12g(아몬드 한 줌은 덤), 저녁 단백질 반찬 25g. 합쳐서 80g대이고, 저녁에 우유나 두유 한 잔을 더하면 90g이다. 주간 계획 맨 위 단백질 칸의 버튼이 이 배치 그대로다.",
+    "점심과 저녁은 손바닥 크기 단백질 반찬 하나. 닭가슴살 100g, 생선 한 토막, 두부 반 모 가운데 하나면 된다. 외식은 국수·김밥·빵 단품보다 고기나 생선 반찬이 있는 정식·백반·덮밥. 부실한 끼니가 있던 날은 쉐이크 한 번이나 달걀 2개를 더해 메운다. 메뉴는 고정해 두고 주말에 일주일치를 사 둔다.",
+    "시점보다 총량. 운동 직후 '골든타임'은 하루 총량을 채우면 의미가 거의 없어진다(Schoenfeld, JISSN 2013). 총량, 분배, 시점 순으로 챙긴다."]},
+  {h:"근력, 최소 유효 용량 (2026-10-08)",items:[
+    "주 2회, 30분이 하한이다. WHO 2020 신체활동 지침은 주 2회 이상의 근력운동을 권고하고(Bull, BJSM 2020), 같은 근육을 주 2회 쓰는 쪽이 주 1회보다 근육 성장에 유리하다(Schoenfeld, Sports Med 2016).",
+    "헬스장을 전제로 하지 않는다. 화·금 집 D가 기본이고 월·목 헬스장 C는 가면 보너스다. 화·금을 놓친 주는 토요일에 '오늘 추가'에서 D로 채운다.",
+    "집 D는 큰 동작 다섯이다. 케틀벨 RDL, 고블릿 스쿼트, 경사 푸시업, 케틀벨 원암 로우, 브릿지. 전에는 미는 동작이 하나도 없어 헬스장에 가지 않으면 상체가 근력 자극을 받지 못했다. 팔이 가장 낮게 나온 인바디와 맞아떨어진다.",
+    "강도는 세트의 마지막 2~3회가 버거운 정도. 15회가 쉬워지면 무게나 난이도를 올린다. 시간이 없는 날은 동작마다 1세트만 해도 근력과 근육량이 의미 있게 는다(Iversen, Sports Med 2021). 0보다 1세트가 낫다.",
+    "걷기는 이미 충분하다. 출퇴근 30분씩 주 5일이면 주 300분으로 WHO 권고 상한(중강도 주 150~300분)에 닿는다. 유산소는 더 늘리지 않고 남는 힘은 근력에 쓴다.",
+    "근력은 이미 굳은 걷기 뒤에 붙인다. '화·금은 퇴근길을 걸어 집에 들어오면 종아리 올리고 5분, 그다음 바로 케틀벨.' 언제·어디서 하면 무엇을 한다고 미리 정해 두면 목표 달성률이 올라간다(Gollwitzer·Sheeran 2006 메타분석, 효과 크기 d≈0.65).",
+    "습관이 굳는 데는 중앙값 66일이 걸렸고, 하루 빠뜨린 것은 습관 형성에 거의 영향이 없었다(Lally, Eur J Soc Psychol 2010). 빠진 날은 다음 날 이어 가면 된다.",
+    "추워지면 걷기를 통째로 접지 않고 퇴근길만 걷는 최소선으로 내린다. 빙판길에서는 미끄럼 방지 신발을 신는다.",
+    "확인 방법. 인바디는 4주 간격으로, 기상 후 화장실을 다녀와 공복에, 같은 시각, 운동 전에 잰다. 골격근량이 0.5kg 이하로 오르내리는 것은 수분 영향이 섞인 변동으로 보고, 두 번 연속 같은 방향일 때만 의미를 둔다.",
+    "기대할 폭. 50세 이상 성인이 근력운동을 평균 20.5주 하면 제지방이 약 1.1kg 늘었다(Peterson, Med Sci Sports Exerc 2011). 두 달에 0.5kg 안팎이 현실적인 폭이다. 인바디가 제시하는 근육 조절량은 표준체중에 맞춘 계산값이지 목표치가 아니다.",
+    "지금이 근육을 만들 때다. 폐경 이행기에 들어서면 지방은 빨리 늘고 제지방은 줄어든다(SWAN 코호트, Greendale, JCI Insight 2019). 그 전에 쌓아 두면 이후 감소를 버틸 여유가 생긴다."]},
   {h:"엉덩이·허리 협착 (2026-10-02 풋샵 소견)",items:[
     "소견 요약. 엉덩이 통증은 오래 앉아서 골반이 아픈 것이 아니라 허리 협착과, 고관절을 바깥으로 돌리는 엉덩이 속근육이 제 일을 못 하는 데서 온다. 허벅지 안쪽 통증은 뭉친 것이 아니라 짧아지고 붙은 것이다. 엉덩이 옆 오목한 곳을 눌러 풀자 크게 편해졌고, 풀어 놓았으니 이제 운동으로 버티게 해야 한다. 이것은 마사지사의 촉진 소견이지 진단이 아니다. 엉덩이 통증은 허리, 고관절, 엉덩이 힘줄, 엉덩이 속 신경 어디서든 올 수 있다.",
     "어떤 자세에서 아픈지 적어 두면 원인이 갈린다. (1) 오래 서 있거나 걸을 때 엉덩이·다리가 아파 오고, 앉거나 앞으로 숙이면 가라앉는다: 협착 쪽. (2) 딱딱한 의자에 오래 앉아 있거나 그 자리를 깔고 앉으면 오목한 곳이 아프고, 다리 뒤로 찌릿함이 내려간다: 엉덩이 속근육·좌골신경 쪽. (3) 아픈 쪽으로 누우면 허벅지 뼈 바깥 돌기 위가 아프다: 엉덩이 바깥 힘줄 쪽. 저녁 블록의 통증 메모에 어느 쪽인지 남긴다.",
@@ -1192,13 +1267,13 @@ const HABITS = [
     "퇴근해서 가장 먼저 의자에 종아리 올리고 눕기 5분. 하루 서 있고 걸으며 젖혀진 허리를 굽힌 자세로 쉬게 한다. 저녁 블록 맨 앞에 타이머가 있다.",
     "저녁은 허리를 굽히는 동작의 시간이다. 낮 동안 디스크의 수분이 빠져 아침보다 굽힘에 덜 약하다(Adams 1987). 무릎 가슴 당기기와 108배는 저녁에 한다.",
     "근력 날의 순서. 엉덩이 볼 좌우, 클램쉘, 본운동, 그다음 저녁 블록의 나머지. 볼로 푼 효과는 30분 안팎이면 사라지므로 풀고 곧바로 깨우고 힘을 쓴다. 볼은 하루 한 번이면 되고, 근력 날은 준비운동에서 해서 저녁 블록에서는 건너뛴다.",
-    "근력 없는 날(수요일 등)에 여유가 있으면 주간 계획의 '오늘 추가'에서 '엉덩이 10분'(루틴 W)을 켠다. 옆으로 누워 다리 들기, 클램쉘, 데드버그. 피곤하면 생략한다. 근력은 주 3회 기준 그대로다.",
+    "근력 없는 날(수요일 등)에 여유가 있으면 주간 계획의 '오늘 추가'에서 '엉덩이 10분'(루틴 W)을 켠다. 옆으로 누워 다리 들기, 클램쉘, 데드버그. 피곤하면 생략한다. 근력은 주 2회 기준 그대로다.",
     "걷기가 엉덩이 통증으로 힘든 날은 실내 자전거 20분으로 바꾼다. 상체가 숙여진 자세라 협착에 편하다.",
     "숨이 차는 운동(헬스장, 케틀벨)은 잠들기 1시간 전까지 끝낸다. 저녁 운동은 대체로 잠을 해치지 않지만, 잠들기 1시간 안에 끝낸 격한 운동은 잠드는 시간과 수면 효율을 나쁘게 할 수 있다(Stutz 2019). 그 뒤에는 저녁 블록처럼 가벼운 것만 한다.",
     "소파에 비스듬히 기대 휴대폰을 보지 않는다. 허리는 말리고 목은 앞으로 빠진다. 쉬고 싶으면 의자에 종아리 올리고 눕기를 한 번 더 한다."]},
   {h:"주말",items:[
     "주말의 빈 곳은 걷기다. 출퇴근 걷기가 평일에만 있어 토·일은 유산소가 거의 없다. 토요일에 평지 긴 걷기 40~60분(루틴 토요일 블록)으로 채운다. 걷기가 힘든 날은 핸들을 높인 자전거나 물속 걷기.",
-    "평일에 근력을 빠뜨린 주는 토요일에 '오늘 추가'에서 집 D를 켠다. 기준은 요일이 아니라 주 3회다.",
+    "평일에 근력을 빠뜨린 주는 토요일에 '오늘 추가'에서 집 D를 켠다. 기준은 요일이 아니라 주 2회다.",
     "평일보다 갑자기 길게 하지 않는다. 평소 30분 걷다가 하루 두 시간 등산을 하는 식으로 몰아서 하면 다음 날 통증이 크게 오를 수 있다. 늘릴 때는 한 주에 10분씩.",
     "청소기와 걸레질. 허리를 숙이지 말고 고관절에서 접는다. 몸통을 비틀지 말고 발을 옮긴다. 걸레질은 무릎을 꿇은 네발기기 자세가 낫다.",
     "빨래 널기와 높은 선반. 팔을 머리 위로 뻗으면 허리가 젖혀진다. 발판을 쓰거나 몸을 물건 가까이 붙인다.",
@@ -1294,15 +1369,15 @@ const HABITS = [
   {h:"마음가짐",items:[
     "완벽한 하루보다 0이 아닌 하루가 목표. 루틴 B 한 번만 해도 그 날은 성공으로 친다.",
     "세션마다 '이것만 하면 성공'이 하나 있다. 헬스장도 집도 아침도 브릿지. 그거 하나 하고 가도 그날은 체크.",
-    "요일이 아니라 이번 주 3회로 센다. 출장으로 월요일이 빠지면 화·목·토로 채우면 성공. 맨 위 목표 칸의 숫자가 그 기준이다.",
-    "108배와 인터벌은 선택이다. 하면 좋고 안 해도 죄책감 없이. 필수는 근력 3회와 단백질뿐.",
+    "요일이 아니라 이번 주 2회로 센다. 화요일을 놓치면 수·목·토 가운데 하루에 집 D로 채우면 성공. 맨 위 목표 칸의 숫자가 그 기준이다.",
+    "108배와 인터벌은 선택이다. 하면 좋고 안 해도 죄책감 없이. 필수는 단백질, 근력 주 2회, 걷기뿐.",
     "진전은 무게가 아니라 브릿지 단계로 본다. 2주마다 한 단계. 그 숫자가 오르면 의욕이 끊기기 전에 다음 의욕이 온다.",
     "체크박스는 스스로에게 보내는 증거. 일주일 뒤 몇 개가 찍혔는지만 확인한다."]}
 ];
 const INBODY_SEED = [];
 
 /* ---------- 상태 ---------- */
-let S={checks:{},sets:{},weights:{},notes:{},cond:{},meal:{},extra:{},reps:{},sw:{},cfg:{},photos:{},walks:[],body:[],gait:{},goal:{bridge:1},inbody:null};
+let S={checks:{},sets:{},weights:{},notes:{},cond:{},meal:{},extra:{},reps:{},sw:{},cfg:{},photos:{},walks:[],body:[],gait:{},goal:{bridge:1},inbody:null,prot:{},protCfg:{}};
 async function loadState(){
   /* 1순위 클로드 저장소, 2순위 브라우저 localStorage */
   let raw=null;
@@ -1582,20 +1657,30 @@ function weekStats(){
   return {str:str,walk:walk};
 }
 function exDose(key){return key==="gluteBridge"?BRIDGE_STAGES[(S.goal.bridge||1)-1].d:EX[key].d;}
+/* ---------- 단백질 g 기록 (2026-10-08 인바디 뒤) ---------- */
+function protList(dk){const a=S.prot[dk];return Array.isArray(a)?a.filter(x=>x&&typeof x.g==="number"&&x.g>0):[];}
+function protTotal(dk){return protList(dk).reduce((t,x)=>t+x.g,0);}
+function protG(k){const p=PROT_PRESETS.find(x=>x[0]===k),v=+S.protCfg[k];return v>0?v:p[2];}
+function isMin(){return S.goal.mode!=="full";}
 function renderGoals(){
   const g=$("#goalArea");if(!g)return;
   const bi=(S.goal.bridge||1)-1,st=BRIDGE_STAGES[bi],ws=weekStats(),wk=weekOfGoal();
+  const pt=protTotal(dateKey(selDay)),isToday=selDay===new Date().getDay();
   g.innerHTML='<div class="goal"><div class="tiles">'
-   +'<button class="tile" data-goal-open><span class="k">브릿지</span><b>'+(bi+1)+'<small>단계</small></b><span class="u">'+st.w+' · '+st.s+'</span></button>'
-   +'<div class="tile"><span class="k">이번 주 근력</span><b>'+ws.str+'<small>/3</small></b><span class="u">'+(ws.str>=3?'이번 주 성공 ✓':'4일 중 3일')+'</span></div>'
+   +'<button class="tile" data-prot-go><span class="k">'+(isToday?'오늘':WEEK[selDay].name+'요일')+' 단백질</span><b>'+pt+'<small>g</small></b><span class="u">'+(pt>=PROT_GOAL?'목표 달성 ✓':(pt>=PROT_MIN?'최소선 ✓ · 목표 '+PROT_GOAL:'최소 '+PROT_MIN+' · 목표 '+PROT_GOAL))+'</span></button>'
+   +'<div class="tile"><span class="k">이번 주 근력</span><b>'+ws.str+'<small>/2</small></b><span class="u">'+(ws.str>=2?'이번 주 성공 ✓':'주 2회가 하한')+'</span></div>'
    +'<div class="tile"><span class="k">이번 주 걷기</span><b>'+ws.walk+'<small>/10</small></b><span class="u">최소 퇴근길 5편도</span></div>'
-   +'</div><details class="goal-more"'+(goalOpen?' open':'')+'><summary>목표 자세히 · 브릿지 로드맵 '+Math.min(wk,8)+'/8주차</summary>'
+   +'</div><div class="modebar"><span class="k">보기</span><button data-mode="min"'+(isMin()?' class="on"':'')+'>최소</button><button data-mode="full"'+(isMin()?'':' class="on"')+'>전체</button>'
+   +'<span class="mh">'+(isMin()?'필수(단백질·근력·걷기)만 펼치고 나머지 루틴은 아래에 접어 둡니다.':'모든 루틴을 펼쳐 둡니다.')+'</span></div>'
+   +'<details class="goal-more"'+(goalOpen?' open':'')+'><summary>목표 자세히 · 브릿지 '+(bi+1)+'단계 · 로드맵 '+Math.min(wk,8)+'/8주차</summary>'
+   +'<div class="goal-row"><span class="k">우선순위</span><span class="v">(1) 단백질 하루 70g 이상, 목표 90g (2) 근력 주 2회, 화·금 집 D 30분 (3) 출퇴근 걷기, 추운 날은 퇴근길만 (4) 나머지 루틴은 통증 관리용, 아픈 곳 위주로</span></div>'
    +'<div class="goal-row"><span class="k">브릿지 단계</span><div class="stages">'+BRIDGE_STAGES.map((x,i)=>'<button data-stage="'+(i+1)+'" class="'+(bi===i?"on":"")+'">'+(i+1)+'</button>').join('')+'<span class="sd">'+(bi+1)+'단계 '+st.w+' · '+st.t+' · '+st.d+'</span></div></div>'
    +'<div class="goal-row"><span class="k">힙업 1단계</span><span class="v">브릿지를 허리가 아니라 엉덩이로. 8주 뒤 한 다리 브릿지, 그 뒤에야 무게.</span></div>'
-   +'<div class="goal-row"><span class="k">매일</span><span class="v">단백질 67~90g · 11시·15시 알람에 일어나서 30초 · 걷기 피로도 기록</span></div>'
-   +'<div class="goal-row"><span class="k">12월 초</span><span class="v">인바디 재측정, 8/24와 비교</span></div></details></div>';
+   +'<div class="goal-row"><span class="k">매일</span><span class="v">11시·15시 알람에 일어나서 30초 · 걷기 피로도 기록</span></div>'
+   +'<div class="goal-row"><span class="k">12월 초</span><span class="v">인바디 재측정. 기상 후 공복, 같은 시각, 운동 전. 8월 말 수준 회복이 목표이고, 근육은 두 달에 0.5kg 안팎이 현실적인 폭</span></div></details></div>';
   const det=g.querySelector(".goal-more");det.ontoggle=()=>{goalOpen=det.open;};
-  g.querySelector("[data-goal-open]").onclick=()=>{det.open=true;goalOpen=true;};
+  g.querySelector("[data-prot-go]").onclick=()=>{const t=document.getElementById("blk-PROT");if(t)t.scrollIntoView({behavior:"smooth",block:"start"});};
+  g.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{if(S.goal.mode===b.dataset.mode)return;S.goal.mode=b.dataset.mode;saveState();stopExTimer();renderPlan();});
   g.querySelectorAll("[data-stage]").forEach(b=>b.onclick=()=>{S.goal.bridge=+b.dataset.stage;saveState();renderGoals();renderPlan();});
 }
 let goalOpen=false;
@@ -1611,16 +1696,22 @@ function renderPlan(){
   const area=$("#planArea");area.innerHTML="";
   const dk=dateKey(selDay);
   renderGoals();renderAddBar(dk);
-  const plan=WEEK[selDay].plan;
-  const rows=[];
-  plan.concat((S.extra[dk]||[]).filter(k=>ROUTINES[k]&&!plan.includes(k))).forEach(rk=>{
-    const r=ROUTINES[rk],ck=dk+"|"+rk,col=RCOLOR[rk]||"#9C9C93";
+  const plan=WEEK[selDay].plan,ex=S.extra[dk]||[];
+  const rows=[],min=isMin();
+  /* 최소 보기: 필수 루틴과 오늘 추가한 루틴을 위에 펼치고, 나머지는 '선택' 아래에 접어 둔다 */
+  const openRk=rk=>!min||REQ_ROUTINES.includes(rk)||ex.includes(rk);
+  const all=plan.concat(ex.filter(k=>ROUTINES[k]&&!plan.includes(k)));
+  const pw=document.createElement("div");pw.innerHTML=protHTML(dk);area.appendChild(pw.firstElementChild);
+  let optHdr=false;
+  all.filter(openRk).concat(all.filter(rk=>!openRk(rk))).forEach(rk=>{
+    const r=ROUTINES[rk],ck=dk+"|"+rk,col=RCOLOR[rk]||"#9C9C93",opt=!openRk(rk);
+    if(opt&&!optHdr){optHdr=true;const hd=document.createElement("div");hd.className="opt-hdr";hd.textContent="선택, 여유 있을 때 펼칩니다";area.appendChild(hd);}
     const keys=r.items.filter(k=>k.charAt(0)!=="_");
     let done=0,tot=0;keys.forEach(k=>{const st=getSets(dk,k);tot+=st.length;done+=st.filter(Boolean).length;});
     const checked=!!S.checks[ck];
     const div=document.createElement("div");
-    div.className="block"+(checked?" done":"");div.id="blk-"+rk;div.style.setProperty("--rc",col);
-    div.innerHTML='<div class="block-head"><input type="checkbox" '+(checked?"checked":"")+'><span class="t">'+r.title+'</span><span class="s">'+r.sub+'</span><span class="bp">'+done+'/'+tot+'</span></div>'
+    div.className="block"+(checked?" done":"")+(opt?" opt":"");div.id="blk-"+rk;div.style.setProperty("--rc",col);
+    div.innerHTML='<div class="block-head"><input type="checkbox" '+(checked?"checked":"")+'><span class="t">'+r.title+(REQ_ROUTINES.includes(rk)?'<span class="badge req">필수</span>':'')+'</span><span class="s">'+r.sub+'</span><span class="bp">'+done+'/'+tot+'</span></div>'
       +'<div class="bar"><i style="width:'+(tot?Math.round(done/tot*100):0)+'%"></i></div>'
       +'<div class="block-body">'+r.items.map(k=>k.charAt(0)==="_"?'<div class="subhdr">'+k.slice(1)+'</div>':exRowHTML(k,dk,r.key===k)).join('')+(r.extra?'<p class="note">'+r.extra+'</p>':'')
       +(r.pain?'<div class="painlbl">통증 메모, 아픈 날만</div><textarea class="memo" data-pain placeholder="어디가, 언제부터, 어떤 자세·동작에서. 예: 오른쪽 엉덩이 옆 오목한 곳, 오래 서 있을 때 아프고 앉으면 가라앉음">'+esc(S.notes[dk+"|_pain"]||"")+'</textarea>':'')+'</div>'
@@ -1629,12 +1720,18 @@ function renderPlan(){
     div.querySelector(".unfold").onclick=()=>{div.classList.toggle("open");div.querySelector(".unfold").textContent=div.classList.contains("open")?"접기":"펼치기";};
     const pm=div.querySelector("[data-pain]");if(pm)pm.onchange=()=>{const v=pm.value.trim();if(v)S.notes[dk+"|_pain"]=v;else delete S.notes[dk+"|_pain"];saveState();};
     area.appendChild(div);
-    rows.push({rk:rk,title:RSHORT[rk]||rk,done:done,tot:tot,checked:checked,col:col});
+    rows.push({rk:rk,title:RSHORT[rk]||rk,done:done,tot:tot,checked:checked,col:col,opt:opt});
   });
   const sum=document.createElement("div");sum.className="daysum";
-  sum.innerHTML=rows.map(x=>'<button data-go="blk-'+x.rk+'" style="--rc:'+x.col+'" class="'+((x.checked||(x.tot&&x.done===x.tot))?"ok":"")+'">'+x.title+'<b>'+(x.checked?'✓':x.done+'/'+x.tot)+'</b></button>').join('');
+  const pt=protTotal(dk);
+  sum.innerHTML='<button data-go="blk-PROT" style="--rc:#B0623A" class="'+(pt>=PROT_MIN?"ok":"")+'">단백질<b>'+pt+'g</b></button>'
+    +rows.map(x=>'<button data-go="blk-'+x.rk+'" style="--rc:'+x.col+'" class="'+((x.checked||(x.tot&&x.done===x.tot))?"ok":"")+(x.opt?" opt":"")+'">'+x.title+'<b>'+(x.checked?'✓':x.done+'/'+x.tot)+'</b></button>').join('');
   area.prepend(sum);
-  sum.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const t=document.getElementById(b.dataset.go);if(t)t.scrollIntoView({behavior:"smooth",block:"start"});});
+  sum.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{
+    const t=document.getElementById(b.dataset.go);if(!t)return;
+    if(t.classList.contains("opt")&&!t.classList.contains("done")&&!t.classList.contains("open")){t.classList.add("open");const u=t.querySelector(".unfold");if(u)u.textContent="접기";}
+    t.scrollIntoView({behavior:"smooth",block:"start"});
+  });
   const dx=document.createElement("div");
   dx.id="dayExtras";
   area.appendChild(dx);
@@ -1645,6 +1742,47 @@ function renderPlan(){
   area.appendChild(dm);
   $("#dayMemo").onchange=ev=>{const v=ev.target.value.trim();if(v)S.notes[dk+"|_day"]=v;else delete S.notes[dk+"|_day"];saveState();};
   bindEx(area);
+  bindProt(dk);
+}
+function protHTML(dk){
+  const list=protList(dk),tot=protTotal(dk);
+  const stat=tot>=PROT_GOAL?'<b>목표 달성</b>. 오늘은 충분합니다.':(tot>=PROT_MIN?'<b>최소선 넘김</b>. 목표 '+PROT_GOAL+'g까지 '+(PROT_GOAL-tot)+'g':'최소선 '+PROT_MIN+'g까지 <b>'+(PROT_MIN-tot)+'g</b>');
+  let h='<div class="block" id="blk-PROT" style="--rc:#B0623A"><div class="block-head"><span class="t">'+(selDay===new Date().getDay()?'오늘':WEEK[selDay].name+'요일')+' 단백질<span class="badge req">필수</span></span><span class="s">최소 '+PROT_MIN+'g, 목표 '+PROT_GOAL+'g · 누르면 더해짐</span><span class="bp">'+tot+'g</span></div>';
+  h+='<div class="bar"><i style="width:'+Math.min(100,Math.round(tot/PROT_GOAL*100))+'%"></i></div><div class="block-body">';
+  h+='<div class="pq">'+PROT_PRESETS.map(([k,l])=>'<button data-padd="'+k+'">'+l+'<b>+'+protG(k)+'</b></button>').join('')+'</div>';
+  h+='<div class="pc-row"><input type="number" class="num" id="pcG" placeholder="g" min="1" inputmode="numeric"><input class="txt" id="pcN" placeholder="음식, 예: 두부 반 모"><button id="pcAdd">더하기</button></div>';
+  if(list.length)h+='<div class="plist">'+list.map((x,i)=>'<span>'+esc(x.n)+' '+x.g+'g<button data-pdel="'+i+'" aria-label="'+esc(x.n)+' 지우기">×</button></span>').join('')+'</div>';
+  h+='<div class="pstat">'+stat+'</div>';
+  h+='<details class="cfg"><summary>버튼 g 바꾸기 · 도움말</summary><div class="cfg-row">'+PROT_PRESETS.map(([k,l,g])=>'<label>'+l+'<input type="number" min="1" data-pcfg="'+k+'" value="'+esc(S.protCfg[k]||"")+'" placeholder="'+g+'"></label>').join('')+'</div>'
+    +'<p class="note" style="padding-bottom:0">쉐이크는 제품과 1회 분량마다 18~23g으로 다르니 포장 라벨 값으로 바꿔 둡니다. 우유에 타면 우유 버튼도 함께 누릅니다. 아몬드 같은 견과류는 한 줌에 4g 남짓이라 여기에 넣지 않고, 열량 보충용으로 그대로 먹습니다. 근거와 하루 배치는 일상 습관 탭 맨 위에 있습니다.</p></details>';
+  return h+'</div></div>';
+}
+function renderProt(dk,cfgOpen){
+  const old=$("#blk-PROT");if(!old)return;
+  const w=document.createElement("div");w.innerHTML=protHTML(dk);const nb=w.firstElementChild;
+  old.replaceWith(nb);if(cfgOpen)nb.querySelector(".cfg").open=true;
+  bindProt(dk);renderGoals();
+  const chip=document.querySelector('.daysum [data-go="blk-PROT"]');
+  if(chip){const t=protTotal(dk);chip.querySelector("b").textContent=t+"g";chip.classList.toggle("ok",t>=PROT_MIN);}
+}
+function bindProt(dk){
+  const blk=$("#blk-PROT");if(!blk)return;
+  const put=a=>{if(a.length)S.prot[dk]=a;else delete S.prot[dk];saveState();renderProt(dk);};
+  blk.querySelectorAll("[data-padd]").forEach(b=>b.onclick=()=>{
+    const k=b.dataset.padd,p=PROT_PRESETS.find(x=>x[0]===k),a=protList(dk);
+    a.push({n:p[1],g:protG(k),t:Date.now()});put(a);vib([40]);
+  });
+  blk.querySelector("#pcAdd").onclick=()=>{
+    const g=Math.round(parseFloat(blk.querySelector("#pcG").value));
+    if(!(g>0)){alert("단백질 g을 숫자로 넣어 주세요.");return;}
+    const a=protList(dk);a.push({n:blk.querySelector("#pcN").value.trim()||"직접 입력",g:g,t:Date.now()});put(a);
+  };
+  blk.querySelectorAll("[data-pdel]").forEach(b=>b.onclick=()=>{const a=protList(dk);a.splice(+b.dataset.pdel,1);put(a);});
+  blk.querySelectorAll("[data-pcfg]").forEach(inp=>inp.onchange=()=>{
+    const v=Math.round(parseFloat(inp.value)),k=inp.dataset.pcfg;
+    if(v>0)S.protCfg[k]=v;else delete S.protCfg[k];
+    saveState();renderProt(dk,true);
+  });
 }
 function bindEx(scope){
   scope.querySelectorAll(".ex").forEach(bindOne);
@@ -1759,14 +1897,15 @@ function renderDict(){
   [["출퇴근","commuteWalk"],
    ["아침 루틴 A","foamThoracic toeSpread towelCurl frog hipFlexor gluteBridge screwFeet oneLegDoor"],
    ["사무실 루틴 B","chinTuck bandRow wallSlide kegel seatedHipPush stretchBoard ballFoot shortFoot calfBall officeOneLeg"],
-   ["헬스장 루틴 C","clamshell rdl chestRow facePull gluteBridge sidePlank oneArmRow"],
-   ["집 루틴 D","clamshell kbDeadlift boxHeelRaise singleLegStand bandSideStep copenhagenShort wallCalf"],
+   ["헬스장 루틴 C, 선택","clamshell rdl chestRow inclinePushup facePull gluteBridge sidePlank oneArmRow"],
+   ["집 루틴 D, 전신 근력","clamshell kbDeadlift gobletSquat stepUp inclinePushup kbRow gluteBridge"],
+   ["발·균형 마무리 F, 선택","boxHeelRaise singleLegStand bandSideStep copenhagenShort wallCalf"],
    ["저녁 발·엉덩이 관리, 매일","legsUpRest ballFootEve ballGlute wallCalfEve frogEve kneeChest"],
    ["근력 없는 날 저녁 W, 선택","sideLyingAbd clamshell deadBug"],
    ["토요일·일요일","hang hangNegative weekendWalk sundayWalk lacrosseLight"],
    ["선택","hip9090 sideBridgeKnee doorStretch heelRaise bow108 intervalWalk walk"],
    ["뭉쳤을 때 루틴 R","reliefWalk reliefSqueeze reliefOpen reliefPress reliefSideShift reliefHeat"],
-   ["이전 동작, 참고용","pelvicTilt catcow chestOpen scapRetraction extRotation ringSqueeze treadmill hipAbduction stepUp latPulldown seatedRow innerThigh gobletSquat bulgarian birdDog bandPullApart"]
+   ["이전 동작, 참고용","pelvicTilt catcow chestOpen scapRetraction extRotation ringSqueeze treadmill hipAbduction latPulldown seatedRow innerThigh bulgarian birdDog bandPullApart"]
   ].forEach(([title,keys])=>{
     const g=document.createElement("div");
     g.className="dict-group";
@@ -1902,6 +2041,20 @@ function condSummaryHTML(dks){
    :'<div class="empty">주간 계획 하단의 몸 상태 칸에 기록하면 여기에 모입니다.</div>';
   return h+'</div>';
 }
+function protSummaryHTML(dks){
+  let rows='',days=0,ok=0,sum=0;
+  dks.forEach((dk,i)=>{
+    const l=protList(dk);if(!l.length)return;
+    const t=protTotal(dk);days++;sum+=t;if(t>=PROT_MIN)ok++;
+    rows+='<tr><td>'+WEEK[i].name+'</td><td>'+(t>=PROT_MIN?'<b style="color:var(--accent)">'+t+'</b>':t)+'</td><td>'+l.map(x=>esc(x.n)+' '+x.g).join(' · ')+'</td></tr>';
+  });
+  let h='<div class="rec-sec"><h3>단백질</h3>';
+  if(days){
+    h+='<div class="prot-line">'+PROT_MIN+'g 넘긴 날 <b>'+ok+'</b> / 기록한 '+days+'일 · 기록한 날 평균 <b>'+Math.round(sum/days)+'g</b></div>';
+    h+='<table><thead><tr><th>요일</th><th>합계 g</th><th>내역</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  }else h+='<div class="empty">주간 계획 맨 위 단백질 칸의 버튼을 누르면 여기에 모입니다.</div>';
+  return h+'</div>';
+}
 function mealSummaryHTML(dks){
   let any=false,rows='',pOk=0,pAll=0;
   dks.forEach((dk,i)=>{
@@ -1984,13 +2137,14 @@ function backupHTML(){
    +'<p class="note">기록은 이 브라우저에 저장됩니다. 기기를 바꾸거나 브라우저 데이터를 지우기 전에 파일로 내려받아 두세요. 내려받기가 막힌 환경이라면 텍스트로 열어 복사해 보관하면 됩니다.</p></div>';
 }
 function normalizeState(){
-  ["checks","sets","weights","notes","cond","meal","extra","reps","sw","cfg","photos","gait"].forEach(k=>{if(!S[k]||typeof S[k]!=="object"||Array.isArray(S[k]))S[k]={};});
+  ["checks","sets","weights","notes","cond","meal","extra","reps","sw","cfg","photos","gait","prot","protCfg"].forEach(k=>{if(!S[k]||typeof S[k]!=="object"||Array.isArray(S[k]))S[k]={};});
   if(!Array.isArray(S.walks))S.walks=[];
   if(!Array.isArray(S.body))S.body=[];
   /* 이전 버전의 relief(내전근 풀기 토글)를 extra 형식으로 옮긴다 */
   if(S.relief&&typeof S.relief==="object"){Object.keys(S.relief).forEach(dk=>{if(S.relief[dk]){const a=S.extra[dk]||[];if(!a.includes("R"))a.push("R");S.extra[dk]=a;}});delete S.relief;}
   if(!S.goal||typeof S.goal!=="object")S.goal={};
   if(!(S.goal.bridge>=1&&S.goal.bridge<=4))S.goal.bridge=1;
+  if(S.goal.mode!=="full")S.goal.mode="min";
   if(!Array.isArray(S.inbody)||!S.inbody.length)S.inbody=INBODY_SEED.slice();
 }
 function applyImport(txt){
@@ -2006,7 +2160,7 @@ function applyImport(txt){
   }
   if(!p||typeof p!=="object"||(!p.checks&&!p.sets&&!p.inbody)){alert("운동 기록 백업이 아닌 것 같습니다. 내용을 확인해 주세요.");return;}
   if(!confirm("현재 기록을 이 백업 내용으로 덮어씁니다. 계속할까요?"))return;
-  S={checks:{},sets:{},weights:{},notes:{},cond:{},meal:{},extra:{},reps:{},sw:{},cfg:{},photos:{},walks:[],body:[],gait:{},goal:{bridge:1},inbody:null};
+  S={checks:{},sets:{},weights:{},notes:{},cond:{},meal:{},extra:{},reps:{},sw:{},cfg:{},photos:{},walks:[],body:[],gait:{},goal:{bridge:1},inbody:null,prot:{},protCfg:{}};
   Object.assign(S,p);normalizeState();
   saveState();renderDays();renderPlan();renderRecord();
   alert("복원했습니다.");
@@ -2135,6 +2289,7 @@ function renderRecord(){
   h+=fixSummaryHTML(dks);
   h+=hipSummaryHTML(dks);
   h+=condSummaryHTML(dks);
+  h+=protSummaryHTML(dks);
   h+=mealSummaryHTML(dks);
 
   /* 무게 기록 */
